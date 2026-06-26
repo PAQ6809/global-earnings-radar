@@ -10,7 +10,7 @@ export default function Pricing() {
     setError(null)
 
     try {
-      const response = await fetch('/api/create-checkout-session', {
+      const response = await fetch('/api/create-ecpay-payment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -19,13 +19,28 @@ export default function Pricing() {
 
       const data = await response.json()
 
-      if (data.url) {
-        window.location.href = data.url
+      if (data.action && data.params) {
+        // Create form and submit to ECPay
+        const form = document.createElement('form')
+        form.method = 'POST'
+        form.action = data.action
+        form.style.display = 'none'
+
+        for (const [key, value] of Object.entries(data.params)) {
+          const input = document.createElement('input')
+          input.type = 'hidden'
+          input.name = key
+          input.value = String(value)
+          form.appendChild(input)
+        }
+
+        document.body.appendChild(form)
+        form.submit()
       } else {
-        setError('Checkout is unavailable. Please try again later.')
+        setError('ECPay checkout is unavailable. Please try again later.')
       }
     } catch (err) {
-      setError('Checkout is unavailable. Please try again later.')
+      setError('ECPay checkout is unavailable. Please try again later.')
     } finally {
       setIsLoading(false)
     }
@@ -81,7 +96,7 @@ export default function Pricing() {
               className="btn btn-primary"
               style={{ display: 'block', width: '100%', textAlign: 'center' }}
             >
-              {isLoading ? 'Processing...' : 'Start Pro Checkout'}
+              {isLoading ? 'Processing...' : 'Start ECPay Checkout'}
             </button>
             {error && (
               <p style={{ color: 'var(--error-red, #ef4444)', fontSize: '0.85rem', marginTop: '0.5rem' }}>
@@ -110,7 +125,7 @@ export default function Pricing() {
           </div>
         </div>
 
-        {/* Stripe Payment Notice */}
+        {/* ECPay Payment Notice */}
         <div style={{
           maxWidth: '700px',
           margin: '2rem auto 0',
@@ -121,9 +136,9 @@ export default function Pricing() {
           color: 'var(--gray-600)',
           fontSize: '0.85rem'
         }}>
-          Payments are processed securely by Stripe.
+          Payments are processed securely by ECPay Green World.
           <br />
-          <em>This is an MVP demo; paid feature access is not yet automated.</em>
+          <em>This MVP demo does not automatically unlock paid features yet.</em>
         </div>
 
         {/* FAQ Section */}

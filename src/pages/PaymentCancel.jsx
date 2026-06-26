@@ -14,7 +14,7 @@ export default function PaymentCancel() {
         </div>
 
         <h1 style={{ marginBottom: '1rem', color: 'var(--dark)' }}>
-          Checkout Cancelled
+          Checkout Canceled or Incomplete
         </h1>
 
         <p style={{
@@ -22,8 +22,8 @@ export default function PaymentCancel() {
           marginBottom: '1.5rem',
           lineHeight: '1.6'
         }}>
-          Your checkout was cancelled and no payment was processed.
-          You can return to pricing to try again whenever you're ready.
+          No paid access has been activated. You can return to pricing to try again
+          whenever you are ready.
         </p>
 
         <div style={{

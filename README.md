@@ -170,7 +170,7 @@ The financials.json and companies.json contain illustrative financial informatio
 - No user account system
 - No personal financial data collection
 - Demo/sample data only (financials.json, companies.json)
-- Payments processed securely by Stripe (Stripe Checkout - Hosted)
+- Payments processed securely by ECPay Green World (Taiwan payment gateway)
 
 **Security Measures**
 - Security headers configured via vercel.json (CSP, HSTS, X-Frame-Options, etc.)
@@ -179,13 +179,14 @@ The financials.json and companies.json contain illustrative financial informatio
 
 *Note: As with any web application, maintain good security practices and keep dependencies updated.*
 
-## 💳 Payment Setup (Stripe Checkout)
+## 💳 Payment Setup (ECPay Green World)
 
-This project uses Stripe Checkout (Hosted) for subscription payments. The checkout process is handled entirely by Stripe; no payment information is processed or stored on this server.
+This project uses ECPay Green World hosted checkout for Taiwan payment support. Credit card payments are handled entirely by ECPay; no payment information is processed or stored on this server.
 
 ### Prerequisites
-- Stripe account (test mode)
+- ECPay merchant account (test/development environment)
 - Vercel account with this project deployed
+- ECPay test credentials from [ECPay Developer Center](https://www.ecpay.com.tw)
 
 ### Environment Variables
 
@@ -193,30 +194,36 @@ Configure these in **Vercel Project Settings → Environment Variables**:
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `STRIPE_SECRET_KEY` | Stripe secret key (test mode) | `sk_test_xxx...` |
-| `STRIPE_PRICE_PRO_MONTHLY` | Stripe Price ID for Pro monthly plan | `price_xxx...` |
+| `ECPAY_MERCHANT_ID` | ECPay Merchant ID | `merchant_id_xxx` |
+| `ECPAY_HASH_KEY` | ECPay HashKey | `hash_key_xxx` |
+| `ECPAY_HASH_IV` | ECPay HashIV | `hash_iv_xxx` |
+| `ECPAY_STAGE` | Use test environment | `true` |
 | `SITE_URL` | Production site URL | `https://global-earnings-radar.vercel.app` |
 
 ### Setup Steps
 
-1. **Create Stripe Price ID**:
-   - Log into [Stripe Dashboard](https://dashboard.stripe.com/test/products)
-   - Create a product with a recurring price ($9/month)
-   - Copy the Price ID (starts with `price_`)
+1. **Get ECPay Test Credentials**:
+   - Apply for ECPay test account or use provided test merchant
+   - Obtain MerchantID, HashKey, and HashIV
 
 2. **Configure Vercel Environment Variables**:
    - Go to Vercel Dashboard → Project → Settings → Environment Variables
    - Add each variable from the table above
+   - Set `ECPAY_STAGE=true` for test mode
 
-3. **Test in Stripe Dashboard**:
-   - Use Stripe test mode (`sk_test_xxx`)
-   - Test cards: `4242 4242 4242 4242` (success), `4000 0000 0000 0002` (decline)
+3. **Test Payment Flow**:
+   - Navigate to Pricing page
+   - Click "Start ECPay Checkout"
+   - Use ECPay test credit card: `4311-9522-2222-2222` (success) or other test cards
 
 ### Security Notes
-- **Never commit secret keys** to the repository
-- **Do not prefix secret keys with `VITE_`** (those are exposed to client)
-- Stripe handles all payment data; we only receive a session URL
-- Test mode is enabled by default
+- **Never commit HashKey or HashIV** to the repository
+- ECPay handles all payment data; we only receive transaction results
+- Test mode (`ECPAY_STAGE=true`) uses ECPay staging environment
+- Production payment activation requires ECPay merchant approval, legal/business setup, and database-backed entitlement management
+
+### MVP Limitation
+This MVP does not automatically unlock paid features. The checkout flow is implemented for demonstration purposes only.
 
 ## 📝 License
 

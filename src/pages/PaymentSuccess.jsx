@@ -22,7 +22,7 @@ export default function PaymentSuccess() {
           marginBottom: '1.5rem',
           lineHeight: '1.6'
         }}>
-          Your subscription checkout was completed successfully.
+          Your checkout was completed or returned successfully.
         </p>
 
         <div style={{
@@ -39,8 +39,7 @@ export default function PaymentSuccess() {
             margin: 0
           }}>
             <strong>Note:</strong> Account access and paid features are not yet automated
-            in this MVP demo. You have completed a test checkout successfully. For full
-            Pro access, please contact support.
+            in this MVP demo. For full access, please contact support.
           </p>
         </div>
 
