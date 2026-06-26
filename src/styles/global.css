@@ -204,6 +204,11 @@ button:focus-visible {
   gap: 0;
 }
 
+/* Mobile nav wrapper - hidden on desktop by default */
+.nav-links-wrapper {
+  display: none;
+}
+
 .nav-logo {
   display: flex;
   align-items: center;
@@ -1501,6 +1506,11 @@ button:focus-visible {
     flex: 1;
   }
 
+  /* Hide desktop nav center on mobile */
+  .nav-center {
+    display: none;
+  }
+
   .nav-actions {
     order: 3;
     width: 100%;
@@ -1511,8 +1521,10 @@ button:focus-visible {
     display: block;
   }
 
+  /* Mobile nav wrapper - hidden by default, shown when open */
   .nav-links-wrapper {
     display: none;
+    width: 100%;
     padding: 0 1rem 0.75rem;
   }
 
@@ -3356,4 +3368,95 @@ button:focus-visible {
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================
+   Final Waitlist Interest Options
+   Clean implementation - no emoji, no old class pollution
+   ============================================ */
+
+/* Grid container */
+.waitlist-form .waitlist-interest-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.875rem;
+  margin-top: 0.875rem;
+}
+
+/* Base (light mode) card */
+.waitlist-form .waitlist-interest-option {
+  min-height: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  box-sizing: border-box;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(17, 24, 39, 0.14);
+  color: rgba(17, 24, 39, 0.88);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.waitlist-form .waitlist-interest-option span {
+  color: rgba(17, 24, 39, 0.88);
+  font-weight: 600;
+  line-height: 1.25;
+  font-size: 0.9rem;
+}
+
+.waitlist-form .waitlist-interest-option input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  flex: 0 0 20px;
+  accent-color: var(--primary);
+}
+
+.waitlist-form .waitlist-interest-option:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 113, 227, 0.42);
+  transform: translateY(-1px);
+}
+
+.waitlist-form .waitlist-interest-option:has(input:checked) {
+  background: rgba(0, 113, 227, 0.12);
+  border-color: rgba(0, 113, 227, 0.55);
+}
+
+/* Dark mode override */
+.dark-mode .waitlist-form .waitlist-interest-option {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.dark-mode .waitlist-form .waitlist-interest-option span {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.dark-mode .waitlist-form .waitlist-interest-option:hover {
+  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(59, 130, 246, 0.55);
+}
+
+.dark-mode .waitlist-form .waitlist-interest-option:has(input:checked) {
+  background: rgba(59, 130, 246, 0.22);
+  border-color: rgba(59, 130, 246, 0.75);
+}
+
+/* Mobile: single column */
+@media (max-width: 720px) {
+  .waitlist-form .waitlist-interest-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .waitlist-form .waitlist-interest-option {
+    height: auto;
+    min-height: 58px;
+  }
 }

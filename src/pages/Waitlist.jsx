@@ -173,8 +173,8 @@ export default function Waitlist() {
 
             <div className="form-group">
               <label>Which Pro features interest you most? (Select all that apply)</label>
-              <div className="interest-checkboxes">
-                <label className="interest-checkbox">
+              <div className="waitlist-interest-grid">
+                <label className="waitlist-interest-option">
                   <input
                     type="checkbox"
                     name="watchlists"
@@ -183,7 +183,7 @@ export default function Waitlist() {
                   />
                   <span>Saved watchlists</span>
                 </label>
-                <label className="interest-checkbox">
+                <label className="waitlist-interest-option">
                   <input
                     type="checkbox"
                     name="ai"
@@ -192,7 +192,7 @@ export default function Waitlist() {
                   />
                   <span>AI earnings summaries</span>
                 </label>
-                <label className="interest-checkbox">
+                <label className="waitlist-interest-option">
                   <input
                     type="checkbox"
                     name="dashboards"
@@ -201,7 +201,7 @@ export default function Waitlist() {
                   />
                   <span>Sector dashboards</span>
                 </label>
-                <label className="interest-checkbox">
+                <label className="waitlist-interest-option">
                   <input
                     type="checkbox"
                     name="reports"
@@ -210,7 +210,7 @@ export default function Waitlist() {
                   />
                   <span>Exportable reports</span>
                 </label>
-                <label className="interest-checkbox">
+                <label className="waitlist-interest-option">
                   <input
                     type="checkbox"
                     name="comparison"
@@ -219,7 +219,7 @@ export default function Waitlist() {
                   />
                   <span>Company comparison</span>
                 </label>
-                <label className="interest-checkbox">
+                <label className="waitlist-interest-option">
                   <input
                     type="checkbox"
                     name="classroom"

@@ -78,7 +78,7 @@ function Navbar() {
           aria-expanded={mobileMenuOpen}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          {mobileMenuOpen ? '✕' : '☰'}
+          {mobileMenuOpen ? '×' : '≡'}
         </button>
         <div className={`nav-links-wrapper${mobileMenuOpen ? ' open' : ''}`}>
           <div className="nav-links">
