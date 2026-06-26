@@ -28,18 +28,18 @@ export default function Waitlist() {
     return (
       <div>
         <div className="sector-hero">
-          <h1>You're on the List!</h1>
+          <h1>You're on the Pro List!</h1>
         </div>
         <div className="container" style={{ textAlign: 'center' }}>
           <div className="card" style={{ maxWidth: '500px', margin: '0 auto' }}>
             <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>✅</div>
-            <h2 style={{ marginBottom: '1rem' }}>Thanks for Joining!</h2>
+            <h2 style={{ marginBottom: '1rem' }}>Thanks for Your Interest!</h2>
             <p style={{ color: 'var(--gray-600)', marginBottom: '1.5rem' }}>
-              We've added <strong>{formData.email}</strong> to our waitlist.
-              We'll send you updates when new features and company analyses are available.
+              We've added <strong>{formData.email}</strong> to our Pro early access waitlist.
+              We'll notify you when Pro research tools and ECPay checkout become available.
             </p>
             <p style={{ color: 'var(--gray-500)', fontSize: '0.9rem' }}>
-              In the meantime, you can explore our current analyses of leading tech companies.
+              In the meantime, you can continue exploring our free company analyses.
             </p>
             <div style={{ marginTop: '2rem' }}>
               <a href="/" className="btn btn-primary">
@@ -56,16 +56,16 @@ export default function Waitlist() {
     <div>
       {/* Header */}
       <div className="sector-hero">
-        <h1>Join Our Waitlist</h1>
+        <h1>Join the Pro Early Access List</h1>
         <p style={{ maxWidth: '600px', margin: '1rem auto 0', color: 'rgba(255,255,255,0.9)' }}>
-          Be the first to know when new company analyses, features, and subscriptions are available.
+          Be the first to know when Pro research tools and ECPay checkout become available.
         </p>
       </div>
 
       <div className="container">
         <div className="waitlist-form">
           <h2 style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-            Get Early Access
+            Get Pro Access When Available
           </h2>
 
           <form onSubmit={handleSubmit}>
@@ -107,6 +107,8 @@ export default function Waitlist() {
                 <option value="professional">Finance Professional</option>
                 <option value="student">Student / Researcher</option>
                 <option value="journalist">Journalist / Writer</option>
+                <option value="researcher">Academic Researcher</option>
+                <option value="educator">Educator / Instructor</option>
                 <option value="other">Other</option>
               </select>
             </div>
@@ -136,7 +138,7 @@ export default function Waitlist() {
             </div>
 
             <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-              Join Waitlist
+              Join Pro Waitlist
             </button>
 
             <p style={{
@@ -146,38 +148,51 @@ export default function Waitlist() {
               color: 'var(--gray-500)'
             }}>
               We'll respect your privacy. Unsubscribe anytime.
+              <br />
+              <span style={{ fontSize: '0.8rem' }}>
+                ECPay checkout is prepared but not yet activated for production payments.
+              </span>
             </p>
           </form>
         </div>
 
         {/* What You'll Get */}
         <div style={{ maxWidth: '600px', margin: '3rem auto 0' }}>
-          <h3 style={{ textAlign: 'center', marginBottom: '1.5rem' }}>What You'll Get</h3>
+          <h3 style={{ textAlign: 'center', marginBottom: '1.5rem' }}>What Pro Access Will Include</h3>
           <div style={{ display: 'grid', gap: '1rem' }}>
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-              <span style={{ fontSize: '1.5rem' }}>📧</span>
+              <span style={{ fontSize: '1.5rem' }}>📋</span>
               <div>
-                <strong>Early Access Notifications</strong>
+                <strong>Saved Watchlists & Research Notes</strong>
                 <p style={{ color: 'var(--gray-600)', fontSize: '0.9rem' }}>
-                  Be the first to know about new features and company analyses
+                  Track your favorite companies and keep notes for each analysis
                 </p>
               </div>
             </div>
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-              <span style={{ fontSize: '1.5rem' }}>💰</span>
+              <span style={{ fontSize: '1.5rem' }}>🤖</span>
               <div>
-                <strong>Launch Discount</strong>
+                <strong>AI-Assisted Earnings Briefs</strong>
                 <p style={{ color: 'var(--gray-600)', fontSize: '0.9rem' }}>
-                  Waitlist members get exclusive pricing when we launch
+                  Get AI-generated summaries of earnings calls with key highlights
                 </p>
               </div>
             </div>
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
               <span style={{ fontSize: '1.5rem' }}>📊</span>
               <div>
-                <strong>Weekly Updates</strong>
+                <strong>Sector Trend Dashboards</strong>
                 <p style={{ color: 'var(--gray-600)', fontSize: '0.9rem' }}>
-                  Summary of new company analyses and industry insights
+                  Visualize sector trends and compare company performance
+                </p>
+              </div>
+            </div>
+            <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+              <span style={{ fontSize: '1.5rem' }}>📄</span>
+              <div>
+                <strong>Exportable Research Briefs</strong>
+                <p style={{ color: 'var(--gray-600)', fontSize: '0.9rem' }}>
+                  Export analyses to PDF or Markdown for offline reading
                 </p>
               </div>
             </div>

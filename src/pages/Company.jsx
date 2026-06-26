@@ -232,6 +232,18 @@ export default function Company() {
           </ul>
         </div>
 
+        {/* Pro Upgrade Card */}
+        <div className="upgrade-card" style={{ marginBottom: '2rem' }}>
+          <div className="upgrade-card-icon">🔓</div>
+          <div className="upgrade-card-content">
+            <h3>Unlock Deeper Research Tools</h3>
+            <p>Pro users will be able to save notes, compare companies, export briefs, and track earnings updates.</p>
+            <Link to="/waitlist" className="btn btn-primary">
+              Join Pro Waitlist
+            </Link>
+          </div>
+        </div>
+
         {/* Navigation */}
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link to="/" className="btn btn-outline">

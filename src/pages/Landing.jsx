@@ -104,6 +104,50 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* Pro Features Preview */}
+      <section className="section section-fade-in">
+        <div className="container">
+          <h2 className="section-title">Built for Deeper Earnings Research</h2>
+          <p className="section-subtitle">
+            Pro features planned for paid subscribers — now in preview
+          </p>
+          <div className="card-grid">
+            <div className="card feature-card pro-preview-card">
+              <div className="pro-badge-overlay">Pro Preview</div>
+              <div className="feature-icon">📋</div>
+              <h3>Saved Watchlists</h3>
+              <p>Track your favorite companies and receive earnings alerts. Save research notes for each company.</p>
+            </div>
+            <div className="card feature-card pro-preview-card">
+              <div className="pro-badge-overlay">Pro Preview</div>
+              <div className="feature-icon">🤖</div>
+              <h3>AI Earnings Briefs</h3>
+              <p>Get AI-assisted summaries of earnings calls with key highlights, risks, and questions to watch.</p>
+            </div>
+            <div className="card feature-card pro-preview-card">
+              <div className="pro-badge-overlay">Pro Preview</div>
+              <div className="feature-icon">📊</div>
+              <h3>Sector Dashboards</h3>
+              <p>Visualize sector trends, compare company performance, and track industry momentum.</p>
+            </div>
+            <div className="card feature-card pro-preview-card">
+              <div className="pro-badge-overlay">Pro Preview</div>
+              <div className="feature-icon">📄</div>
+              <h3>Exportable Reports</h3>
+              <p>Export company analyses and research briefs to PDF or Markdown for offline reading.</p>
+            </div>
+          </div>
+          <p style={{ textAlign: 'center', color: 'var(--gray-500)', marginTop: '2rem', fontSize: '0.9rem' }}>
+            These features are planned for paid users and are not automatically unlocked yet.
+          </p>
+          <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+            <Link to="/waitlist" className="btn btn-primary">
+              Join Pro Waitlist
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Sectors Section */}
       <section className="section section-fade-out">
         <div className="container">

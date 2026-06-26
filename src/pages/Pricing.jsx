@@ -1,58 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Pricing() {
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState(null)
-
-  const handleProCheckout = async () => {
-    setIsLoading(true)
-    setError(null)
-
-    try {
-      const response = await fetch('/api/create-ecpay-payment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-
-      const data = await response.json()
-
-      if (data.action && data.params) {
-        // Create form and submit to ECPay
-        const form = document.createElement('form')
-        form.method = 'POST'
-        form.action = data.action
-        form.style.display = 'none'
-
-        for (const [key, value] of Object.entries(data.params)) {
-          const input = document.createElement('input')
-          input.type = 'hidden'
-          input.name = key
-          input.value = String(value)
-          form.appendChild(input)
-        }
-
-        document.body.appendChild(form)
-        form.submit()
-      } else {
-        setError('ECPay checkout is unavailable. Please try again later.')
-      }
-    } catch (err) {
-      setError('ECPay checkout is unavailable. Please try again later.')
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
   return (
     <div>
       {/* Header */}
       <div className="sector-hero">
-        <h1>Simple, Transparent Pricing</h1>
+        <h1>Research Tools for Every Level</h1>
         <p style={{ maxWidth: '600px', margin: '1rem auto 0', color: 'rgba(255,255,255,0.9)' }}>
-          Choose the plan that fits your research needs. All plans include our educational content disclaimer.
+          Free access to earnings analyses · Pro features coming soon
         </p>
       </div>
 
@@ -62,13 +18,13 @@ export default function Pricing() {
           <div className="pricing-card">
             <h3>Free</h3>
             <div className="pricing-price">$0<span>/month</span></div>
-            <p style={{ color: 'var(--gray-500)', marginTop: '0.5rem' }}>Get started with basics</p>
+            <p style={{ color: 'var(--gray-500)', marginTop: '0.5rem' }}>For learners</p>
             <ul className="pricing-features">
-              <li>5 company analyses</li>
-              <li>Weekly industry briefs</li>
-              <li>Basic glossary access</li>
-              <li>Community newsletter</li>
-              <li>Mobile responsive</li>
+              <li>Company earnings snapshots</li>
+              <li>Basic risk factors</li>
+              <li>Glossary access</li>
+              <li>Sample company data</li>
+              <li>No account required</li>
             </ul>
             <Link to="/company/NVDA" className="btn btn-outline" style={{ display: 'block', textAlign: 'center' }}>
               Explore Now (Free)
@@ -77,68 +33,68 @@ export default function Pricing() {
 
           {/* Pro Tier */}
           <div className="pricing-card featured">
-            <span className="popular-badge">Most Popular</span>
+            <span className="popular-badge">Most Useful for Serious Learners</span>
             <h3>Pro</h3>
             <div className="pricing-price">$9<span>/month</span></div>
-            <p style={{ color: 'var(--gray-500)', marginTop: '0.5rem' }}>For serious investors</p>
+            <p style={{ color: 'var(--gray-500)', marginTop: '0.5rem' }}>For dedicated researchers</p>
             <ul className="pricing-features">
-              <li>All company analyses</li>
-              <li>Daily earnings summaries</li>
-              <li>Advanced watchlist</li>
-              <li>Export PDF & Markdown</li>
-              <li>Priority weekly briefs</li>
-              <li>Full glossary access</li>
-              <li>API access (coming soon)</li>
+              <li>Full company comparison workspace</li>
+              <li>Watchlist and saved research notes</li>
+              <li>Earnings calendar alerts</li>
+              <li>AI-assisted earnings summary</li>
+              <li>Sector trend dashboards</li>
+              <li>Exportable research brief</li>
+              <li>Priority access to new company coverage</li>
             </ul>
-            <button
-              onClick={handleProCheckout}
-              disabled={isLoading}
-              className="btn btn-primary"
-              style={{ display: 'block', width: '100%', textAlign: 'center' }}
-            >
-              {isLoading ? 'Processing...' : 'Start ECPay Checkout'}
-            </button>
-            {error && (
-              <p style={{ color: 'var(--error-red, #ef4444)', fontSize: '0.85rem', marginTop: '0.5rem' }}>
-                {error}
-              </p>
-            )}
+            <Link to="/waitlist" className="btn btn-primary" style={{ display: 'block', textAlign: 'center' }}>
+              Join Pro Waitlist
+            </Link>
+            <div style={{
+              marginTop: '0.75rem',
+              padding: '0.5rem',
+              background: 'rgba(245, 158, 11, 0.15)',
+              borderRadius: 'var(--border-radius)',
+              textAlign: 'center',
+              fontSize: '0.8rem',
+              color: 'var(--gray-600)'
+            }}>
+              <span className="pro-badge" style={{ fontSize: '0.7rem', padding: '0.15rem 0.4rem', marginRight: '0.25rem' }}>STATUS</span>
+              Payment setup in progress
+            </div>
           </div>
 
-          {/* Team Tier */}
+          {/* Team / Research Lab Tier */}
           <div className="pricing-card">
-            <h3>Team</h3>
+            <h3>Team / Research Lab</h3>
             <div className="pricing-price">$29<span>/month</span></div>
             <p style={{ color: 'var(--gray-500)', marginTop: '0.5rem' }}>For research teams</p>
             <ul className="pricing-features">
-              <li>Everything in Pro</li>
-              <li>Multi-user workspace</li>
-              <li>Shared notes</li>
-              <li>Company comparison</li>
-              <li>Team dashboards</li>
-              <li>Priority support</li>
-              <li>Dedicated account manager</li>
+              <li>Shared watchlists</li>
+              <li>Team research workspace</li>
+              <li>Custom sector coverage</li>
+              <li>Classroom / lab usage</li>
+              <li>Admin billing support</li>
             </ul>
             <Link to="/waitlist" className="btn btn-outline" style={{ display: 'block', textAlign: 'center' }}>
-              Coming Soon
+              Contact for Access
             </Link>
           </div>
         </div>
 
-        {/* ECPay Payment Notice */}
+        {/* ECPay Notice */}
         <div style={{
           maxWidth: '700px',
           margin: '2rem auto 0',
           padding: '1rem',
-          background: 'rgba(59, 130, 246, 0.1)',
+          background: 'rgba(245, 158, 11, 0.1)',
           borderRadius: 'var(--border-radius)',
           textAlign: 'center',
           color: 'var(--gray-600)',
           fontSize: '0.85rem'
         }}>
-          Payments are processed securely by ECPay Green World.
-          <br />
-          <em>This MVP demo does not automatically unlock paid features yet.</em>
+          ECPay checkout integration is prepared, but production payments are not enabled
+          until merchant verification is complete. Join the waitlist to be notified when
+          Pro subscriptions become available.
         </div>
 
         {/* FAQ Section */}
@@ -164,18 +120,18 @@ export default function Pricing() {
           </div>
 
           <div style={{ marginBottom: '1.5rem' }}>
-            <h4 style={{ marginBottom: '0.5rem', color: 'var(--dark)' }}>Can I cancel anytime?</h4>
+            <h4 style={{ marginBottom: '0.5rem', color: 'var(--dark)' }}>When will Pro subscriptions be available?</h4>
             <p style={{ color: 'var(--gray-600)' }}>
-              Yes, you can cancel your subscription at any time. Monthly plans can be cancelled
-              before the next billing cycle. Annual plans have a 30-day money-back guarantee.
+              Pro features and paid subscriptions are planned but not yet activated. Join our
+              waitlist to be notified when ECPay checkout and Pro access become available.
             </p>
           </div>
 
           <div style={{ marginBottom: '1.5rem' }}>
-            <h4 style={{ marginBottom: '0.5rem', color: 'var(--dark)' }}>Do you offer refunds?</h4>
+            <h4 style={{ marginBottom: '0.5rem', color: 'var(--dark)' }}>Can I cancel anytime?</h4>
             <p style={{ color: 'var(--gray-600)' }}>
-              Monthly subscriptions are non-refundable but can be cancelled before renewal.
-              Annual subscriptions include a 30-day money-back guarantee.
+              Yes, you can cancel your subscription at any time. Monthly plans can be cancelled
+              before the next billing cycle. Annual plans have a 30-day money-back guarantee.
             </p>
           </div>
         </div>

@@ -92,8 +92,8 @@ global-earnings-radar/
 - Financial glossary with 20+ terms
 - Internal search (companies and glossary terms)
 - Dark mode toggle (with system preference detection)
-- Pricing page (preview/coming soon)
-- Waitlist signup form
+- Pricing page with Free / Pro / Team tiers (Pro features in preview)
+- Waitlist signup form (Pro early access)
 - Legal pages (Privacy, Terms, Disclaimer)
 - 404 NotFound page
 - Liquid Glass continuous scroll landing page
@@ -224,6 +224,33 @@ Configure these in **Vercel Project Settings → Environment Variables**:
 
 ### MVP Limitation
 This MVP does not automatically unlock paid features. The checkout flow is implemented for demonstration purposes only.
+
+## 📋 Product Roadmap - Paid Features
+
+### Current Status
+- **ECPay Integration**: Prepared (test environment) but not activated for production payments
+- **Pro Features**: Displayed as "Pro Preview" on landing page but not yet functional
+- **Account System**: Not yet implemented
+- **Entitlement Management**: No automated access control
+
+### Pro Features (Planned)
+- [x] Pricing tiers displayed (Free / Pro / Team)
+- [x] Pro features preview section on landing page
+- [x] Upgrade prompts on company pages
+- [ ] Saved watchlists and research notes
+- [ ] AI-assisted earnings brief generation
+- [ ] Sector trend dashboards
+- [ ] Exportable research reports (PDF / Markdown)
+- [ ] Earnings calendar alerts
+- [ ] Company comparison workspace
+
+### Production Activation Requirements
+To enable real payments and Pro feature access:
+1. Complete ECPay merchant verification and legal review
+2. Implement user authentication (login system)
+3. Set up database for subscription and entitlement management
+4. Configure webhook handlers for payment status updates
+5. Add user account dashboard for managing subscription
 
 ## 📝 License
 
