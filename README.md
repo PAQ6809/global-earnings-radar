@@ -167,10 +167,10 @@ The financials.json and companies.json contain illustrative financial informatio
 - No database or persistent storage
 
 **Data Handling**
-- No payment processing
-- No personal financial data collection
 - No user account system
+- No personal financial data collection
 - Demo/sample data only (financials.json, companies.json)
+- Payments processed securely by Stripe (Stripe Checkout - Hosted)
 
 **Security Measures**
 - Security headers configured via vercel.json (CSP, HSTS, X-Frame-Options, etc.)
@@ -178,6 +178,45 @@ The financials.json and companies.json contain illustrative financial informatio
 - HTTPS enforced via Strict-Transport-Security header
 
 *Note: As with any web application, maintain good security practices and keep dependencies updated.*
+
+## 💳 Payment Setup (Stripe Checkout)
+
+This project uses Stripe Checkout (Hosted) for subscription payments. The checkout process is handled entirely by Stripe; no payment information is processed or stored on this server.
+
+### Prerequisites
+- Stripe account (test mode)
+- Vercel account with this project deployed
+
+### Environment Variables
+
+Configure these in **Vercel Project Settings → Environment Variables**:
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `STRIPE_SECRET_KEY` | Stripe secret key (test mode) | `sk_test_xxx...` |
+| `STRIPE_PRICE_PRO_MONTHLY` | Stripe Price ID for Pro monthly plan | `price_xxx...` |
+| `SITE_URL` | Production site URL | `https://global-earnings-radar.vercel.app` |
+
+### Setup Steps
+
+1. **Create Stripe Price ID**:
+   - Log into [Stripe Dashboard](https://dashboard.stripe.com/test/products)
+   - Create a product with a recurring price ($9/month)
+   - Copy the Price ID (starts with `price_`)
+
+2. **Configure Vercel Environment Variables**:
+   - Go to Vercel Dashboard → Project → Settings → Environment Variables
+   - Add each variable from the table above
+
+3. **Test in Stripe Dashboard**:
+   - Use Stripe test mode (`sk_test_xxx`)
+   - Test cards: `4242 4242 4242 4242` (success), `4000 0000 0000 0002` (decline)
+
+### Security Notes
+- **Never commit secret keys** to the repository
+- **Do not prefix secret keys with `VITE_`** (those are exposed to client)
+- Stripe handles all payment data; we only receive a session URL
+- Test mode is enabled by default
 
 ## 📝 License
 

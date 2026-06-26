@@ -6,6 +6,8 @@ import Company from './pages/Company'
 import Sector from './pages/Sector'
 import Glossary from './pages/Glossary'
 import Pricing from './pages/Pricing'
+import PaymentSuccess from './pages/PaymentSuccess'
+import PaymentCancel from './pages/PaymentCancel'
 import Waitlist from './pages/Waitlist'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
@@ -109,6 +111,8 @@ function AppContent() {
           <Route path="/sector/:sector" element={<Sector />} />
           <Route path="/glossary" element={<Glossary />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/payment-cancel" element={<PaymentCancel />} />
           <Route path="/waitlist" element={<Waitlist />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />

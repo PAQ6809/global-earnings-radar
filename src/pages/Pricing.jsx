@@ -1,7 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Pricing() {
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
+
+  const handleProCheckout = async () => {
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      const data = await response.json()
+
+      if (data.url) {
+        window.location.href = data.url
+      } else {
+        setError('Checkout is unavailable. Please try again later.')
+      }
+    } catch (err) {
+      setError('Checkout is unavailable. Please try again later.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <div>
       {/* Header */}
@@ -46,9 +75,19 @@ export default function Pricing() {
               <li>Full glossary access</li>
               <li>API access (coming soon)</li>
             </ul>
-            <Link to="/waitlist" className="btn btn-primary" style={{ display: 'block', textAlign: 'center' }}>
-              Join Waitlist
-            </Link>
+            <button
+              onClick={handleProCheckout}
+              disabled={isLoading}
+              className="btn btn-primary"
+              style={{ display: 'block', width: '100%', textAlign: 'center' }}
+            >
+              {isLoading ? 'Processing...' : 'Start Pro Checkout'}
+            </button>
+            {error && (
+              <p style={{ color: 'var(--error-red, #ef4444)', fontSize: '0.85rem', marginTop: '0.5rem' }}>
+                {error}
+              </p>
+            )}
           </div>
 
           {/* Team Tier */}
@@ -69,6 +108,22 @@ export default function Pricing() {
               Coming Soon
             </Link>
           </div>
+        </div>
+
+        {/* Stripe Payment Notice */}
+        <div style={{
+          maxWidth: '700px',
+          margin: '2rem auto 0',
+          padding: '1rem',
+          background: 'rgba(59, 130, 246, 0.1)',
+          borderRadius: 'var(--border-radius)',
+          textAlign: 'center',
+          color: 'var(--gray-600)',
+          fontSize: '0.85rem'
+        }}>
+          Payments are processed securely by Stripe.
+          <br />
+          <em>This is an MVP demo; paid feature access is not yet automated.</em>
         </div>
 
         {/* FAQ Section */}
@@ -108,21 +163,6 @@ export default function Pricing() {
               Annual subscriptions include a 30-day money-back guarantee.
             </p>
           </div>
-        </div>
-
-        {/* Note about payments */}
-        <div style={{
-          maxWidth: '700px',
-          margin: '3rem auto 0',
-          padding: '1.5rem',
-          background: 'var(--gray-50)',
-          borderRadius: 'var(--border-radius)',
-          textAlign: 'center',
-          color: 'var(--gray-600)',
-          fontSize: '0.9rem'
-        }}>
-          <strong>Note:</strong> Payment processing will be available soon.
-          Join our waitlist to be notified when subscriptions are available.
         </div>
       </div>
     </div>
