@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import { DarkModeProvider } from './context/DarkModeContext'
 import Landing from './pages/Landing'
@@ -16,27 +16,79 @@ import Disclaimer from './components/Disclaimer'
 import DarkModeToggle from './components/DarkModeToggle'
 import Search from './components/Search'
 
+// Liquid Gradient Background Component
+function GradientBackground() {
+  const handleMouseMove = useCallback((e) => {
+    const x = (e.clientX / window.innerWidth) * 100
+    const y = (e.clientY / window.innerHeight) * 100
+    document.documentElement.style.setProperty('--mouse-x', `${x}%`)
+    document.documentElement.style.setProperty('--mouse-y', `${y}%`)
+  }, [])
+
+  useEffect(() => {
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) return
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [handleMouseMove])
+
+  return (
+    <div className="gradient-background" aria-hidden="true">
+      <div className="mouse-glow" />
+    </div>
+  )
+}
+
 function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const handleNavClick = () => {
+    setMobileMenuOpen(false)
+  }
+
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <Link to="/" className="nav-logo">
+        <Link to="/" className="nav-logo" onClick={handleNavClick}>
           <span className="logo-icon">📡</span>
           <span className="logo-text">Global Earnings Radar</span>
         </Link>
-        <div className="nav-controls">
+        <div className="nav-center">
+          <div className="nav-links">
+            <Link to="/" onClick={handleNavClick}>Home</Link>
+            <Link to="/sector/ai" onClick={handleNavClick}>AI</Link>
+            <Link to="/sector/semiconductors" onClick={handleNavClick}>Semiconductors</Link>
+            <Link to="/sector/saas" onClick={handleNavClick}>SaaS</Link>
+            <Link to="/sector/cloud" onClick={handleNavClick}>Cloud</Link>
+            <Link to="/sector/consumer" onClick={handleNavClick}>Consumer</Link>
+            <Link to="/glossary" onClick={handleNavClick}>Glossary</Link>
+            <Link to="/pricing" onClick={handleNavClick}>Pricing</Link>
+          </div>
+        </div>
+        <div className="nav-actions">
           <Search />
           <DarkModeToggle />
         </div>
-        <div className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/sector/ai">AI</Link>
-          <Link to="/sector/semiconductors">Semiconductors</Link>
-          <Link to="/sector/saas">SaaS</Link>
-          <Link to="/sector/cloud">Cloud</Link>
-          <Link to="/sector/consumer">Consumer</Link>
-          <Link to="/glossary">Glossary</Link>
-          <Link to="/pricing">Pricing</Link>
+        <button
+          className="nav-mobile-toggle"
+          aria-label="Toggle menu"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? '✕' : '☰'}
+        </button>
+        <div className={`nav-links-wrapper${mobileMenuOpen ? ' open' : ''}`}>
+          <div className="nav-links">
+            <Link to="/" onClick={handleNavClick}>Home</Link>
+            <Link to="/sector/ai" onClick={handleNavClick}>AI</Link>
+            <Link to="/sector/semiconductors" onClick={handleNavClick}>Semiconductors</Link>
+            <Link to="/sector/saas" onClick={handleNavClick}>SaaS</Link>
+            <Link to="/sector/cloud" onClick={handleNavClick}>Cloud</Link>
+            <Link to="/sector/consumer" onClick={handleNavClick}>Consumer</Link>
+            <Link to="/glossary" onClick={handleNavClick}>Glossary</Link>
+            <Link to="/pricing" onClick={handleNavClick}>Pricing</Link>
+          </div>
         </div>
       </div>
     </nav>
@@ -46,6 +98,7 @@ function Navbar() {
 function AppContent() {
   return (
     <div className="app">
+      <GradientBackground />
       <Navbar />
 
       <main className="main-content">
