@@ -237,7 +237,14 @@ export default function Company() {
           <div className="upgrade-card-icon">🔓</div>
           <div className="upgrade-card-content">
             <h3>Unlock Deeper Research Tools</h3>
-            <p>Pro users will be able to save notes, compare companies, export briefs, and track earnings updates.</p>
+            <p>Pro users will be able to:</p>
+            <ul style={{ margin: '0.75rem 0', paddingLeft: '1.25rem', color: 'var(--gray-600)', fontSize: '0.9rem' }}>
+              <li>Save this company to a watchlist</li>
+              <li>Compare with sector peers</li>
+              <li>Add private research notes</li>
+              <li>Export a one-page research brief</li>
+              <li>Track upcoming earnings updates</li>
+            </ul>
             <Link to="/waitlist" className="btn btn-primary">
               Join Pro Waitlist
             </Link>

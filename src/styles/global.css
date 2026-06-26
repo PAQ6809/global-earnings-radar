@@ -2590,3 +2590,277 @@ button:focus-visible {
     font-size: 2rem;
   }
 }
+
+/* ============================================
+   Pro Workflow & Earnings Brief Preview
+   ============================================ */
+
+/* Workflow Grid */
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .workflow-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .workflow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Workflow Card */
+.workflow-card {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  position: relative;
+}
+
+.workflow-step-number {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.workflow-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.workflow-card h3 {
+  font-size: 0.95rem;
+  color: var(--gray-800);
+  margin-bottom: 0.5rem;
+}
+
+.workflow-card p {
+  font-size: 0.8rem;
+  color: var(--gray-600);
+  margin-bottom: 0.75rem;
+}
+
+/* Preview Label Small */
+.preview-label {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.preview-label-sm {
+  display: inline-block;
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--primary);
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Check Icon */
+.check-icon {
+  color: var(--success);
+  font-weight: bold;
+}
+
+/* Brief Preview */
+.brief-preview-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.brief-preview {
+  padding: 2rem;
+}
+
+.brief-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.brief-preview-header h3 {
+  font-size: 1rem;
+  color: var(--gray-800);
+}
+
+.brief-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.brief-preview-item {
+  background: var(--gray-50);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.brief-preview-item.positive {
+  background: rgba(52, 199, 89, 0.08);
+  border-left: 3px solid var(--success);
+}
+
+.brief-preview-item.warning {
+  background: rgba(255, 159, 10, 0.08);
+  border-left: 3px solid var(--warning);
+}
+
+.brief-preview-item.neutral {
+  background: rgba(59, 130, 246, 0.08);
+  border-left: 3px solid var(--primary);
+}
+
+.brief-label {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.brief-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gray-800);
+}
+
+.brief-preview-disclaimer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gray-200);
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  font-style: italic;
+}
+
+/* Feature Matrix */
+.feature-matrix {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: var(--shadow);
+}
+
+.feature-matrix-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.feature-matrix-header > div {
+  padding: 1rem;
+  text-align: center;
+}
+
+.feature-matrix-header .matrix-feature-col {
+  text-align: left;
+}
+
+.feature-matrix-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  border-bottom: 1px solid var(--gray-200);
+  font-size: 0.9rem;
+}
+
+.feature-matrix-row:last-child {
+  border-bottom: none;
+}
+
+.feature-matrix-row > div {
+  padding: 0.875rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-matrix-row .matrix-feature-col {
+  justify-content: flex-start;
+  color: var(--gray-700);
+}
+
+.feature-matrix-row:nth-child(even) {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 600px) {
+  .feature-matrix-header,
+  .feature-matrix-row {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    font-size: 0.75rem;
+  }
+  
+  .feature-matrix-header > div,
+  .feature-matrix-row > div {
+    padding: 0.625rem 0.5rem;
+  }
+}
+
+/* Interest Checkboxes */
+.interest-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.interest-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--gray-700);
+}
+
+.interest-checkbox input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+}
+
+.interest-checkbox:hover {
+  color: var(--primary);
+}
+
+@media (max-width: 500px) {
+  .interest-checkboxes {
+    grid-template-columns: 1fr;
+  }
+}

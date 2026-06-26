@@ -114,6 +114,36 @@ export default function Waitlist() {
             </div>
 
             <div className="form-group">
+              <label>Which Pro features interest you most? (Select all that apply)</label>
+              <div className="interest-checkboxes">
+                <label className="interest-checkbox">
+                  <input type="checkbox" name="feature_watchlists" />
+                  <span>Saved watchlists</span>
+                </label>
+                <label className="interest-checkbox">
+                  <input type="checkbox" name="feature_ai" />
+                  <span>AI earnings summaries</span>
+                </label>
+                <label className="interest-checkbox">
+                  <input type="checkbox" name="feature_dashboards" />
+                  <span>Sector dashboards</span>
+                </label>
+                <label className="interest-checkbox">
+                  <input type="checkbox" name="feature_reports" />
+                  <span>Exportable reports</span>
+                </label>
+                <label className="interest-checkbox">
+                  <input type="checkbox" name="feature_comparison" />
+                  <span>Company comparison</span>
+                </label>
+                <label className="interest-checkbox">
+                  <input type="checkbox" name="feature_classroom" />
+                  <span>Classroom / research lab use</span>
+                </label>
+              </div>
+            </div>
+
+            <div className="form-group">
               <label htmlFor="role">Role / Background</label>
               <input
                 type="text"

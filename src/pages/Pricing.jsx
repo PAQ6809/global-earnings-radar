@@ -97,6 +97,78 @@ export default function Pricing() {
           Pro subscriptions become available.
         </div>
 
+        {/* Feature Matrix */}
+        <div style={{ maxWidth: '800px', margin: '3rem auto 0' }}>
+          <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>Feature Comparison</h2>
+          <div className="feature-matrix">
+            <div className="feature-matrix-header">
+              <div className="matrix-feature-col">Feature</div>
+              <div className="matrix-tier-col">Free</div>
+              <div className="matrix-tier-col">Pro Preview</div>
+              <div className="matrix-tier-col">Team / Lab</div>
+            </div>
+            <div className="feature-matrix-row">
+              <div className="matrix-feature-col">Company snapshots</div>
+              <div className="matrix-tier-col"><span className="check-icon">✓</span></div>
+              <div className="matrix-tier-col"><span className="check-icon">✓</span></div>
+              <div className="matrix-tier-col"><span className="check-icon">✓</span></div>
+            </div>
+            <div className="feature-matrix-row">
+              <div className="matrix-feature-col">Basic risk factors</div>
+              <div className="matrix-tier-col"><span className="check-icon">✓</span></div>
+              <div className="matrix-tier-col"><span className="check-icon">✓</span></div>
+              <div className="matrix-tier-col"><span className="check-icon">✓</span></div>
+            </div>
+            <div className="feature-matrix-row">
+              <div className="matrix-feature-col">Glossary access</div>
+              <div className="matrix-tier-col"><span className="check-icon">✓</span></div>
+              <div className="matrix-tier-col"><span className="check-icon">✓</span></div>
+              <div className="matrix-tier-col"><span className="check-icon">✓</span></div>
+            </div>
+            <div className="feature-matrix-row">
+              <div className="matrix-feature-col">Watchlists</div>
+              <div className="matrix-tier-col">—</div>
+              <div className="matrix-tier-col"><span className="preview-label-sm">Preview</span></div>
+              <div className="matrix-tier-col"><span className="check-icon">✓</span></div>
+            </div>
+            <div className="feature-matrix-row">
+              <div className="matrix-feature-col">Saved notes</div>
+              <div className="matrix-tier-col">—</div>
+              <div className="matrix-tier-col"><span className="preview-label-sm">Preview</span></div>
+              <div className="matrix-tier-col"><span className="check-icon">✓</span></div>
+            </div>
+            <div className="feature-matrix-row">
+              <div className="matrix-feature-col">Earnings alerts</div>
+              <div className="matrix-tier-col">—</div>
+              <div className="matrix-tier-col"><span className="preview-label-sm">Preview</span></div>
+              <div className="matrix-tier-col"><span className="check-icon">✓</span></div>
+            </div>
+            <div className="feature-matrix-row">
+              <div className="matrix-feature-col">AI earnings briefs</div>
+              <div className="matrix-tier-col">—</div>
+              <div className="matrix-tier-col"><span className="preview-label-sm">Preview</span></div>
+              <div className="matrix-tier-col"><span className="check-icon">✓</span></div>
+            </div>
+            <div className="feature-matrix-row">
+              <div className="matrix-feature-col">Exportable reports</div>
+              <div className="matrix-tier-col">—</div>
+              <div className="matrix-tier-col"><span className="preview-label-sm">Preview</span></div>
+              <div className="matrix-tier-col"><span className="check-icon">✓</span></div>
+            </div>
+            <div className="feature-matrix-row">
+              <div className="matrix-feature-col">Team workspace</div>
+              <div className="matrix-tier-col">—</div>
+              <div className="matrix-tier-col">—</div>
+              <div className="matrix-tier-col"><span className="check-icon">✓</span></div>
+            </div>
+          </div>
+          <p style={{ textAlign: 'center', color: 'var(--gray-500)', marginTop: '1rem', fontSize: '0.85rem' }}>
+            <span className="check-icon" style={{ color: 'var(--success)' }}>✓</span> Available &nbsp;&nbsp;
+            <span className="preview-label-sm">Preview</span> Coming soon &nbsp;&nbsp;
+            — Not available
+          </p>
+        </div>
+
         {/* FAQ Section */}
         <div style={{ maxWidth: '700px', margin: '4rem auto 0' }}>
           <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>Frequently Asked Questions</h2>

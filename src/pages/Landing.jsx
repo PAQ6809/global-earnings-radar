@@ -34,6 +34,48 @@ export default function Landing() {
     }
   ]
 
+  const workflowSteps = [
+    {
+      step: 1,
+      title: 'Track Companies',
+      description: 'Build your watchlist of companies to follow',
+      icon: '📋'
+    },
+    {
+      step: 2,
+      title: 'Read Earnings Snapshot',
+      description: 'Review structured earnings summaries with key metrics',
+      icon: '📄'
+    },
+    {
+      step: 3,
+      title: 'Compare Sector Peers',
+      description: 'Benchmark against other companies in the same sector',
+      icon: '📊'
+    },
+    {
+      step: 4,
+      title: 'Save Research Notes',
+      description: 'Add personal annotations and investment thesis',
+      icon: '📝'
+    },
+    {
+      step: 5,
+      title: 'Export Research Brief',
+      description: 'Generate a one-page summary for sharing or reference',
+      icon: '📥'
+    }
+  ]
+
+  const briefPreviewItems = [
+    { label: 'Revenue Trend', value: '+18.3% YoY', status: 'positive' },
+    { label: 'EPS Surprise', value: '+$0.42 beat', status: 'positive' },
+    { label: 'Guidance Watch', value: 'Raised full-year outlook', status: 'neutral' },
+    { label: 'Management Tone', value: 'Cautiously optimistic', status: 'neutral' },
+    { label: 'Key Risks', value: '3 flagged', status: 'warning' },
+    { label: 'Questions for Next Quarter', value: '4 prepared', status: 'neutral' }
+  ]
+
   return (
     <div className="landing-page">
       {/* Hero Section */}
@@ -148,8 +190,76 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Sectors Section */}
+      {/* Pro Research Workflow Section */}
+      <section className="section section-light">
+        <div className="container">
+          <h2 className="section-title">A Pro Workflow for Earnings Research</h2>
+          <p className="section-subtitle">
+            Planned workflow for paid subscribers — each step shown as preview
+          </p>
+          <div className="workflow-grid">
+            {workflowSteps.map((step) => (
+              <div key={step.step} className="card workflow-card">
+                <div className="workflow-step-number">{step.step}</div>
+                <div className="workflow-icon">{step.icon}</div>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+                <span className="preview-label">Pro Preview</span>
+              </div>
+            ))}
+          </div>
+          <p style={{ textAlign: 'center', color: 'var(--gray-500)', marginTop: '2rem', fontSize: '0.9rem' }}>
+            This workflow is planned for paid users. It is shown as a product preview and is not automatically unlocked yet.
+          </p>
+          <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+            <Link to="/waitlist" className="btn btn-primary">
+              Join Pro Waitlist
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Earnings Brief Preview */}
       <section className="section section-fade-out">
+        <div className="container">
+          <h2 className="section-title">What a Pro Earnings Brief Will Include</h2>
+          <p className="section-subtitle">
+            Sample preview · Not investment advice
+          </p>
+          <div className="brief-preview-container">
+            <div className="card brief-preview">
+              <div className="brief-preview-header">
+                <h3>Quarterly Earnings Brief · Sample Preview</h3>
+                <span className="preview-label">Pro Preview</span>
+              </div>
+              <div className="brief-preview-grid">
+                {briefPreviewItems.map((item, index) => (
+                  <div key={index} className={`brief-preview-item ${item.status}`}>
+                    <span className="brief-label">{item.label}</span>
+                    <span className="brief-value">{item.value}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="brief-preview-disclaimer">
+                This is a sample preview for demonstration purposes only. Not investment advice.
+                Data shown is illustrative and does not represent actual company performance.
+              </p>
+            </div>
+          </div>
+          <p style={{ textAlign: 'center', color: 'var(--gray-500)', marginTop: '2rem', fontSize: '0.9rem' }}>
+            Pro earnings briefs will include structured summaries with revenue trends, EPS analysis,
+            guidance highlights, and prepared questions for continued research.
+          </p>
+          <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+            <Link to="/waitlist" className="btn btn-primary">
+              Join Pro Waitlist
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Sectors Section */}
+      <section className="section section-fade-in">
         <div className="container">
           <h2 className="section-title">Browse by Sector</h2>
           <p className="section-subtitle">
@@ -169,63 +279,12 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Pricing Preview */}
-      <section className="section section-light">
-        <div className="container">
-          <h2 className="section-title">Simple, Transparent</h2>
-          <p className="section-subtitle">
-            Choose the plan that fits your research needs
-          </p>
-          <div className="pricing-grid">
-            {/* Free Tier */}
-            <div className="pricing-card">
-              <h3>Free</h3>
-              <div className="pricing-price">$0<span>/month</span></div>
-              <p className="pricing-tagline">For learners</p>
-              <ul className="pricing-features">
-                <li>All 11 company analyses</li>
-                <li>Weekly earnings summaries</li>
-                <li>Full glossary access</li>
-                <li>Mobile responsive</li>
-                <li>No account required</li>
-              </ul>
-              <Link to="/company/NVDA" className="btn btn-outline">
-                Explore Now
-              </Link>
-            </div>
-
-            {/* Pro Tier (Coming Soon) */}
-            <div className="pricing-card featured">
-              <span className="popular-badge">Coming Soon</span>
-              <h3>Pro</h3>
-              <div className="pricing-price">$9<span>/month</span></div>
-              <p className="pricing-tagline">For serious researchers</p>
-              <ul className="pricing-features">
-                <li>Everything in Free</li>
-                <li>20+ company analyses</li>
-                <li>Daily earnings summaries</li>
-                <li>Export to PDF & Markdown</li>
-                <li>Advanced watchlist</li>
-                <li>Priority weekly briefs</li>
-              </ul>
-              <Link to="/waitlist" className="btn btn-primary">
-                Join Waitlist
-              </Link>
-            </div>
-          </div>
-          <p style={{ textAlign: 'center', color: 'var(--gray-400)', marginTop: '40px', fontSize: '0.9375rem' }}>
-            Free tier includes full access to all current company analyses.
-            <br />Pro features are coming soon—join our waitlist to be notified.
-          </p>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="cta-section">
         <h2>Stay Informed</h2>
-        <p>Join our waitlist to receive updates when new company analyses and features are available.</p>
+        <p>Join our waitlist to receive updates when Pro features and new company analyses become available.</p>
         <Link to="/waitlist" className="btn btn-primary">
-          Join Waitlist
+          Join Pro Waitlist
         </Link>
       </section>
     </div>

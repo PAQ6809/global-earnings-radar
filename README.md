@@ -252,6 +252,31 @@ To enable real payments and Pro feature access:
 4. Configure webhook handlers for payment status updates
 5. Add user account dashboard for managing subscription
 
+## 📋 Competitor-Inspired Product Direction
+
+The product is inspired by earnings research workflows such as:
+- Earnings call summaries and insights
+- Watchlists for tracking companies
+- Company comparison tools
+- Sector trend dashboards
+- Exportable research briefs
+
+Current implementation is preview-only. The Pro features shown on the website (watchlists, AI briefs, sector dashboards, exportable reports) are displayed as product direction, not functional features.
+
+**What is NOT implemented yet:**
+- Paid entitlement (no automated access control)
+- AI-generated earnings briefs (no actual AI processing)
+- Data persistence (no database for saved data)
+- Automated checkout (ECPay is prepared but not activated)
+- User authentication (no login system)
+
+**Required for production:**
+- Backend API for user data
+- Database for subscriptions and saved content
+- Authentication system
+- ECPay merchant verification and legal setup
+- Database-backed entitlement management
+
 ## 📝 License
 
 MIT
