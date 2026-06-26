@@ -232,6 +232,88 @@ export default function Company() {
           </ul>
         </div>
 
+        {/* Data Sources & Freshness */}
+        <div className="card data-freshness-card" style={{ marginBottom: '2rem' }}>
+          <div className="data-freshness-header">
+            <h2 style={{ fontSize: '1.125rem', marginBottom: '0.25rem' }}>
+              Data Sources &amp; Freshness
+            </h2>
+            <p style={{ color: 'var(--gray-500)', fontSize: '0.85rem' }}>
+              Transparency about where data comes from and how current it is.
+            </p>
+          </div>
+
+          <div className="data-freshness-grid">
+            <div className="freshness-item">
+              <div className="freshness-label">Data mode</div>
+              <div className="freshness-value">
+                <span className="freshness-dot freshness-dot-demo"></span>
+                Demo / sample dataset
+              </div>
+            </div>
+            <div className="freshness-item">
+              <div className="freshness-label">Financial snapshot</div>
+              <div className="freshness-value">
+                <span className="freshness-dot freshness-dot-cached"></span>
+                Delayed / cached sample data
+              </div>
+            </div>
+            <div className="freshness-item">
+              <div className="freshness-label">Public filings</div>
+              <div className="freshness-value">
+                <span className="freshness-dot freshness-dot-planned"></span>
+                Source discovery planned
+              </div>
+            </div>
+            <div className="freshness-item">
+              <div className="freshness-label">Last updated</div>
+              <div className="freshness-value">
+                <span className="freshness-dot freshness-dot-demo"></span>
+                Demo snapshot — not live
+              </div>
+            </div>
+            <div className="freshness-item freshness-item-full">
+              <div className="freshness-label">Coverage</div>
+              <div className="freshness-value">
+                Company profile, financial summary, sector context
+              </div>
+            </div>
+          </div>
+
+          <div className="data-freshness-tier-divider">
+            <span>Free / Pro boundary</span>
+          </div>
+
+          <div className="data-freshness-tier-grid">
+            <div className="freshness-tier freshness-tier-free">
+              <h4>
+                <span className="tier-badge free">Free</span>
+              </h4>
+              <ul className="freshness-tier-list">
+                <li>Company profile</li>
+                <li>Sample financial snapshot</li>
+                <li>Glossary &amp; sector context</li>
+              </ul>
+            </div>
+            <div className="freshness-tier freshness-tier-pro">
+              <h4>
+                <span className="tier-badge pro">Pro Preview</span>
+              </h4>
+              <ul className="freshness-tier-list">
+                <li>AI-assisted earnings analysis</li>
+                <li>Risk factor extraction</li>
+                <li>Company comparison</li>
+                <li>Exportable report</li>
+              </ul>
+            </div>
+          </div>
+
+          <p className="data-freshness-footer-note">
+            This page uses static demo data for illustration. No real-time market data,
+            no live filings, and no investment recommendations are provided.
+          </p>
+        </div>
+
         {/* Pro Upgrade Card */}
         <div className="upgrade-card" style={{ marginBottom: '2rem' }}>
           <div className="upgrade-card-icon"></div>

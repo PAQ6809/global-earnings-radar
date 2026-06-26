@@ -43,6 +43,47 @@ This is a minimum viable product demonstration featuring:
 
 All financial information presented should be verified from official sources before making any investment decisions.
 
+## Data Transparency / Source Freshness
+
+This section explains how data is sourced and how current it is across the product.
+
+### Data Mode
+
+All data currently displayed is **Demo / sample data**. There is no live market data connection.
+
+### Financial Snapshots
+
+The financial data shown on company pages is **delayed / cached sample data** derived from publicly available SEC filings and annual reports, presented in a simplified format for educational demonstration.
+
+### Public Filings Source Discovery
+
+Direct linking to SEC EDGAR filings and EU/UK regulatory sources is planned for future releases. Currently, the product surfaces source names (e.g., "SEC EDGAR 10-Q Filing") in the Data Sources section on each company page.
+
+### Last Updated
+
+The demo snapshot reflects historical data for illustration purposes only. It is **not live data**.
+
+### Coverage Scope (Free Tier)
+
+| Content | Status |
+|---------|--------|
+| Company profile | Available |
+| Financial summary (sample) | Available |
+| Sector context | Available |
+| Glossary & definitions | Available |
+
+### Pro Preview Features
+
+| Feature | Status |
+|---------|--------|
+| AI-assisted earnings analysis | Pro Preview — planned |
+| Risk factor extraction | Pro Preview — planned |
+| Company comparison | Pro Preview — planned |
+| Exportable report | Pro Preview — planned |
+| Saved watchlists | Pro Preview — planned |
+
+**Note:** Pro features shown as "Preview" indicate planned functionality, not active services.
+
 ## ?? Project Structure
 
 ```
@@ -393,3 +434,4 @@ MIT
 ---
 
 *Built with Claude Code. Educational purposes only.*
+

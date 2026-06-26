@@ -3777,6 +3777,218 @@ button:focus-visible {
   color: rgba(255, 255, 255, 0.58);
 }
 
+/* ============================================
+   Data Sources & Freshness Card
+   ============================================ */
+
+.data-freshness-card {
+  background: rgba(245, 250, 255, 0.75);
+  border: 1px solid rgba(0, 113, 227, 0.15);
+}
+
+.dark-mode .data-freshness-card {
+  background: rgba(15, 25, 50, 0.6);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.data-freshness-header {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.dark-mode .data-freshness-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.data-freshness-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.freshness-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.freshness-item-full {
+  grid-column: 1 / -1;
+}
+
+.freshness-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray-500);
+}
+
+.freshness-value {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gray-700);
+}
+
+.freshness-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.freshness-dot-demo {
+  background: var(--warning);
+}
+
+.freshness-dot-cached {
+  background: var(--gray-400);
+}
+
+.freshness-dot-planned {
+  background: var(--secondary);
+}
+
+.dark-mode .freshness-label {
+  color: var(--gray-500);
+}
+
+.dark-mode .freshness-value {
+  color: var(--gray-600);
+}
+
+/* Tier divider */
+.data-freshness-tier-divider {
+  display: flex;
+  align-items: center;
+  margin: 1.25rem 0;
+  gap: 1rem;
+}
+
+.data-freshness-tier-divider::before,
+.data-freshness-tier-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.dark-mode .data-freshness-tier-divider::before,
+.dark-mode .data-freshness-tier-divider::after {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.data-freshness-tier-divider span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gray-500);
+}
+
+/* Tier grid */
+.data-freshness-tier-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.freshness-tier {
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.freshness-tier-free {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.freshness-tier-pro {
+  background: rgba(0, 113, 227, 0.05);
+  border-color: rgba(0, 113, 227, 0.15);
+}
+
+.dark-mode .freshness-tier {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .freshness-tier-free {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.dark-mode .freshness-tier-pro {
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.freshness-tier h4 {
+  margin-bottom: 0.75rem;
+}
+
+.freshness-tier-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--gray-600);
+}
+
+.freshness-tier-list li {
+  margin-bottom: 0.4rem;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.freshness-tier-list li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--gray-400);
+}
+
+.dark-mode .freshness-tier-list {
+  color: var(--gray-500);
+}
+
+.data-freshness-footer-note {
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  font-style: italic;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.dark-mode .data-freshness-footer-note {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .data-freshness-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .data-freshness-tier-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .data-freshness-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 720px) {
   .research-page {
     padding: 80px 16px 56px;
