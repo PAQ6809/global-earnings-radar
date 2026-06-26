@@ -4,67 +4,38 @@ import companies from '../data/companies.json'
 
 export default function Landing() {
   const sectors = [
-    { id: 'ai', name: 'AI', icon: '🤖', description: 'Artificial Intelligence & Machine Learning' },
-    { id: 'semiconductors', name: 'Semiconductors', icon: '💾', description: 'Chips, Foundries & Equipment' },
-    { id: 'saas', name: 'SaaS', icon: '☁️', description: 'Software as a Service Platforms' },
-    { id: 'cloud', name: 'Cloud', icon: '🖥️', description: 'Cloud Computing Infrastructure' },
-    { id: 'consumer', name: 'Consumer Tech', icon: '📱', description: 'Devices & Consumer Electronics' }
+    { id: 'ai', name: 'AI', description: 'Artificial Intelligence & Machine Learning' },
+    { id: 'semiconductors', name: 'Semiconductors', description: 'Chips, Foundries & Equipment' },
+    { id: 'saas', name: 'SaaS', description: 'Software as a Service Platforms' },
+    { id: 'cloud', name: 'Cloud', description: 'Cloud Computing Infrastructure' },
+    { id: 'consumer', name: 'Consumer Tech', description: 'Devices & Consumer Electronics' }
   ]
 
   const features = [
     {
       title: 'Earnings Summaries',
-      description: 'Concise, structured summaries of quarterly earnings reports in a consistent format you can understand in minutes.',
-      icon: '📊'
+      description: 'Concise, structured summaries of quarterly earnings reports in a consistent format you can understand in minutes.'
     },
     {
       title: 'Business Insights',
-      description: 'Clear analysis of key developments, strategic initiatives, and competitive positioning to inform your research.',
-      icon: '💡'
+      description: 'Clear analysis of key developments, strategic initiatives, and competitive positioning to inform your research.'
     },
     {
       title: 'Risk Factors',
-      description: 'Balanced perspective on challenges, regulatory concerns, and market risks to consider in your analysis.',
-      icon: '⚠️'
+      description: 'Balanced perspective on challenges, regulatory concerns, and market risks to consider in your analysis.'
     },
     {
       title: 'Research Questions',
-      description: 'Forward-looking questions to guide your own due diligence and independent analysis.',
-      icon: '🔍'
+      description: 'Forward-looking questions to guide your own due diligence and independent analysis.'
     }
   ]
 
   const workflowSteps = [
-    {
-      step: 1,
-      title: 'Track Companies',
-      description: 'Build your watchlist of companies to follow',
-      icon: '📋'
-    },
-    {
-      step: 2,
-      title: 'Read Earnings Snapshot',
-      description: 'Review structured earnings summaries with key metrics',
-      icon: '📄'
-    },
-    {
-      step: 3,
-      title: 'Compare Sector Peers',
-      description: 'Benchmark against other companies in the same sector',
-      icon: '📊'
-    },
-    {
-      step: 4,
-      title: 'Save Research Notes',
-      description: 'Add personal annotations and investment thesis',
-      icon: '📝'
-    },
-    {
-      step: 5,
-      title: 'Export Research Brief',
-      description: 'Generate a one-page summary for sharing or reference',
-      icon: '📥'
-    }
+    { step: 1, title: 'Track Companies', description: 'Build your watchlist of companies to follow' },
+    { step: 2, title: 'Read Earnings Snapshot', description: 'Review structured earnings summaries with key metrics' },
+    { step: 3, title: 'Compare Sector Peers', description: 'Benchmark against other companies in the same sector' },
+    { step: 4, title: 'Save Research Notes', description: 'Add personal annotations and investment thesis' },
+    { step: 5, title: 'Export Research Brief', description: 'Generate a one-page summary for sharing or reference' }
   ]
 
   const briefPreviewItems = [
@@ -113,7 +84,7 @@ export default function Landing() {
           <div className="card-grid">
             {features.map((feature, index) => (
               <div key={index} className="card feature-card">
-                <div className="feature-icon">{feature.icon}</div>
+                <span className="feature-number">{String(index + 1).padStart(2, '0')}</span>
                 <h3>{feature.title}</h3>
                 <p>{feature.description}</p>
               </div>
@@ -156,25 +127,21 @@ export default function Landing() {
           <div className="card-grid">
             <div className="card feature-card pro-preview-card">
               <div className="pro-badge-overlay">Pro Preview</div>
-              <div className="feature-icon">📋</div>
               <h3>Saved Watchlists</h3>
               <p>Track your favorite companies and receive earnings alerts. Save research notes for each company.</p>
             </div>
             <div className="card feature-card pro-preview-card">
               <div className="pro-badge-overlay">Pro Preview</div>
-              <div className="feature-icon">🤖</div>
               <h3>AI Earnings Briefs</h3>
               <p>Get AI-assisted summaries of earnings calls with key highlights, risks, and questions to watch.</p>
             </div>
             <div className="card feature-card pro-preview-card">
               <div className="pro-badge-overlay">Pro Preview</div>
-              <div className="feature-icon">📊</div>
               <h3>Sector Dashboards</h3>
               <p>Visualize sector trends, compare company performance, and track industry momentum.</p>
             </div>
             <div className="card feature-card pro-preview-card">
               <div className="pro-badge-overlay">Pro Preview</div>
-              <div className="feature-icon">📄</div>
               <h3>Exportable Reports</h3>
               <p>Export company analyses and research briefs to PDF or Markdown for offline reading.</p>
             </div>
@@ -200,8 +167,7 @@ export default function Landing() {
           <div className="workflow-grid">
             {workflowSteps.map((step) => (
               <div key={step.step} className="card workflow-card">
-                <div className="workflow-step-number">{step.step}</div>
-                <div className="workflow-icon">{step.icon}</div>
+                <div className="workflow-step-number">{String(step.step).padStart(2, '0')}</div>
                 <h3>{step.title}</h3>
                 <p>{step.description}</p>
                 <span className="preview-label">Pro Preview</span>
@@ -269,7 +235,6 @@ export default function Landing() {
             {sectors.map((sector) => (
               <Link to={`/sector/${sector.id}`} key={sector.id} className="card-link">
                 <div className="card sector-card">
-                  <div className="sector-icon">{sector.icon}</div>
                   <h3>{sector.name}</h3>
                   <p>{sector.description}</p>
                 </div>

@@ -92,7 +92,7 @@ export default function Waitlist() {
         </div>
         <div className="container" style={{ textAlign: 'center' }}>
           <div className="card" style={{ maxWidth: '500px', margin: '0 auto' }}>
-            <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>✅</div>
+            <div className="success-check"></div>
             <h2 style={{ marginBottom: '1rem' }}>Thanks for Your Interest!</h2>
             {notConfigured ? (
               <p style={{ color: 'var(--gray-600)', marginBottom: '1.5rem' }}>
@@ -284,7 +284,7 @@ export default function Waitlist() {
           <h3 style={{ textAlign: 'center', marginBottom: '1.5rem' }}>What Pro Access Will Include</h3>
           <div style={{ display: 'grid', gap: '1rem' }}>
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-              <span style={{ fontSize: '1.5rem' }}>📋</span>
+              <span className="feature-pill">01</span>
               <div>
                 <strong>Saved Watchlists & Research Notes</strong>
                 <p style={{ color: 'var(--gray-600)', fontSize: '0.9rem' }}>
@@ -293,7 +293,7 @@ export default function Waitlist() {
               </div>
             </div>
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-              <span style={{ fontSize: '1.5rem' }}>🤖</span>
+              <span className="feature-pill">02</span>
               <div>
                 <strong>AI-Assisted Earnings Briefs</strong>
                 <p style={{ color: 'var(--gray-600)', fontSize: '0.9rem' }}>
@@ -302,7 +302,7 @@ export default function Waitlist() {
               </div>
             </div>
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-              <span style={{ fontSize: '1.5rem' }}>📊</span>
+              <span className="feature-pill">03</span>
               <div>
                 <strong>Sector Trend Dashboards</strong>
                 <p style={{ color: 'var(--gray-600)', fontSize: '0.9rem' }}>
@@ -311,7 +311,7 @@ export default function Waitlist() {
               </div>
             </div>
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-              <span style={{ fontSize: '1.5rem' }}>📄</span>
+              <span className="feature-pill">04</span>
               <div>
                 <strong>Exportable Research Briefs</strong>
                 <p style={{ color: 'var(--gray-600)', fontSize: '0.9rem' }}>

@@ -13,7 +13,7 @@ export default function SiteDisclaimer() {
 
       <div className="container">
         <div className="legal-content">
-          <h2>⚠️ Educational Content Only</h2>
+          <h2> Educational Content Only</h2>
           <div className="disclaimer-box">
             <p>
               <strong>Global Earnings Radar is an educational and informational research tool.</strong>
@@ -34,11 +34,11 @@ export default function SiteDisclaimer() {
           <h2>What We Provide</h2>
           <p>Our service provides:</p>
           <ul>
-            <li>📊 <strong>Educational summaries</strong> of publicly available earnings reports (10-K, 10-Q)</li>
-            <li>📚 <strong>Business context</strong> explaining company strategies and market positions</li>
-            <li>⚠️ <strong>Risk factor analysis</strong> based on public company disclosures</li>
-            <li>🔍 <strong>Research questions</strong> to guide your own due diligence</li>
-            <li>📖 <strong>Financial glossary</strong> to help understand industry terminology</li>
+            <li> <strong>Educational summaries</strong> of publicly available earnings reports (10-K, 10-Q)</li>
+            <li> <strong>Business context</strong> explaining company strategies and market positions</li>
+            <li> <strong>Risk factor analysis</strong> based on public company disclosures</li>
+            <li> <strong>Research questions</strong> to guide your own due diligence</li>
+            <li> <strong>Financial glossary</strong> to help understand industry terminology</li>
           </ul>
 
           <h2>What We Do NOT Provide</h2>

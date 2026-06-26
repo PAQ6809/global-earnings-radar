@@ -14,7 +14,7 @@ export default function NotFound() {
 
       <div className="container" style={{ textAlign: 'center' }}>
         <div className="card" style={{ maxWidth: '500px', margin: '0 auto' }}>
-          <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🔍</div>
+          <div style={{ fontSize: '4rem', marginBottom: '1rem' }}></div>
           <h2 style={{ marginBottom: '1rem' }}>What happened?</h2>
           <p style={{ color: 'var(--gray-600)', marginBottom: '1.5rem' }}>
             We couldn't find the page you were looking for. This might be because:
@@ -44,21 +44,21 @@ export default function NotFound() {
           <div className="card-grid" style={{ maxWidth: '800px', margin: '0 auto' }}>
             <Link to="/company/NVDA" className="card-link">
               <div className="card" style={{ textAlign: 'center', padding: '1.5rem' }}>
-                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📊</div>
+                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}></div>
                 <h4>NVIDIA Analysis</h4>
                 <p style={{ color: 'var(--gray-500)', fontSize: '0.85rem' }}>NVDA • AI & Semiconductors</p>
               </div>
             </Link>
             <Link to="/company/MSFT" className="card-link">
               <div className="card" style={{ textAlign: 'center', padding: '1.5rem' }}>
-                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>☁️</div>
+                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}></div>
                 <h4>Microsoft Analysis</h4>
                 <p style={{ color: 'var(--gray-500)', fontSize: '0.85rem' }}>MSFT • Cloud & SaaS</p>
               </div>
             </Link>
             <Link to="/sector/ai" className="card-link">
               <div className="card" style={{ textAlign: 'center', padding: '1.5rem' }}>
-                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🤖</div>
+                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}></div>
                 <h4>AI Sector</h4>
                 <p style={{ color: 'var(--gray-500)', fontSize: '0.85rem' }}>Artificial Intelligence</p>
               </div>

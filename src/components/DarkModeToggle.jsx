@@ -11,7 +11,12 @@ export default function DarkModeToggle() {
       title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
       aria-label={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
     >
-      {isDarkMode ? '☀️' : '🌙'}
+      <span className="toggle-track">
+        <span className={`toggle-thumb ${isDarkMode ? 'dark' : 'light'}`} />
+      </span>
+      <span className="toggle-label">
+        {isDarkMode ? 'Dark' : 'Light'}
+      </span>
     </button>
   )
 }

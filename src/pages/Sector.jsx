@@ -6,7 +6,7 @@ import financials from '../data/financials.json'
 const sectorData = {
   ai: {
     name: 'AI & Machine Learning',
-    icon: '🤖',
+    icon: '',
     description: 'Companies leading the artificial intelligence revolution, from foundation model providers to AI infrastructure and applications.',
     companies: ['NVDA', 'MSFT', 'GOOGL', 'META', 'AMD'],
     highlights: [
@@ -18,7 +18,7 @@ const sectorData = {
   },
   semiconductors: {
     name: 'Semiconductors',
-    icon: '💾',
+    icon: '',
     description: 'The chip ecosystem including fabless designers, foundries, and equipment manufacturers that power modern computing.',
     companies: ['NVDA', 'ASML', 'AMD', 'TSM'],
     highlights: [
@@ -30,7 +30,7 @@ const sectorData = {
   },
   saas: {
     name: 'SaaS & Enterprise Software',
-    icon: '☁️',
+    icon: '',
     description: 'Software companies transitioning to cloud subscriptions, offering recurring revenue models and enterprise productivity tools.',
     companies: ['MSFT', 'SAP'],
     highlights: [
@@ -42,7 +42,7 @@ const sectorData = {
   },
   cloud: {
     name: 'Cloud Computing',
-    icon: '🖥️',
+    icon: '',
     description: 'Cloud infrastructure and platform services enabling digital transformation across industries.',
     companies: ['MSFT', 'AMZN', 'GOOGL'],
     highlights: [
@@ -54,7 +54,7 @@ const sectorData = {
   },
   consumer: {
     name: 'Consumer Technology',
-    icon: '📱',
+    icon: '',
     description: 'Consumer electronics, devices, and services reaching billions of users globally.',
     companies: ['AAPL', 'GOOGL', 'AMZN', 'META', 'TSLA'],
     highlights: [
@@ -105,7 +105,7 @@ export default function Sector() {
         {/* Industry Highlights */}
         <div className="card" style={{ marginBottom: '2rem', borderLeft: '4px solid var(--primary)' }}>
           <h2 style={{ marginBottom: '1rem', fontSize: '1.25rem' }}>
-            📊 Industry Highlights
+             Industry Highlights
           </h2>
           <ul style={{ paddingLeft: '1.5rem' }}>
             {data.highlights.map((highlight, index) => (

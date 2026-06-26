@@ -54,7 +54,6 @@ function Navbar() {
     <nav className="navbar">
       <div className="nav-container">
         <Link to="/" className="nav-logo" onClick={handleNavClick}>
-          <span className="logo-icon">📡</span>
           <span className="logo-text">Global Earnings Radar</span>
         </Link>
         <div className="nav-center">

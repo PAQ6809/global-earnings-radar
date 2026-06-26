@@ -99,7 +99,7 @@ export default function Company() {
           <div className="earnings-grid">
             {/* Facts */}
             <div className="summary-section">
-              <h4>📊 Facts</h4>
+              <h4>Facts</h4>
               <ul>
                 <li>Revenue: {data.financials.revenue.formatted} ({data.financials.revenue.growthFormatted})</li>
                 <li>Gross Margin: {(data.financials.grossProfit.margin * 100).toFixed(0)}%</li>
@@ -111,7 +111,7 @@ export default function Company() {
 
             {/* AI Summary */}
             <div className="summary-section">
-              <h4>📝 AI Summary</h4>
+              <h4>Summary</h4>
               <p style={{ fontSize: '0.95rem', lineHeight: 1.6 }}>
                 {data.aiSummary}
               </p>
@@ -156,7 +156,7 @@ export default function Company() {
         {/* Business Insights */}
         <div className="card insights-section" style={{ marginBottom: '2rem' }}>
           <h2 style={{ marginBottom: '1rem', fontSize: '1.25rem', color: 'var(--primary)' }}>
-            💡 Business Insights
+            Business Insights
           </h2>
           {data.businessInsights.map((insight, index) => (
             <div key={index} style={{ marginBottom: '1.5rem', paddingBottom: '1.5rem', borderBottom: index < data.businessInsights.length - 1 ? '1px solid var(--gray-200)' : 'none' }}>
@@ -176,7 +176,7 @@ export default function Company() {
         {/* Risk Factors */}
         <div className="card risk-section" style={{ marginBottom: '2rem' }}>
           <h2 style={{ marginBottom: '1rem', fontSize: '1.25rem' }}>
-            ⚠️ Risk Factors
+            Risk Factors
           </h2>
           {data.riskFactors.map((risk, index) => (
             <div key={index} style={{ marginBottom: '1rem', paddingBottom: '1rem', borderBottom: index < data.riskFactors.length - 1 ? '1px solid #fecaca' : 'none' }}>
@@ -195,7 +195,7 @@ export default function Company() {
 
         {/* Questions to Watch */}
         <div className="questions-list" style={{ marginBottom: '2rem' }}>
-          <h4>🔍 Questions to Watch</h4>
+          <h4>Questions to Watch</h4>
           <ol>
             {data.questionsToWatch.map((question, index) => (
               <li key={index}>{question}</li>
@@ -207,7 +207,7 @@ export default function Company() {
         {data.guidance && (
           <div className="card" style={{ marginBottom: '2rem', borderLeft: '4px solid var(--primary)' }}>
             <h2 style={{ marginBottom: '1rem', fontSize: '1.25rem' }}>
-              📈 Management Guidance
+              Management Guidance
             </h2>
             <p style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--dark)' }}>
               Next Quarter Revenue: {data.guidance.revenue}
@@ -221,7 +221,7 @@ export default function Company() {
         {/* Sources */}
         <div className="card" style={{ background: 'var(--gray-50)', marginBottom: '2rem' }}>
           <h2 style={{ marginBottom: '1rem', fontSize: '1rem', color: 'var(--gray-600)' }}>
-            📚 Data Sources
+            Data Sources
           </h2>
           <ul style={{ listStyle: 'none', color: 'var(--gray-500)', fontSize: '0.9rem' }}>
             {data.sources.map((source, index) => (
@@ -234,7 +234,7 @@ export default function Company() {
 
         {/* Pro Upgrade Card */}
         <div className="upgrade-card" style={{ marginBottom: '2rem' }}>
-          <div className="upgrade-card-icon">🔓</div>
+          <div className="upgrade-card-icon"></div>
           <div className="upgrade-card-content">
             <h3>Unlock Deeper Research Tools</h3>
             <p>Pro users will be able to:</p>

@@ -68,7 +68,6 @@ export default function Search() {
     <div className="search-container" ref={containerRef}>
       <label htmlFor="search-input" className="sr-only">Search companies or terms</label>
       <div className="search-input-wrapper">
-        <span className="search-icon" aria-hidden="true">🔍</span>
         <input
           id="search-input"
           ref={inputRef}
@@ -125,7 +124,7 @@ export default function Search() {
                       className="search-result"
                       onClick={handleResultClick}
                     >
-                      <span className="search-result-icon">📖</span>
+                      <span className="search-result-icon"></span>
                       <span className="search-result-text">
                         <strong>{term.term}</strong>
                         <small>{term.definition.substring(0, 60)}...</small>
