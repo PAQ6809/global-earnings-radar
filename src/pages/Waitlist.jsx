@@ -49,7 +49,7 @@ export default function Waitlist() {
     if (interests.dashboards) interestsList.push('Sector dashboards')
     if (interests.reports) interestsList.push('Exportable reports')
     if (interests.comparison) interestsList.push('Company comparison')
-    if (interests.classroom) interestsList.push('Classroom / research lab use')
+    if (interests.classroom) interestsList.push('Classroom / lab use')
 
     try {
       const response = await fetch('/api/submit-waitlist', {
@@ -152,6 +152,7 @@ export default function Waitlist() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Your name"
+                autoComplete="name"
               />
             </div>
 
@@ -165,6 +166,8 @@ export default function Waitlist() {
                 onChange={handleChange}
                 required
                 placeholder="you@example.com"
+                autoComplete="email"
+                inputMode="email"
               />
             </div>
 
@@ -223,7 +226,7 @@ export default function Waitlist() {
                     checked={interests.classroom}
                     onChange={handleInterestChange}
                   />
-                  <span>Classroom / research lab use</span>
+                  <span>Classroom / lab use</span>
                 </label>
               </div>
             </div>
