@@ -4,40 +4,108 @@ export default function Waitlist() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    interest: 'individual',
     role: '',
-    companies: ''
+    message: ''
   })
+  const [interests, setInterests] = useState({
+    watchlists: false,
+    ai: false,
+    dashboards: false,
+    reports: false,
+    comparison: false,
+    classroom: false
+  })
+  const [isLoading, setIsLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState(null)
+  const [notConfigured, setNotConfigured] = useState(false)
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
   }
 
-  const handleSubmit = (e) => {
+  const handleInterestChange = (e) => {
+    const { name, checked } = e.target
+    setInterests(prev => ({
+      ...prev,
+      [name]: checked
+    }))
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // In a real app, this would send to an API
-    // For now, we just show the success state
-    setSubmitted(true)
+    setIsLoading(true)
+    setError(null)
+    setNotConfigured(false)
+
+    // Build interests array from checked boxes
+    const interestsList = []
+    if (interests.watchlists) interestsList.push('Saved watchlists')
+    if (interests.ai) interestsList.push('AI earnings summaries')
+    if (interests.dashboards) interestsList.push('Sector dashboards')
+    if (interests.reports) interestsList.push('Exportable reports')
+    if (interests.comparison) interestsList.push('Company comparison')
+    if (interests.classroom) interestsList.push('Classroom / research lab use')
+
+    try {
+      const response = await fetch('/api/submit-waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          role: formData.role,
+          interests: interestsList,
+          message: formData.message,
+          source: 'waitlist-page'
+        })
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setSubmitted(true)
+      } else if (data.configured === false) {
+        setNotConfigured(true)
+        setSubmitted(true)
+      } else {
+        setError(data.message || 'An error occurred. Please try again.')
+      }
+    } catch (err) {
+      setError('Unable to submit. Please try again later.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   if (submitted) {
     return (
       <div>
         <div className="sector-hero">
-          <h1>You're on the Pro List!</h1>
+          <h1>{notConfigured ? "Thanks for Your Interest!" : "You're on the Pro List!"}</h1>
         </div>
         <div className="container" style={{ textAlign: 'center' }}>
           <div className="card" style={{ maxWidth: '500px', margin: '0 auto' }}>
             <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>✅</div>
             <h2 style={{ marginBottom: '1rem' }}>Thanks for Your Interest!</h2>
-            <p style={{ color: 'var(--gray-600)', marginBottom: '1.5rem' }}>
-              We've added <strong>{formData.email}</strong> to our Pro early access waitlist.
-              We'll notify you when Pro research tools and ECPay checkout become available.
-            </p>
+            {notConfigured ? (
+              <p style={{ color: 'var(--gray-600)', marginBottom: '1.5rem' }}>
+                Thanks for your interest in Global Earnings Radar Pro.
+                The collection backend is not configured yet, but the Pro preview is available.
+                We'll notify you when the service becomes available.
+              </p>
+            ) : (
+              <p style={{ color: 'var(--gray-600)', marginBottom: '1.5rem' }}>
+                We've added <strong>{formData.email}</strong> to our Pro early access waitlist.
+                We'll notify you when Pro research tools and ECPay checkout become available.
+              </p>
+            )}
             <p style={{ color: 'var(--gray-500)', fontSize: '0.9rem' }}>
               In the meantime, you can continue exploring our free company analyses.
             </p>
@@ -68,22 +136,27 @@ export default function Waitlist() {
             Get Pro Access When Available
           </h2>
 
+          {error && (
+            <div className="form-error" style={{ marginBottom: '1.5rem' }}>
+              {error}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">Name (Optional)</label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                required
                 placeholder="Your name"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Email *</label>
               <input
                 type="email"
                 id="email"
@@ -96,55 +169,67 @@ export default function Waitlist() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="interest">I am interested as a...</label>
-              <select
-                id="interest"
-                name="interest"
-                value={formData.interest}
-                onChange={handleChange}
-              >
-                <option value="individual">Individual Investor</option>
-                <option value="professional">Finance Professional</option>
-                <option value="student">Student / Researcher</option>
-                <option value="journalist">Journalist / Writer</option>
-                <option value="researcher">Academic Researcher</option>
-                <option value="educator">Educator / Instructor</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div className="form-group">
               <label>Which Pro features interest you most? (Select all that apply)</label>
               <div className="interest-checkboxes">
                 <label className="interest-checkbox">
-                  <input type="checkbox" name="feature_watchlists" />
+                  <input
+                    type="checkbox"
+                    name="watchlists"
+                    checked={interests.watchlists}
+                    onChange={handleInterestChange}
+                  />
                   <span>Saved watchlists</span>
                 </label>
                 <label className="interest-checkbox">
-                  <input type="checkbox" name="feature_ai" />
+                  <input
+                    type="checkbox"
+                    name="ai"
+                    checked={interests.ai}
+                    onChange={handleInterestChange}
+                  />
                   <span>AI earnings summaries</span>
                 </label>
                 <label className="interest-checkbox">
-                  <input type="checkbox" name="feature_dashboards" />
+                  <input
+                    type="checkbox"
+                    name="dashboards"
+                    checked={interests.dashboards}
+                    onChange={handleInterestChange}
+                  />
                   <span>Sector dashboards</span>
                 </label>
                 <label className="interest-checkbox">
-                  <input type="checkbox" name="feature_reports" />
+                  <input
+                    type="checkbox"
+                    name="reports"
+                    checked={interests.reports}
+                    onChange={handleInterestChange}
+                  />
                   <span>Exportable reports</span>
                 </label>
                 <label className="interest-checkbox">
-                  <input type="checkbox" name="feature_comparison" />
+                  <input
+                    type="checkbox"
+                    name="comparison"
+                    checked={interests.comparison}
+                    onChange={handleInterestChange}
+                  />
                   <span>Company comparison</span>
                 </label>
                 <label className="interest-checkbox">
-                  <input type="checkbox" name="feature_classroom" />
+                  <input
+                    type="checkbox"
+                    name="classroom"
+                    checked={interests.classroom}
+                    onChange={handleInterestChange}
+                  />
                   <span>Classroom / research lab use</span>
                 </label>
               </div>
             </div>
 
             <div className="form-group">
-              <label htmlFor="role">Role / Background</label>
+              <label htmlFor="role">Role / Background (Optional)</label>
               <input
                 type="text"
                 id="role"
@@ -156,19 +241,24 @@ export default function Waitlist() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="companies">Companies of Interest (Optional)</label>
+              <label htmlFor="message">Message (Optional)</label>
               <textarea
-                id="companies"
-                name="companies"
-                value={formData.companies}
+                id="message"
+                name="message"
+                value={formData.message}
                 onChange={handleChange}
                 rows={3}
-                placeholder="Which companies would you like us to cover?"
+                placeholder="Any specific companies or topics you're interested in?"
               />
             </div>
 
-            <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-              Join Pro Waitlist
+            <button
+              type="submit"
+              className="btn btn-primary"
+              style={{ width: '100%' }}
+              disabled={isLoading}
+            >
+              {isLoading ? 'Joining...' : 'Join Pro Waitlist'}
             </button>
 
             <p style={{

@@ -2864,3 +2864,94 @@ button:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================
+   Form Status Messages
+   ============================================ */
+
+.form-error {
+  padding: 1rem;
+  background: rgba(255, 59, 48, 0.1);
+  border: 1px solid rgba(255, 59, 48, 0.3);
+  border-radius: var(--border-radius);
+  color: var(--danger);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.form-success {
+  padding: 1rem;
+  background: rgba(52, 199, 89, 0.1);
+  border: 1px solid rgba(52, 199, 89, 0.3);
+  border-radius: var(--border-radius);
+  color: var(--success);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.form-status {
+  padding: 0.875rem 1rem;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-status.info {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: var(--primary);
+}
+
+.form-status.warning {
+  background: rgba(255, 159, 10, 0.1);
+  border: 1px solid rgba(255, 159, 10, 0.3);
+  color: #b45309;
+}
+
+/* Interest Checkboxes - Enhanced */
+.interest-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.interest-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--gray-700);
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  border: 1px solid var(--gray-200);
+  transition: all 0.2s ease;
+}
+
+.interest-checkbox:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.interest-checkbox input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+  flex-shrink: 0;
+}
+
+.interest-checkbox span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 500px) {
+  .interest-checkboxes {
+    grid-template-columns: 1fr;
+  }
+}

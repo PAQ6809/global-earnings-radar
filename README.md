@@ -225,6 +225,73 @@ Configure these in **Vercel Project Settings → Environment Variables**:
 ### MVP Limitation
 This MVP does not automatically unlock paid features. The checkout flow is implemented for demonstration purposes only.
 
+## 📋 Waitlist Collection Setup
+
+The waitlist form submits to `/api/submit-waitlist`, which forwards submissions to an external webhook.
+
+### Prerequisites
+- Vercel account with this project deployed
+- A webhook receiver service (see options below)
+
+### Supported Webhook Services
+- Formspree (form endpoint)
+- Make.com (automation webhook)
+- Zapier (webhook)
+- Tally (form webhook)
+- Airtable (automation webhook)
+- Google Sheets (via Apps Script webhook)
+- Any service that accepts POST JSON
+
+### Environment Variable
+
+Configure in **Vercel Project Settings → Environment Variables**:
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `WAITLIST_WEBHOOK_URL` | Webhook URL for collecting submissions | `https://hooks.zapier.com/hooks/catch/xxx` |
+
+### Webhook Payload
+
+When a user submits the form, the following JSON is sent to your webhook:
+
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "role": "Student",
+  "interests": ["AI earnings summaries", "Exportable reports"],
+  "message": "Looking forward to the AI features",
+  "source": "waitlist-page",
+  "submittedAt": "2026-06-26T12:00:00.000Z",
+  "site": "Global Earnings Radar"
+}
+```
+
+### Setup Steps
+
+1. **Create a webhook receiver**:
+   - Formspree: Create a form and get your endpoint URL
+   - Zapier/Make: Create a webhook trigger
+   - Airtable: Create an automation with a webhook action
+   - Google Sheets: Create an Apps Script webhook
+
+2. **Configure Vercel Environment Variables**:
+   - Go to Vercel Dashboard → Project → Settings → Environment Variables
+   - Add `WAITLIST_WEBHOOK_URL` with your webhook URL
+
+3. **Test the form**:
+   - Go to the waitlist page and submit a test entry
+   - Verify the data appears in your webhook service
+
+### Security Notes
+- **Do not commit real production webhook URLs** to the repository
+- If `WAITLIST_WEBHOOK_URL` is not configured, the form shows a friendly message
+- No user data is stored on this server
+- Only basic email validation is performed client-side
+
+### MVP Limitation
+If `WAITLIST_WEBHOOK_URL` is not set, the form still works from the user's perspective but submissions are not stored. The frontend shows "The collection backend is not configured yet."
+
 ## 📋 Product Roadmap - Paid Features
 
 ### Current Status
