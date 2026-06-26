@@ -117,6 +117,68 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* Research Preview Section */}
+      <section className="section section-fade-in">
+        <div className="container">
+          <h2 className="section-title">From Company Search to Structured Earnings Briefs</h2>
+          <p className="section-subtitle">
+            Free users can search company profiles, review cached public data, discover public filing sources,
+            and preview structured research report formats.
+          </p>
+
+          {/* Free Preview Features */}
+          <div style={{ maxWidth: '800px', margin: '2rem auto 0' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+              <span className="tier-badge free" style={{ fontSize: '0.75rem' }}>Free Access</span>
+              <span className="tier-badge pro" style={{ fontSize: '0.75rem' }}>Pro (Coming Soon)</span>
+            </div>
+
+            {/* Feature Grid */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '1rem',
+              marginBottom: '2rem'
+            }}>
+              {/* Free Features */}
+              <div className="card" style={{ borderLeft: '3px solid var(--gray-400)' }}>
+                <h4 style={{ fontSize: '0.95rem', marginBottom: '0.75rem' }}>Free Preview</h4>
+                <ul style={{ fontSize: '0.9rem', color: 'var(--gray-600)', listStyle: 'none', padding: 0, margin: 0 }}>
+                  <li style={{ marginBottom: '0.5rem' }}>Company profile search</li>
+                  <li style={{ marginBottom: '0.5rem' }}>Static sample report structure</li>
+                  <li style={{ marginBottom: '0.5rem' }}>Delayed / cached public data</li>
+                  <li style={{ marginBottom: '0.5rem' }}>Public filings source discovery</li>
+                  <li style={{ marginBottom: '0.5rem' }}>Glossary and educational framing</li>
+                </ul>
+              </div>
+
+              {/* Pro Features */}
+              <div className="card pro-preview-card" style={{ borderLeft: '3px solid var(--primary)' }}>
+                <div className="pro-badge-overlay" style={{ fontSize: '0.7rem' }}>Pro</div>
+                <h4 style={{ fontSize: '0.95rem', marginBottom: '0.75rem' }}>Pro (Coming Soon)</h4>
+                <ul style={{ fontSize: '0.9rem', color: 'var(--gray-600)', listStyle: 'none', padding: 0, margin: 0 }}>
+                  <li style={{ marginBottom: '0.5rem' }}>AI-assisted earnings analysis</li>
+                  <li style={{ marginBottom: '0.5rem' }}>Company comparison</li>
+                  <li style={{ marginBottom: '0.5rem' }}>Exportable research reports</li>
+                  <li style={{ marginBottom: '0.5rem' }}>Saved watchlists</li>
+                  <li style={{ marginBottom: '0.5rem' }}>Research notes and alerts</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ textAlign: 'center' }}>
+            <Link to="/research" className="btn btn-secondary">
+              Try Research Preview
+            </Link>
+          </div>
+
+          <p style={{ textAlign: 'center', color: 'var(--gray-500)', marginTop: '1.5rem', fontSize: '0.85rem' }}>
+            Free preview shows sample report structures. Pro features planned for paid subscribers.
+          </p>
+        </div>
+      </section>
+
       {/* Pro Features Preview */}
       <section className="section section-fade-in">
         <div className="container">

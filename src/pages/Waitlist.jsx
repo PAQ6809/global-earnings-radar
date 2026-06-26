@@ -13,7 +13,8 @@ export default function Waitlist() {
     dashboards: false,
     reports: false,
     comparison: false,
-    classroom: false
+    classroom: false,
+    researchGenerator: false
   })
   const [isLoading, setIsLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
@@ -50,6 +51,7 @@ export default function Waitlist() {
     if (interests.reports) interestsList.push('Exportable reports')
     if (interests.comparison) interestsList.push('Company comparison')
     if (interests.classroom) interestsList.push('Classroom / lab use')
+    if (interests.researchGenerator) interestsList.push('Live research report generator')
 
     try {
       const response = await fetch('/api/submit-waitlist', {
@@ -218,6 +220,15 @@ export default function Waitlist() {
                     onChange={handleInterestChange}
                   />
                   <span>Company comparison</span>
+                </label>
+                <label className="waitlist-interest-option">
+                  <input
+                    type="checkbox"
+                    name="researchGenerator"
+                    checked={interests.researchGenerator}
+                    onChange={handleInterestChange}
+                  />
+                  <span>Live research report generator</span>
                 </label>
                 <label className="waitlist-interest-option">
                   <input

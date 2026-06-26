@@ -1,10 +1,10 @@
-# Global Earnings Radar
+﻿# Global Earnings Radar
 
-**[🚀 Live Demo](https://global-earnings-radar.vercel.app)**
+**[?? Live Demo](https://global-earnings-radar.vercel.app)**
 
-A financial research assistant for US and European tech stocks. Understand earnings reports, business trends, and risk factors—in minutes.
+A financial research assistant for US and European tech stocks. Understand earnings reports, business trends, and risk factors?n minutes.
 
-## ⚠️ Important Disclaimer
+## ?? Important Disclaimer
 
 **This is an educational research tool only.**
 
@@ -15,7 +15,7 @@ A financial research assistant for US and European tech stocks. Understand earni
 - Past performance is not indicative of future results
 - Always conduct your own independent research
 
-## 🚀 Quick Start
+## ?? Quick Start
 
 ```bash
 # Install dependencies
@@ -31,7 +31,7 @@ npm run build
 npm run preview
 ```
 
-## 📋 Current Status
+## ?? Current Status
 
 **Status: MVP / Demo**
 
@@ -43,44 +43,44 @@ This is a minimum viable product demonstration featuring:
 
 All financial information presented should be verified from official sources before making any investment decisions.
 
-## 📁 Project Structure
+## ?? Project Structure
 
 ```
 global-earnings-radar/
-├── src/
-│   ├── components/       # React components
-│   │   ├── DarkModeToggle.jsx
-│   │   ├── Disclaimer.jsx
-│   │   ├── Footer.jsx
-│   │   └── Search.jsx
-│   ├── context/         # React contexts
-│   │   └── DarkModeContext.jsx
-│   ├── pages/           # Page components
-│   │   ├── Landing.jsx
-│   │   ├── Company.jsx
-│   │   ├── Sector.jsx
-│   │   ├── Glossary.jsx
-│   │   ├── Pricing.jsx
-│   │   ├── Waitlist.jsx
-│   │   ├── NotFound.jsx
-│   │   ├── Privacy.jsx
-│   │   ├── Terms.jsx
-│   │   └── SiteDisclaimer.jsx
-│   ├── data/            # Sample demo data
-│   │   ├── companies.json (11 companies)
-│   │   ├── financials.json
-│   │   └── glossary.json
-│   ├── styles/
-│   │   └── global.css
-│   ├── App.jsx
-│   └── main.jsx
-├── public/
-├── index.html
-├── package.json
-└── vite.config.js
+??? src/
+??  ??? components/       # React components
+??  ??  ??? DarkModeToggle.jsx
+??  ??  ??? Disclaimer.jsx
+??  ??  ??? Footer.jsx
+??  ??  ??? Search.jsx
+??  ??? context/         # React contexts
+??  ??  ??? DarkModeContext.jsx
+??  ??? pages/           # Page components
+??  ??  ??? Landing.jsx
+??  ??  ??? Company.jsx
+??  ??  ??? Sector.jsx
+??  ??  ??? Glossary.jsx
+??  ??  ??? Pricing.jsx
+??  ??  ??? Waitlist.jsx
+??  ??  ??? NotFound.jsx
+??  ??  ??? Privacy.jsx
+??  ??  ??? Terms.jsx
+??  ??  ??? SiteDisclaimer.jsx
+??  ??? data/            # Sample demo data
+??  ??  ??? companies.json (11 companies)
+??  ??  ??? financials.json
+??  ??  ??? glossary.json
+??  ??? styles/
+??  ??  ??? global.css
+??  ??? App.jsx
+??  ??? main.jsx
+??? public/
+??? index.html
+??? package.json
+??? vite.config.js
 ```
 
-## 🎯 Features
+## ? Features
 
 ### Current Features (Demo/MVP)
 - Landing page with company showcase
@@ -108,7 +108,7 @@ global-earnings-radar/
 - [ ] Email newsletter subscription
 - [ ] API access for researchers
 
-## 📊 Companies Covered
+## ?? Companies Covered
 
 | Ticker | Company | Sector |
 |--------|---------|--------|
@@ -124,7 +124,7 @@ global-earnings-radar/
 | AMD | Advanced Micro Devices | AI, Semiconductors |
 | TSM | Taiwan Semiconductor | Semiconductors |
 
-## 🛠️ Tech Stack
+## ??儭?Tech Stack
 
 - **Framework**: React 18
 - **Routing**: React Router v6
@@ -132,7 +132,7 @@ global-earnings-radar/
 - **Styling**: Plain CSS with CSS Variables
 - **State**: React Context (Dark Mode)
 
-## 🎨 Design
+## ? Design
 
 Apple-inspired Liquid Glass UI with:
 - Continuous gradient background
@@ -140,7 +140,7 @@ Apple-inspired Liquid Glass UI with:
 - Dark mode support
 - Responsive design
 
-## 📖 Data Disclaimer
+## ?? Data Disclaimer
 
 **All data in this demo is sample data for product demonstration.**
 
@@ -149,7 +149,7 @@ The financials.json and companies.json contain illustrative financial informatio
 2. Consult qualified financial advisors
 3. Conduct your own due diligence
 
-## 🔒 Compliance
+## ?? Compliance
 
 - All financial content is clearly labeled as educational
 - No buy/sell/hold recommendations
@@ -158,7 +158,7 @@ The financials.json and companies.json contain illustrative financial informatio
 - Risk factors are prominently displayed
 - Legal disclaimers on every page
 
-## 🔐 Security Notes
+## ?? Security Notes
 
 **Architecture**
 - Static frontend only (React + Vite)
@@ -179,7 +179,7 @@ The financials.json and companies.json contain illustrative financial informatio
 
 *Note: As with any web application, maintain good security practices and keep dependencies updated.*
 
-## 💳 Payment Setup (ECPay Green World)
+## ? Payment Setup (ECPay Green World)
 
 This project uses ECPay Green World hosted checkout for Taiwan payment support. Credit card payments are handled entirely by ECPay; no payment information is processed or stored on this server.
 
@@ -190,7 +190,7 @@ This project uses ECPay Green World hosted checkout for Taiwan payment support. 
 
 ### Environment Variables
 
-Configure these in **Vercel Project Settings → Environment Variables**:
+Configure these in **Vercel Project Settings ??Environment Variables**:
 
 | Variable | Description | Example |
 |----------|-------------|---------|
@@ -207,7 +207,7 @@ Configure these in **Vercel Project Settings → Environment Variables**:
    - Obtain MerchantID, HashKey, and HashIV
 
 2. **Configure Vercel Environment Variables**:
-   - Go to Vercel Dashboard → Project → Settings → Environment Variables
+   - Go to Vercel Dashboard ??Project ??Settings ??Environment Variables
    - Add each variable from the table above
    - Set `ECPAY_STAGE=true` for test mode
 
@@ -225,7 +225,7 @@ Configure these in **Vercel Project Settings → Environment Variables**:
 ### MVP Limitation
 This MVP does not automatically unlock paid features. The checkout flow is implemented for demonstration purposes only.
 
-## 📋 Waitlist Collection Setup
+## ?? Waitlist Collection Setup
 
 The waitlist form submits to `/api/submit-waitlist`, which forwards submissions to an external webhook.
 
@@ -244,7 +244,7 @@ The waitlist form submits to `/api/submit-waitlist`, which forwards submissions 
 
 ### Environment Variable
 
-Configure in **Vercel Project Settings → Environment Variables**:
+Configure in **Vercel Project Settings ??Environment Variables**:
 
 | Variable | Description | Example |
 |----------|-------------|---------|
@@ -276,7 +276,7 @@ When a user submits the form, the following JSON is sent to your webhook:
    - Google Sheets: Create an Apps Script webhook
 
 2. **Configure Vercel Environment Variables**:
-   - Go to Vercel Dashboard → Project → Settings → Environment Variables
+   - Go to Vercel Dashboard ??Project ??Settings ??Environment Variables
    - Add `WAITLIST_WEBHOOK_URL` with your webhook URL
 
 3. **Test the form**:
@@ -292,7 +292,49 @@ When a user submits the form, the following JSON is sent to your webhook:
 ### MVP Limitation
 If `WAITLIST_WEBHOOK_URL` is not set, the form still works from the user's perspective but submissions are not stored. The frontend shows "The collection backend is not configured yet."
 
-## 📋 Product Roadmap - Paid Features
+## Feature Tiering Strategy
+
+### Product Tiers
+
+**Free (No account required)**
+- All-company basic search
+- Static company summaries
+- Delayed / cached financial snapshots
+- Basic public data freshness
+- Public filings source discovery
+- Sample research reports
+- Glossary and sector browsing
+- Pro waitlist access
+
+**Pro / Paid (Coming Soon)**
+- AI-assisted earnings analysis
+- AI-generated earnings briefs
+- Management tone summary
+- Risk factor extraction
+- Company comparison
+- Exportable reports
+- Saved watchlists
+- Research notes
+- Earnings alerts
+
+**Team / Research Lab (Coming Soon)**
+- Everything in Pro
+- Batch company tracking
+- Shared research workspace
+- Classroom / lab use
+- Batch exports
+- Admin billing support
+
+### Design Principles
+
+- AI analysis is treated as a Pro / paid feature.
+- Free users can access company profile search, static summaries, delayed or cached financial snapshots, basic public data freshness, public filing source discovery, glossary content, sector browsing, and sample research report structures.
+- Pro users are planned to receive AI-assisted earnings analysis, AI-generated briefs, management tone summaries, risk factor extraction, company comparison, saved watchlists, research notes, alerts, and exportable reports.
+- Team / Lab users are planned to receive shared research workflows, batch company tracking, classroom / lab usage, and batch exports.
+- Current implementation is preview-only and does not perform live AI analysis or live web search yet.
+- Future live data should be powered by cloud jobs, provider adapters, and databases rather than local machine updates.
+
+## ?? Product Roadmap - Paid Features
 
 ### Current Status
 - **ECPay Integration**: Prepared (test environment) but not activated for production payments
@@ -319,7 +361,7 @@ To enable real payments and Pro feature access:
 4. Configure webhook handlers for payment status updates
 5. Add user account dashboard for managing subscription
 
-## 📋 Competitor-Inspired Product Direction
+## ?? Competitor-Inspired Product Direction
 
 The product is inspired by earnings research workflows such as:
 - Earnings call summaries and insights
@@ -344,7 +386,7 @@ Current implementation is preview-only. The Pro features shown on the website (w
 - ECPay merchant verification and legal setup
 - Database-backed entitlement management
 
-## 📝 License
+## ?? License
 
 MIT
 

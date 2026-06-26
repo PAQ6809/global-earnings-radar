@@ -20,11 +20,14 @@ export default function Pricing() {
             <div className="pricing-price">$0<span>/month</span></div>
             <p style={{ color: 'var(--gray-500)', marginTop: '0.5rem' }}>For learners</p>
             <ul className="pricing-features">
-              <li>Company earnings snapshots</li>
-              <li>Basic risk factors</li>
-              <li>Glossary access</li>
-              <li>Sample company data</li>
-              <li>No account required</li>
+              <li>All-company basic search</li>
+              <li>Static company summaries</li>
+              <li>Delayed / cached financial snapshots</li>
+              <li>Basic public data freshness</li>
+              <li>Public filings source discovery</li>
+              <li>Sample research reports</li>
+              <li>Glossary and sector browsing</li>
+              <li>Pro waitlist access</li>
             </ul>
             <Link to="/company/NVDA" className="btn btn-outline" style={{ display: 'block', textAlign: 'center' }}>
               Explore Now (Free)
@@ -38,16 +41,18 @@ export default function Pricing() {
             <div className="pricing-price">$9<span>/month</span></div>
             <p style={{ color: 'var(--gray-500)', marginTop: '0.5rem' }}>For dedicated researchers</p>
             <ul className="pricing-features">
-              <li>Full company comparison workspace</li>
-              <li>Watchlist and saved research notes</li>
-              <li>Earnings calendar alerts</li>
-              <li>AI-assisted earnings summary</li>
-              <li>Sector trend dashboards</li>
-              <li>Exportable research brief</li>
-              <li>Priority access to new company coverage</li>
+              <li>AI-assisted earnings analysis</li>
+              <li>AI-generated earnings briefs</li>
+              <li>Management tone summary</li>
+              <li>Risk factor extraction</li>
+              <li>Company comparison</li>
+              <li>Exportable reports</li>
+              <li>Saved watchlists</li>
+              <li>Research notes</li>
+              <li>Earnings alerts</li>
             </ul>
             <Link to="/waitlist" className="btn btn-primary" style={{ display: 'block', textAlign: 'center' }}>
-              Join Pro Waitlist
+              Pro Preview - Join Waitlist
             </Link>
             <div style={{
               marginTop: '0.75rem',
@@ -69,10 +74,11 @@ export default function Pricing() {
             <div className="pricing-price">$29<span>/month</span></div>
             <p style={{ color: 'var(--gray-500)', marginTop: '0.5rem' }}>For research teams</p>
             <ul className="pricing-features">
-              <li>Shared watchlists</li>
-              <li>Team research workspace</li>
-              <li>Custom sector coverage</li>
-              <li>Classroom / lab usage</li>
+              <li>Everything in Pro</li>
+              <li>Batch company tracking</li>
+              <li>Shared research workspace</li>
+              <li>Classroom / lab use</li>
+              <li>Batch exports</li>
               <li>Admin billing support</li>
             </ul>
             <Link to="/waitlist" className="btn btn-outline" style={{ display: 'block', textAlign: 'center' }}>

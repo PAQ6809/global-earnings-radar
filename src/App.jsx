@@ -5,6 +5,7 @@ import Landing from './pages/Landing'
 import Company from './pages/Company'
 import Sector from './pages/Sector'
 import Glossary from './pages/Glossary'
+import Research from './pages/Research'
 import Pricing from './pages/Pricing'
 import PaymentSuccess from './pages/PaymentSuccess'
 import PaymentCancel from './pages/PaymentCancel'
@@ -59,13 +60,9 @@ function Navbar() {
         <div className="nav-center">
           <div className="nav-links">
             <Link to="/" onClick={handleNavClick}>Home</Link>
-            <Link to="/sector/ai" onClick={handleNavClick}>AI</Link>
-            <Link to="/sector/semiconductors" onClick={handleNavClick}>Semiconductors</Link>
-            <Link to="/sector/saas" onClick={handleNavClick}>SaaS</Link>
-            <Link to="/sector/cloud" onClick={handleNavClick}>Cloud</Link>
-            <Link to="/sector/consumer" onClick={handleNavClick}>Consumer</Link>
-            <Link to="/glossary" onClick={handleNavClick}>Glossary</Link>
+            <Link to="/research" onClick={handleNavClick}>Research</Link>
             <Link to="/pricing" onClick={handleNavClick}>Pricing</Link>
+            <Link to="/waitlist" onClick={handleNavClick}>Waitlist</Link>
           </div>
         </div>
         <div className="nav-actions">
@@ -83,13 +80,9 @@ function Navbar() {
         <div className={`nav-links-wrapper${mobileMenuOpen ? ' open' : ''}`}>
           <div className="nav-links">
             <Link to="/" onClick={handleNavClick}>Home</Link>
-            <Link to="/sector/ai" onClick={handleNavClick}>AI</Link>
-            <Link to="/sector/semiconductors" onClick={handleNavClick}>Semiconductors</Link>
-            <Link to="/sector/saas" onClick={handleNavClick}>SaaS</Link>
-            <Link to="/sector/cloud" onClick={handleNavClick}>Cloud</Link>
-            <Link to="/sector/consumer" onClick={handleNavClick}>Consumer</Link>
-            <Link to="/glossary" onClick={handleNavClick}>Glossary</Link>
+            <Link to="/research" onClick={handleNavClick}>Research</Link>
             <Link to="/pricing" onClick={handleNavClick}>Pricing</Link>
+            <Link to="/waitlist" onClick={handleNavClick}>Waitlist</Link>
           </div>
         </div>
       </div>
@@ -109,6 +102,7 @@ function AppContent() {
           <Route path="/company/:ticker" element={<Company />} />
           <Route path="/sector/:sector" element={<Sector />} />
           <Route path="/glossary" element={<Glossary />} />
+          <Route path="/research" element={<Research />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/payment-cancel" element={<PaymentCancel />} />
