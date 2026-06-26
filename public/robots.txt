@@ -1,0 +1,8 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow certain paths if needed
+# Disallow: /api/
+
+Sitemap: https://global-earnings-radar.vercel.app/sitemap.xml

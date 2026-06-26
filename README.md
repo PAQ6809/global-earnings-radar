@@ -1,5 +1,7 @@
 # Global Earnings Radar
 
+**[🚀 Live Demo](https://global-earnings-radar.vercel.app)**
+
 A financial research assistant for US and European tech stocks. Understand earnings reports, business trends, and risk factors—in minutes.
 
 ## ⚠️ Important Disclaimer
