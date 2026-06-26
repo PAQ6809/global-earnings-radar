@@ -1,0 +1,112 @@
+[
+  {
+    "ticker": "NVDA",
+    "name": "NVIDIA Corporation",
+    "exchange": "NASDAQ",
+    "hq": "Santa Clara, California, USA",
+    "founded": 1993,
+    "employees": 29600,
+    "sectors": ["ai", "semiconductors"],
+    "description": "Leading provider of GPU computing and AI chip solutions"
+  },
+  {
+    "ticker": "MSFT",
+    "name": "Microsoft Corporation",
+    "exchange": "NASDAQ",
+    "hq": "Redmond, Washington, USA",
+    "founded": 1975,
+    "employees": 221000,
+    "sectors": ["cloud", "saas", "ai"],
+    "description": "Global technology company offering software, services, devices, and solutions"
+  },
+  {
+    "ticker": "AAPL",
+    "name": "Apple Inc.",
+    "exchange": "NASDAQ",
+    "hq": "Cupertino, California, USA",
+    "founded": 1977,
+    "employees": 164000,
+    "sectors": ["consumer"],
+    "description": "Designer and marketer of consumer electronics, software, and services"
+  },
+  {
+    "ticker": "ASML",
+    "name": "ASML Holding N.V.",
+    "exchange": "Euronext Amsterdam",
+    "hq": "Veldhoven, Netherlands",
+    "founded": 1984,
+    "employees": 44000,
+    "sectors": ["semiconductors"],
+    "description": "Leading supplier of semiconductor lithography systems"
+  },
+  {
+    "ticker": "SAP",
+    "name": "SAP SE",
+    "exchange": "Xetra Frankfurt",
+    "hq": "Walldorf, Germany",
+    "founded": 1972,
+    "employees": 105000,
+    "sectors": ["saas"],
+    "description": "Enterprise application software company offering ERP and cloud solutions"
+  },
+  {
+    "ticker": "GOOGL",
+    "name": "Alphabet Inc.",
+    "exchange": "NASDAQ",
+    "hq": "Mountain View, California, USA",
+    "founded": 2015,
+    "employees": 182000,
+    "sectors": ["ai", "cloud", "consumer"],
+    "description": "Parent company of Google, leading search engine and advertising platform"
+  },
+  {
+    "ticker": "AMZN",
+    "name": "Amazon.com, Inc.",
+    "exchange": "NASDAQ",
+    "hq": "Seattle, Washington, USA",
+    "founded": 1994,
+    "employees": 1525000,
+    "sectors": ["cloud", "consumer"],
+    "description": "E-commerce giant and leading cloud infrastructure provider"
+  },
+  {
+    "ticker": "META",
+    "name": "Meta Platforms, Inc.",
+    "exchange": "NASDAQ",
+    "hq": "Menlo Park, California, USA",
+    "founded": 2004,
+    "employees": 70800,
+    "sectors": ["ai", "consumer"],
+    "description": "Social media and virtual reality company connecting billions worldwide"
+  },
+  {
+    "ticker": "TSLA",
+    "name": "Tesla, Inc.",
+    "exchange": "NASDAQ",
+    "hq": "Austin, Texas, USA",
+    "founded": 2003,
+    "employees": 127855,
+    "sectors": ["consumer"],
+    "description": "Electric vehicles, energy storage, and solar products manufacturer"
+  },
+  {
+    "ticker": "AMD",
+    "name": "Advanced Micro Devices, Inc.",
+    "exchange": "NASDAQ",
+    "hq": "Santa Clara, California, USA",
+    "founded": 1969,
+    "employees": 25800,
+    "sectors": ["ai", "semiconductors"],
+    "description": "Semiconductor company designing CPUs, GPUs, and adaptive computing solutions"
+  },
+  {
+    "ticker": "TSM",
+    "name": "Taiwan Semiconductor Manufacturing",
+    "exchange": "NYSE (ADR)",
+    "hq": "Hsinchu, Taiwan",
+    "founded": 1987,
+    "employees": 73500,
+    "sectors": ["semiconductors"],
+    "description": "World's largest dedicated semiconductor foundry"
+  }
+]

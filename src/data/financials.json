@@ -1,0 +1,1281 @@
+{
+  "NVDA": {
+    "ticker": "NVDA",
+    "companyName": "NVIDIA Corporation",
+    "fiscalYearEnd": "January",
+    "latestFiling": {
+      "type": "10-Q",
+      "date": "2024-05-22",
+      "period": "Q1 FY2025 (ended April 28, 2024)"
+    },
+    "financials": {
+      "revenue": {
+        "value": 26000,
+        "unit": "USD millions",
+        "formatted": "$26.0B",
+        "growth": 0.262,
+        "growthFormatted": "+26.2% YoY"
+      },
+      "grossProfit": {
+        "value": 17950,
+        "margin": 0.74
+      },
+      "operatingIncome": {
+        "value": 16900,
+        "margin": 0.59
+      },
+      "netIncome": {
+        "value": 14880,
+        "margin": 0.57
+      },
+      "eps": {
+        "value": 6.12,
+        "growth": 0.629
+      }
+    },
+    "segments": [
+      {
+        "name": "Data Center",
+        "revenue": 22600,
+        "percentage": 0.87,
+        "formatted": "$22.6B",
+        "growth": 0.427,
+        "description": "AI and GPU computing for data centers, cloud, and enterprise"
+      },
+      {
+        "name": "Gaming",
+        "revenue": 2650,
+        "percentage": 0.10,
+        "formatted": "$2.65B",
+        "growth": 0.18,
+        "description": "GeForce GPUs for gaming PCs and laptops"
+      },
+      {
+        "name": "Professional Visualization",
+        "revenue": 430,
+        "percentage": 0.017,
+        "formatted": "$430M",
+        "growth": 0.08,
+        "description": "Quadro GPUs for professional workflows"
+      },
+      {
+        "name": "Automotive",
+        "revenue": 329,
+        "percentage": 0.013,
+        "formatted": "$329M",
+        "growth": 0.11,
+        "description": "DRIVE platform for autonomous vehicles"
+      }
+    ],
+    "aiSummary": "NVIDIA delivered another outstanding quarter with total revenue of $26.0B, a 26.2% increase year-over-year. The Data Center segment continues to be the primary growth driver, reaching $22.6B with an extraordinary 42.7% YoY growth, driven by unprecedented demand for AI computing infrastructure from hyperscalers and enterprises worldwide. Gaming segment showed healthy growth of 18% YoY, demonstrating resilience despite the transition to new GPU architectures. Gross margins expanded to 74%, reflecting strong pricing power and operating leverage as revenue scales. Management noted that demand for AI chips continues to exceed supply, though they expect gradual improvement through the year.",
+    "businessInsights": [
+      {
+        "title": "AI Infrastructure Buildout Accelerating",
+        "description": "The 42.7% growth in Data Center revenue demonstrates that enterprises and hyperscalers are still in early phases of AI infrastructure investment. This is not a trend reversing any time soon.",
+        "implications": "NVIDIA remains the primary beneficiary of the AI buildout, with custom silicon only making inroads at the margin."
+      },
+      {
+        "title": "Diversification Playbook Working",
+        "description": "While Data Center dominates at 87% of revenue, Gaming remains healthy at $2.65B with 18% growth. This shows NVIDIA isn't purely an AI story—it's also the leading gaming GPU company.",
+        "implications": "Multiple growth vectors provide resilience if any single market normalizes."
+      },
+      {
+        "title": "Pricing Power Remains Strong",
+        "description": "Gross margins at 74% show NVIDIA can price its products without losing customers. This is unusual in hardware.",
+        "implications": "H100/H200 chips command premium pricing due to performance lead and ecosystem lock-in."
+      }
+    ],
+    "riskFactors": [
+      {
+        "category": "Customer Concentration",
+        "description": "Hyperscalers (Microsoft, Google, Amazon, Meta) represent a large portion of Data Center revenue. If AI spending slows or shifts to custom silicon, NVIDIA faces revenue headwinds.",
+        "severity": "medium"
+      },
+      {
+        "category": "Competitive Risk",
+        "description": "AMD's MI300X and custom silicon (Google TPUs, Amazon Trainium, Meta MTIA) are gaining traction. While NVIDIA's ecosystem advantage is significant, competition is intensifying.",
+        "severity": "medium"
+      },
+      {
+        "category": "China Export Restrictions",
+        "description": "US export controls limit NVIDIA's ability to sell its most advanced chips in China. This creates revenue headwinds in a large market.",
+        "severity": "high"
+      },
+      {
+        "category": "Technology Transition",
+        "description": "The shift from Hopper (H100) to Blackwell (B200) architecture could cause customer digestion or order delays during transition periods.",
+        "severity": "low"
+      },
+      {
+        "category": "Valuation",
+        "description": "At high multiples, any sign of growth normalization could cause significant stock price decline.",
+        "severity": "low"
+      }
+    ],
+    "questionsToWatch": [
+      "How sustainable is 42.7% Data Center growth as comparisons get tougher?",
+      "What is the Blackwell (B200) ramp timeline and margin impact?",
+      "How much market share is NVIDIA losing to AMD and custom silicon?",
+      "What is the trajectory of China market revenue under export restrictions?",
+      "Will gaming normalize or continue growth with new RTX 5000 series?"
+    ],
+    "guidance": {
+      "revenue": "$28.0B ± 2%",
+      "comments": "Strong demand continues across all markets. Data Center growth expected to remain robust."
+    },
+    "sources": ["SEC EDGAR 10-Q Filing", "NVIDIA Investor Relations", "Q1 FY2025 Earnings Call Transcript"]
+  },
+  "MSFT": {
+    "ticker": "MSFT",
+    "companyName": "Microsoft Corporation",
+    "fiscalYearEnd": "June",
+    "latestFiling": {
+      "type": "10-Q",
+      "date": "2024-04-25",
+      "period": "Q3 FY2024 (ended March 31, 2024)"
+    },
+    "financials": {
+      "revenue": {
+        "value": 61860,
+        "unit": "USD millions",
+        "formatted": "$61.9B",
+        "growth": 0.173,
+        "growthFormatted": "+17.3% YoY"
+      },
+      "grossProfit": {
+        "value": 43330,
+        "margin": 0.70
+      },
+      "operatingIncome": {
+        "value": 21960,
+        "margin": 0.35
+      },
+      "netIncome": {
+        "value": 21940,
+        "margin": 0.35
+      },
+      "eps": {
+        "value": 2.94,
+        "growth": 0.20
+      }
+    },
+    "segments": [
+      {
+        "name": "Intelligent Cloud",
+        "revenue": 26710,
+        "percentage": 0.432,
+        "formatted": "$26.7B",
+        "growth": 0.21,
+        "description": "Azure, server products, and enterprise services"
+      },
+      {
+        "name": "Productivity and Business Processes",
+        "revenue": 19580,
+        "percentage": 0.316,
+        "formatted": "$19.6B",
+        "growth": 0.12,
+        "description": "Microsoft 365, LinkedIn, and Dynamics"
+      },
+      {
+        "name": "More Personal Computing",
+        "revenue": 15570,
+        "percentage": 0.252,
+        "formatted": "$15.6B",
+        "growth": 0.17,
+        "description": "Windows, Devices, Gaming, and Search"
+      }
+    ],
+    "aiSummary": "Microsoft reported strong quarterly results with revenue of $61.9B, up 17% year-over-year. The Intelligent Cloud segment, anchored by Azure, grew 21% with AI services contributing meaningfully to growth. Azure AI services continue to see strong adoption with over 50% growth. Management highlighted that AI transformation is driving incremental cloud spending, with Copilot integrations across the Microsoft 365 portfolio seeing strong enterprise adoption. LinkedIn revenue grew 9% and Microsoft 365 subscriber growth remains healthy. Windows OEM revenue grew 11%, benefiting from PC market stabilization. Search and news advertising saw strong 12% growth. The company guided for continued solid performance in the June quarter.",
+    "businessInsights": [
+      {
+        "title": "Azure AI Driving Incremental Cloud Growth",
+        "description": "Azure growth of 21% is being driven by AI workloads on top of base cloud infrastructure. Microsoft Copilot is seeing strong enterprise adoption.",
+        "implications": "AI services are not just replacing traditional workloads but creating new incremental spending."
+      },
+      {
+        "title": "Copilot Monetization Underway",
+        "description": "Microsoft 365 Copilot is now available to over 1 million paying users with strong expansion velocity. Enterprise customers are seeing productivity gains.",
+        "implications": "Copilot represents a new revenue stream with high margins as adoption scales."
+      },
+      {
+        "title": "Gaming Recovers",
+        "description": "Gaming revenue grew 62% due to Activision Blizzard consolidation, but even organic gaming showed improvement as the market stabilizes.",
+        "implications": "Post-acquisition, Microsoft is the third-largest gaming company by revenue."
+      }
+    ],
+    "riskFactors": [
+      {
+        "category": "AI Infrastructure Investment",
+        "description": "Microsoft is spending heavily on AI infrastructure (datacenters, GPUs). The payback period and ROI need to be demonstrated over time.",
+        "severity": "medium"
+      },
+      {
+        "category": "Regulatory Scrutiny",
+        "description": "Microsoft faces ongoing regulatory scrutiny in EU and US over market power and competitive practices.",
+        "severity": "medium"
+      },
+      {
+        "category": "Economic Sensitivity",
+        "description": "Enterprise software spending can slow during economic uncertainty. Microsoft is relatively well-positioned but not immune.",
+        "severity": "low"
+      },
+      {
+        "category": "Competition",
+        "description": "Intense competition from AWS in cloud and Google in search/AI. Market share gains require continued investment.",
+        "severity": "low"
+      }
+    ],
+    "questionsToWatch": [
+      "What is the trajectory of Azure AI services revenue contribution?",
+      "How fast is Microsoft 365 Copilot adoption scaling?",
+      "What is the ROI customers are seeing from AI investments?",
+      "How does the datacenter expansion affect margins near-term?",
+      "Is LinkedIn growth sustainable?"
+    ],
+    "guidance": {
+      "revenue": "$63.5B - $64.5B",
+      "comments": "Solid demand expected across all segments. AI demand remains strong."
+    },
+    "sources": ["SEC EDGAR 10-Q Filing", "Microsoft Investor Relations", "Q3 FY2024 Earnings Call Transcript"]
+  },
+  "AAPL": {
+    "ticker": "AAPL",
+    "companyName": "Apple Inc.",
+    "fiscalYearEnd": "September",
+    "latestFiling": {
+      "type": "10-Q",
+      "date": "2024-05-03",
+      "period": "Q2 FY2024 (ended March 30, 2024)"
+    },
+    "financials": {
+      "revenue": {
+        "value": 90750,
+        "unit": "USD millions",
+        "formatted": "$90.8B",
+        "growth": 0.046,
+        "growthFormatted": "+4.6% YoY"
+      },
+      "grossProfit": {
+        "value": 38360,
+        "margin": 0.423
+      },
+      "operatingIncome": {
+        "value": 28280,
+        "margin": 0.312
+      },
+      "netIncome": {
+        "value": 23640,
+        "margin": 0.26
+      },
+      "eps": {
+        "value": 1.53,
+        "growth": 0.11
+      }
+    },
+    "segments": [
+      {
+        "name": "iPhone",
+        "revenue": 45990,
+        "percentage": 0.507,
+        "formatted": "$46.0B",
+        "growth": -0.03,
+        "description": "iPhone sales globally"
+      },
+      {
+        "name": "Services",
+        "revenue": 23920,
+        "percentage": 0.264,
+        "formatted": "$23.9B",
+        "growth": 0.142,
+        "description": "App Store, Apple TV+, Music, iCloud, Apple Pay"
+      },
+      {
+        "name": "Mac",
+        "revenue": 7460,
+        "percentage": 0.082,
+        "formatted": "$7.5B",
+        "growth": 0.038,
+        "description": "Mac computers and laptops"
+      },
+      {
+        "name": "Wearables, Home, and Accessories",
+        "revenue": 9130,
+        "percentage": 0.101,
+        "formatted": "$9.1B",
+        "growth": -0.01,
+        "description": "Apple Watch, AirPods, HomePod, Beats"
+      },
+      {
+        "name": "iPad",
+        "revenue": 4250,
+        "percentage": 0.047,
+        "formatted": "$4.3B",
+        "growth": 0.08,
+        "description": "iPad tablets"
+      }
+    ],
+    "aiSummary": "Apple reported mixed quarterly results with revenue of $90.8B, up 4.6% year-over-year, meeting expectations. Greater China revenue declined 2.3%, missing estimates, suggesting competitive pressure in the important Chinese market. Services revenue was a highlight at $23.9B with 14.2% growth, driven by App Store, Apple Music, and iCloud with record active device install base. iPhone revenue was essentially flat at $46.0B as consumers await new AI features in the upcoming iPhone 16. Mac showed modest recovery with 3.8% growth. Management announced a new share buyback program of $110B and raised dividend, demonstrating confidence in the business. The company is preparing to launch Apple Intelligence AI features across its product lineup.",
+    "businessInsights": [
+      {
+        "title": "Services Growing Into Major Business",
+        "description": "Services reached $23.9B with 14.2% growth, now representing 26.4% of total revenue with much higher margins than hardware.",
+        "implications": "The shift to services provides more recurring, higher-margin revenue that is less cyclical."
+      },
+      {
+        "title": "China Weakness Concerning",
+        "description": "Greater China revenue declined 2.3% year-over-year, missing estimates. Huawei competition is intensifying in the premium segment.",
+        "implications": "Apple's position in China faces structural challenges as domestic brands compete aggressively."
+      },
+      {
+        "title": "AI Strategy Unveiling",
+        "description": "Apple announced Apple Intelligence at WWDC, bringing AI capabilities across iPhone, iPad, and Mac. This could drive an upgrade cycle.",
+        "implications": "On-device AI features may require new hardware, potentially driving the first significant upgrade cycle in years."
+      }
+    ],
+    "riskFactors": [
+      {
+        "category": "China Concentration",
+        "description": "Greater China represents about 18% of revenue. Competitive pressure and geopolitical risks could impact sales.",
+        "severity": "high"
+      },
+      {
+        "category": "iPhone Upgrade Cycle",
+        "description": "iPhone 15 cycle was muted. iPhone 16 AI features could drive upgrade cycle, but consumer spending is uncertain.",
+        "severity": "medium"
+      },
+      {
+        "category": "Regulatory Risk",
+        "description": "EU Digital Markets Act enforcement and potential antitrust actions globally could impact App Store business.",
+        "severity": "medium"
+      },
+      {
+        "category": "Smartphone Market Saturation",
+        "description": "Premium smartphone market is mature. Future growth depends on AI-driven upgrades.",
+        "severity": "low"
+      }
+    ],
+    "questionsToWatch": [
+      "Will Apple Intelligence drive meaningful iPhone upgrade cycle?",
+      "How does China competition evolve over next 12 months?",
+      "What is the services growth trajectory as install base matures?",
+      "How fast is Vision Pro adoption scaling?",
+      "Will AI features justify premium pricing?"
+    ],
+    "guidance": {
+      "revenue": "$83.0B - $87.0B",
+      "comments": "Services growth expected to continue. iPhone dependent on market conditions."
+    },
+    "sources": ["SEC EDGAR 10-Q Filing", "Apple Investor Relations", "Q2 FY2024 Earnings Call Transcript"]
+  },
+  "ASML": {
+    "ticker": "ASML",
+    "companyName": "ASML Holding N.V.",
+    "exchange": "Euronext Amsterdam",
+    "fiscalYearEnd": "December",
+    "hq": "Veldhoven, Netherlands",
+    "latestFiling": {
+      "type": "Annual Report 2023",
+      "date": "2024-01-24",
+      "period": "FY2023"
+    },
+    "financials": {
+      "revenue": {
+        "value": 27600,
+        "unit": "EUR millions",
+        "formatted": "€27.6B",
+        "growth": 0.30,
+        "growthFormatted": "+30.0% YoY"
+      },
+      "grossProfit": {
+        "value": 15730,
+        "margin": 0.57
+      },
+      "operatingIncome": {
+        "value": 7790,
+        "margin": 0.282
+      },
+      "netIncome": {
+        "value": 6100,
+        "margin": 0.221
+      },
+      "eps": {
+        "value": 15.53,
+        "growth": 0.35
+      }
+    },
+    "segments": [
+      {
+        "name": "EUV Systems",
+        "revenue": 9150,
+        "percentage": 0.331,
+        "formatted": "€9.2B",
+        "growth": 0.35,
+        "description": "Extreme Ultraviolet lithography systems for leading-edge chips"
+      },
+      {
+        "name": "DUV Systems",
+        "revenue": 15900,
+        "percentage": 0.576,
+        "formatted": "€15.9B",
+        "growth": 0.25,
+        "description": "Deep Ultraviolet systems for mature and advanced nodes"
+      },
+      {
+        "name": "Installed Base Management",
+        "revenue": 2550,
+        "percentage": 0.092,
+        "formatted": "€2.6B",
+        "growth": 0.15,
+        "description": "Modifications, upgrades, and services"
+      }
+    ],
+    "aiSummary": "ASML reported another strong year with revenue of €27.6B, up 30% year-over-year, driven by surging demand for both EUV and DUV lithography systems. EUV systems revenue grew 35% as chipmakers like TSMC, Samsung, and Intel ramp advanced node capacity. The backlog remains at record levels, with order intake exceeding €20B. Gross margin expanded to 57% due to product mix and manufacturing efficiencies. ASML is the sole supplier of EUV lithography, creating an effective monopoly for leading-edge chip manufacturing. The company is ramping production capacity while managing the transition to High-NA EUV (EXE) technology, with first shipments to customers. Geopolitical tensions, particularly US-China tech conflict, create uncertainty around China market access.",
+    "businessInsights": [
+      {
+        "title": "EUV Monopoly Solidifies",
+        "description": "ASML remains the sole supplier of EUV lithography systems. Every leading-edge chip (3nm, 2nm) requires ASML EUV machines.",
+        "implications": "This provides pricing power and customer lock-in unmatched in the semiconductor equipment industry."
+      },
+      {
+        "title": "AI Driving Capacity Expansion",
+        "description": "AI chip demand is driving unprecedented fab expansion globally. TSMC, Samsung, Intel, and others are building new capacity requiring ASML systems.",
+        "implications": "The structural demand for leading-edge lithography exceeds supply for the foreseeable future."
+      },
+      {
+        "title": "High-NA EUV Transition",
+        "description": "The new High-NA EUV (EXE) platform enables further scaling for future chip generations. First tools are shipping.",
+        "implications": "High-NA EUV represents next growth vector with higher average selling prices."
+      }
+    ],
+    "riskFactors": [
+      {
+        "category": "Geopolitical Risk",
+        "description": "US export controls restrict shipments of advanced EUV systems to China. Further restrictions could impact revenue.",
+        "severity": "high"
+      },
+      {
+        "category": "Customer Concentration",
+        "description": "TSMC represents roughly 30% of revenue. If TSMC slows expansion, impact would be significant.",
+        "severity": "medium"
+      },
+      {
+        "category": "Technology Risk",
+        "description": "High-NA EUV development is complex. Delays or technical issues could affect competitiveness.",
+        "severity": "low"
+      },
+      {
+        "category": "Capacity Constraints",
+        "description": "ASML is hiring rapidly to increase capacity. Execution risk exists in scaling manufacturing.",
+        "severity": "low"
+      }
+    ],
+    "questionsToWatch": [
+      "What is the High-NA EUV ramp timeline and margin profile?",
+      "How does US-China technology conflict evolve?",
+      "What is the order backlog composition by region?",
+      "How fast can manufacturing capacity scale?",
+      "Is there emerging EUV competition?"
+    ],
+    "guidance": {
+      "revenue": "€28.0B - €30.0B",
+      "comments": "Strong order demand expected to continue. Capacity ramp ongoing."
+    },
+    "sources": ["ASML Annual Report 2023", "ASML Investor Relations", "FY2023 Results Presentation"]
+  },
+  "SAP": {
+    "ticker": "SAP",
+    "companyName": "SAP SE",
+    "exchange": "Xetra Frankfurt",
+    "fiscalYearEnd": "December",
+    "hq": "Walldorf, Germany",
+    "latestFiling": {
+      "type": "Annual Report 2023",
+      "date": "2024-02-20",
+      "period": "FY2023"
+    },
+    "financials": {
+      "revenue": {
+        "value": 33700,
+        "unit": "EUR millions",
+        "formatted": "€33.7B",
+        "growth": 0.093,
+        "growthFormatted": "+9.3% YoY"
+      },
+      "grossProfit": {
+        "value": 24050,
+        "margin": 0.714
+      },
+      "operatingIncome": {
+        "value": 5440,
+        "margin": 0.161
+      },
+      "netIncome": {
+        "value": 4120,
+        "margin": 0.122
+      },
+      "eps": {
+        "value": 3.54,
+        "growth": 0.15
+      }
+    },
+    "segments": [
+      {
+        "name": "Cloud",
+        "revenue": 14370,
+        "percentage": 0.426,
+        "formatted": "€14.4B",
+        "growth": 0.22,
+        "description": "S/4HANA Cloud, SuccessFactors, Concur, Qualtrics"
+      },
+      {
+        "name": "Cloud and Software",
+        "revenue": 27200,
+        "percentage": 0.807,
+        "formatted": "€27.2B",
+        "growth": 0.08,
+        "description": "Total cloud and software revenue"
+      },
+      {
+        "name": "Services",
+        "revenue": 6500,
+        "percentage": 0.193,
+        "formatted": "€6.5B",
+        "growth": 0.05,
+        "description": "Implementation, consulting, and training services"
+      }
+    ],
+    "aiSummary": "SAP reported solid results with total revenue of €33.7B, up 9.3% year-over-year, driven by strong cloud growth of 22% reaching €14.4B. Cloud revenue now exceeds 42% of total revenue, accelerating the transition to SaaS. S/4HANA Cloud revenue grew 38%, with over 10,000 customers now on the next-generation ERP platform. The company maintained its 2025 cloud growth target of 20%+ while improving profitability. Operating margin expanded as cloud mix increases. SAP is integrating AI capabilities (Joule AI assistant) across its cloud portfolio. The company is simplifying its product portfolio while maintaining enterprise customer relationships. Professional services revenue growth is slowing as more customers adopt cloud-only deployments.",
+    "businessInsights": [
+      {
+        "title": "Cloud Transition Accelerating",
+        "description": "Cloud revenue grew 22% to €14.4B, now representing 42.6% of total revenue. This is shifting the business model to recurring revenue.",
+        "implications": "Higher margins and predictability as cloud subscriptions grow vs. one-time license revenue."
+      },
+      {
+        "title": "S/4HANA Momentum",
+        "description": "S/4HANA Cloud grew 38% with over 10,000 customers. The ERP migration cycle provides a multi-year runway.",
+        "implications": "Legacy ERP customers are converting, providing revenue visibility."
+      },
+      {
+        "title": "AI Integration",
+        "description": "Joule AI assistant is being integrated across cloud portfolio. Early customer feedback is positive.",
+        "implications": "AI features could drive additional adoption and competitive differentiation."
+      }
+    ],
+    "riskFactors": [
+      {
+        "category": "Implementation Complexity",
+        "description": "Enterprise ERP implementations are complex and costly. Customer satisfaction and time-to-value are key.",
+        "severity": "medium"
+      },
+      {
+        "category": "Competition",
+        "description": "Salesforce, Workday, ServiceNow, and Oracle compete in various cloud segments. Market share requires continued innovation.",
+        "severity": "medium"
+      },
+      {
+        "category": "Customer Concentration",
+        "description": "Large enterprise deals can cause quarterly volatility. No single customer exceeds 2% of revenue.",
+        "severity": "low"
+      },
+      {
+        "category": "Currency Fluctuation",
+        "description": "As a German company reporting in euros, currency fluctuations affect reported results.",
+        "severity": "low"
+      }
+    ],
+    "questionsToWatch": [
+      "What is the S/4HANA conversion pace and customer satisfaction?",
+      "How quickly does cloud revenue reach 65%+ of total?",
+      "What is Joule AI adoption velocity?",
+      "How does competition affect pricing in core ERP market?",
+      "Will operating margins continue expanding?"
+    ],
+    "guidance": {
+      "revenue": "€35.0B - €37.0B",
+      "comments": "Cloud growth of 20%+ expected. Operating margin improvement to continue."
+    },
+    "sources": ["SAP Annual Report 2023", "SAP Investor Relations", "FY2023 Full Year Results"]
+  },
+  "GOOGL": {
+    "ticker": "GOOGL",
+    "companyName": "Alphabet Inc.",
+    "fiscalYearEnd": "December",
+    "latestFiling": {
+      "type": "10-Q",
+      "date": "2024-04-23",
+      "period": "Q1 2024 (ended March 31, 2024)"
+    },
+    "financials": {
+      "revenue": {
+        "value": 80540,
+        "unit": "USD millions",
+        "formatted": "$80.5B",
+        "growth": 0.154,
+        "growthFormatted": "+15.4% YoY"
+      },
+      "grossProfit": {
+        "value": 44280,
+        "margin": 0.55
+      },
+      "operatingIncome": {
+        "value": 25470,
+        "margin": 0.316
+      },
+      "netIncome": {
+        "value": 23660,
+        "margin": 0.294
+      },
+      "eps": {
+        "value": 1.89,
+        "growth": 0.612
+      }
+    },
+    "segments": [
+      {
+        "name": "Google Services",
+        "revenue": 70370,
+        "percentage": 0.874,
+        "formatted": "$70.4B",
+        "growth": 0.145,
+        "description": "Search, YouTube ads, and hardware"
+      },
+      {
+        "name": "Google Cloud",
+        "revenue": 9530,
+        "percentage": 0.118,
+        "formatted": "$9.5B",
+        "growth": 0.282,
+        "description": "Google Cloud Platform and Workspace"
+      },
+      {
+        "name": "Other Bets",
+        "revenue": 440,
+        "percentage": 0.005,
+        "formatted": "$440M",
+        "growth": 0.047,
+        "description": "Waymo, Verily, and other experimental ventures"
+      }
+    ],
+    "aiSummary": "Alphabet reported strong Q1 results with revenue of $80.5B, up 15.4% year-over-year, driven by robust advertising growth and accelerating Cloud performance. Google Search revenue grew 14% as AI-enhanced search results improved click-through rates. YouTube advertising reached $8.1B with strong growth in direct response and brand advertising. Google Cloud grew an impressive 28.2% to $9.5B, driven by AI workloads and enterprise migration. The Gemini AI model is being integrated across products with positive user engagement. Management announced the first dividend and $70B share buyback, signaling confidence in cash generation. Operating margins expanded to 31.6% as efficiency initiatives pay off.",
+    "businessInsights": [
+      {
+        "title": "Search Remains Resilient",
+        "description": "Google Search revenue grew 14% despite competition from AI alternatives. AI Overviews are improving user satisfaction and keeping users on Google.",
+        "implications": "Search remains the core cash engine, adapting well to AI era."
+      },
+      {
+        "title": "Cloud Turnaround Complete",
+        "description": "Google Cloud grew 28.2%, gaining momentum against AWS and Azure. AI platform services seeing strong adoption.",
+        "implications": "Cloud is becoming a meaningful profit contributor, not just a strategic bet."
+      },
+      {
+        "title": "AI Integration Driving Engagement",
+        "description": "Gemini integration across Search, Maps, and Android is improving user experience. AI features increasing time spent on platform.",
+        "implications": "AI enhancements are defensive (keeping users) and offensive (new use cases)."
+      }
+    ],
+    "riskFactors": [
+      {
+        "category": "AI Competition",
+        "description": "OpenAI, Microsoft, and Perplexity are competing for search queries. Google must demonstrate continued relevance.",
+        "severity": "medium"
+      },
+      {
+        "category": "Regulatory Risk",
+        "description": "Ongoing antitrust cases in US and EU could impact Search default agreements and ad business.",
+        "severity": "high"
+      },
+      {
+        "category": "AI Infrastructure Costs",
+        "description": "Building and training frontier models is capital intensive. ROI must be demonstrated.",
+        "severity": "medium"
+      },
+      {
+        "category": "Ad Market Sensitivity",
+        "description": "Economic downturn could reduce advertiser spending on Search and YouTube.",
+        "severity": "low"
+      }
+    ],
+    "questionsToWatch": [
+      "How is AI Overviews affecting Search monetization?",
+      "What is the Cloud margin trajectory?",
+      "How quickly is Gemini gaining market share?",
+      "What is the regulatory outcome for Search?",
+      "How does advertising market share compare to competitors?"
+    ],
+    "guidance": {
+      "revenue": "$84.0B - $86.0B",
+      "comments": "Strong momentum expected to continue. AI investments driving growth."
+    },
+    "sources": ["SEC EDGAR 10-Q Filing", "Alphabet Investor Relations", "Q1 2024 Earnings Call"]
+  },
+  "AMZN": {
+    "ticker": "AMZN",
+    "companyName": "Amazon.com, Inc.",
+    "fiscalYearEnd": "December",
+    "latestFiling": {
+      "type": "10-Q",
+      "date": "2024-04-30",
+      "period": "Q1 2024 (ended March 31, 2024)"
+    },
+    "financials": {
+      "revenue": {
+        "value": 143310,
+        "unit": "USD millions",
+        "formatted": "$143.3B",
+        "growth": 0.125,
+        "growthFormatted": "+12.5% YoY"
+      },
+      "grossProfit": {
+        "value": 68870,
+        "margin": 0.48
+      },
+      "operatingIncome": {
+        "value": 15310,
+        "margin": 0.107
+      },
+      "netIncome": {
+        "value": 10430,
+        "margin": 0.073
+      },
+      "eps": {
+        "value": 0.98,
+        "growth": 0.998
+      }
+    },
+    "segments": [
+      {
+        "name": "North America",
+        "revenue": 86300,
+        "percentage": 0.602,
+        "formatted": "$86.3B",
+        "growth": 0.11,
+        "description": "E-commerce and retail operations in North America"
+      },
+      {
+        "name": "International",
+        "revenue": 31920,
+        "percentage": 0.223,
+        "formatted": "$31.9B",
+        "growth": 0.05,
+        "description": "E-commerce and retail in Europe, Asia, and other"
+      },
+      {
+        "name": "AWS",
+        "revenue": 25040,
+        "percentage": 0.175,
+        "formatted": "$25.0B",
+        "growth": 0.17,
+        "description": "Amazon Web Services cloud computing"
+      }
+    ],
+    "aiSummary": "Amazon reported strong Q1 results with revenue of $143.3B, up 12.5% year-over-year, with accelerated growth across all segments. AWS revenue grew 17% to $25B, recovering from the 2023 slowdown as enterprises increase cloud spending for AI workloads. Advertising revenue grew 24% to $11B, showing strong momentum. The e-commerce business showed margin improvement through regionalization and logistics optimization. Amazon announced a new $10B investment in AI infrastructure for AWS. Same-day delivery expansion continues to drive Prime membership growth. The company is integrating generative AI across its consumer and enterprise products.",
+    "businessInsights": [
+      {
+        "title": "AWS Recovery Underway",
+        "description": "AWS grew 17% after a challenging 2023. AI workloads are driving new customer acquisition and expansion.",
+        "implications": "AWS returns to growth trajectory with AI as catalyst."
+      },
+      {
+        "title": "Advertising Emerges as High-Margin Business",
+        "description": "Ads grew 24% to $11B, now representing nearly 8% of revenue with high margins.",
+        "implications": "Advertising is becoming a significant profit contributor."
+      },
+      {
+        "title": "E-commerce Margins Improving",
+        "description": "North America retail margins improved through logistics efficiency and regionalization.",
+        "implications": "Scale benefits are finally translating to profitability."
+      }
+    ],
+    "riskFactors": [
+      {
+        "category": "Macro Economic Sensitivity",
+        "description": "Consumer spending weakness could impact e-commerce growth rates.",
+        "severity": "medium"
+      },
+      {
+        "category": "Cloud Competition",
+        "description": "Microsoft Azure and Google Cloud are gaining share in AI workloads.",
+        "severity": "medium"
+      },
+      {
+        "category": "Regulatory Scrutiny",
+        "description": "Antitrust concerns around marketplace practices and logistics dominance.",
+        "severity": "medium"
+      },
+      {
+        "category": "Labor Costs",
+        "description": "Warehouse and delivery labor costs remain elevated.",
+        "severity": "low"
+      }
+    ],
+    "questionsToWatch": [
+      "What is the AWS AI workload mix and growth trajectory?",
+      "How fast can advertising revenue scale?",
+      "What is the Prime membership growth rate?",
+      "How are international operations performing?",
+      "What is the margin expansion timeline for retail?"
+    ],
+    "guidance": {
+      "revenue": "$144.0B - $148.0B",
+      "comments": "Strong momentum across all businesses. AI driving incremental demand."
+    },
+    "sources": ["SEC EDGAR 10-Q Filing", "Amazon Investor Relations", "Q1 2024 Earnings Call"]
+  },
+  "META": {
+    "ticker": "META",
+    "companyName": "Meta Platforms, Inc.",
+    "fiscalYearEnd": "December",
+    "latestFiling": {
+      "type": "10-Q",
+      "date": "2024-04-25",
+      "period": "Q1 2024 (ended March 31, 2024)"
+    },
+    "financials": {
+      "revenue": {
+        "value": 36455,
+        "unit": "USD millions",
+        "formatted": "$36.5B",
+        "growth": 0.27,
+        "growthFormatted": "+27.0% YoY"
+      },
+      "grossProfit": {
+        "value": 27760,
+        "margin": 0.761
+      },
+      "operatingIncome": {
+        "value": 13820,
+        "margin": 0.379
+      },
+      "netIncome": {
+        "value": 12370,
+        "margin": 0.339
+      },
+      "eps": {
+        "value": 4.71,
+        "growth": 0.886
+      }
+    },
+    "segments": [
+      {
+        "name": "Family of Apps",
+        "revenue": 36100,
+        "percentage": 0.99,
+        "formatted": "$36.1B",
+        "growth": 0.27,
+        "description": "Facebook, Instagram, WhatsApp, and Messenger"
+      },
+      {
+        "name": "Reality Labs",
+        "revenue": 355,
+        "percentage": 0.01,
+        "formatted": "$355M",
+        "growth": 0.30,
+        "description": "VR/AR products and content"
+      }
+    ],
+    "aiSummary": "Meta reported outstanding Q1 results with revenue of $36.5B, up 27% year-over-year, driven by strong advertising recovery and Reels monetization. Family daily active people reached 3.27B across all apps. AI-powered ad targeting improvements are driving higher ROI for advertisers, resulting in strong ad revenue growth of 27%. Instagram Reels are now generating significant ad revenue and reducing time spent on competing platforms. Meta is deploying Llama 3 across its products and offering it as an enterprise AI platform. Operating margins expanded to 37.9% as revenue scales faster than expenses. The company announced significant AI infrastructure investments for 2024.",
+    "businessInsights": [
+      {
+        "title": "Reels Monetization Maturing",
+        "description": "Reels ad revenue is now material, helping Meta compete with TikTok for time spent.",
+        "implications": "Short-form video is now profitable, not just defensive."
+      },
+      {
+        "title": "AI Targeting Driving Ad ROI",
+        "description": "Advancements in AI ad targeting are improving conversion rates, attracting more advertisers.",
+        "implications": "Meta's ad tech advantage is widening vs. competitors."
+      },
+      {
+        "title": "Llama Becoming Enterprise Standard",
+        "description": "Llama 3 is gaining traction as an open-source enterprise AI option.",
+        "implications": "Meta is positioning for AI infrastructure revenue."
+      }
+    ],
+    "riskFactors": [
+      {
+        "category": "Content Moderation",
+        "description": "Regulatory pressure and brand safety concerns could impact advertiser confidence.",
+        "severity": "medium"
+      },
+      {
+        "category": "TikTok Competition",
+        "description": "Despite Reels progress, TikTok remains a formidable competitor for user time.",
+        "severity": "medium"
+      },
+      {
+        "category": "Reality Labs Losses",
+        "description": "Reality Labs continues to generate significant losses, though slowing growth rate.",
+        "severity": "low"
+      },
+      {
+        "category": "AI Investment Requirements",
+        "description": "Significant capex needed for AI infrastructure expansion.",
+        "severity": "medium"
+      }
+    ],
+    "questionsToWatch": [
+      "What is the Reels monetization ceiling?",
+      "How is Llama adoption progressing?",
+      "What are the Reality Labs milestones?",
+      "How is Threads developing?",
+      "What is the AI capex trajectory?"
+    ],
+    "guidance": {
+      "revenue": "$36.5B - $39.0B",
+      "comments": "Strong advertising demand continues. AI investments ongoing."
+    },
+    "sources": ["SEC EDGAR 10-Q Filing", "Meta Investor Relations", "Q1 2024 Earnings Call"]
+  },
+  "TSLA": {
+    "ticker": "TSLA",
+    "companyName": "Tesla, Inc.",
+    "fiscalYearEnd": "December",
+    "latestFiling": {
+      "type": "10-Q",
+      "date": "2024-04-23",
+      "period": "Q1 2024 (ended March 31, 2024)"
+    },
+    "financials": {
+      "revenue": {
+        "value": 21300,
+        "unit": "USD millions",
+        "formatted": "$21.3B",
+        "growth": -0.087,
+        "growthFormatted": "-8.7% YoY"
+      },
+      "grossProfit": {
+        "value": 4500,
+        "margin": 0.211
+      },
+      "operatingIncome": {
+        "value": 1170,
+        "margin": 0.055
+      },
+      "netIncome": {
+        "value": 1130,
+        "margin": 0.053
+      },
+      "eps": {
+        "value": 0.34,
+        "growth": -0.48
+      }
+    },
+    "segments": [
+      {
+        "name": "Automotive",
+        "revenue": 17570,
+        "percentage": 0.825,
+        "formatted": "$17.6B",
+        "growth": -0.12,
+        "description": "Electric vehicle sales and leasing"
+      },
+      {
+        "name": "Energy Generation & Storage",
+        "revenue": 2710,
+        "percentage": 0.127,
+        "formatted": "$2.7B",
+        "growth": 0.80,
+        "description": "Solar, Powerwall, and Megapack"
+      },
+      {
+        "name": "Services & Other",
+        "revenue": 1020,
+        "percentage": 0.048,
+        "formatted": "$1.0B",
+        "growth": 0.25,
+        "description": "Service, used cars, and Supercharger"
+      }
+    ],
+    "aiSummary": "Tesla reported a challenging Q1 with revenue of $21.3B, down 8.7% year-over-year, as price cuts impacted automotive margins. Automotive revenue declined 12% due to lower average selling prices and softer EV demand. However, Energy storage revenue surged 80% to $2.7B, driven by Megapack deployments. Gross margin declined to 21.1% from 28.5% last year due to aggressive pricing. Management is focused on cost reduction and the upcoming next-generation affordable vehicle. The Full Self-Driving (FSD) v12 rollout is progressing, and robotaxi ambitions remain on the roadmap. Tesla is ramping production at Giga Texas and Berlin.",
+    "businessInsights": [
+      {
+        "title": "Energy Storage Becoming Significant",
+        "description": "Energy revenue grew 80% to $2.7B. Megapack demand is strong for utility-scale deployments.",
+        "implications": "Energy business is becoming a meaningful growth driver."
+      },
+      {
+        "title": "Price War Impact on Margins",
+        "description": "Gross margin declined to 21.1% as Tesla competes on price to maintain volume.",
+        "implications": "Margin pressure is the trade-off for market share."
+      },
+      {
+        "title": "Next-Gen Vehicle Coming",
+        "description": "Management confirmed next-generation affordable vehicle with 50% lower manufacturing cost.",
+        "implications": "Volume growth opportunity if cost targets are achieved."
+      }
+    ],
+    "riskFactors": [
+      {
+        "category": "EV Demand Environment",
+        "description": "Slower than expected EV adoption globally could impact volume targets.",
+        "severity": "high"
+      },
+      {
+        "category": "Margin Compression",
+        "description": "Price cuts and competition are pressuring automotive margins.",
+        "severity": "high"
+      },
+      {
+        "category": "Execution Risk (Next-Gen)",
+        "description": "Next-generation vehicle cost targets are ambitious. Delays possible.",
+        "severity": "medium"
+      },
+      {
+        "category": "FSD/Regulatory",
+        "description": "Autonomous driving regulations vary by market. Liability concerns exist.",
+        "severity": "medium"
+      }
+    ],
+    "questionsToWatch": [
+      "What is the timeline for next-gen affordable vehicle?",
+      "How far can FSD capability advance?",
+      "What is the energy storage growth trajectory?",
+      "Will margins stabilize or decline further?",
+      "What is the robotaxi regulatory pathway?"
+    ],
+    "guidance": {
+      "revenue": "Slightly lower YoY",
+      "comments": "Volume growth may be lower in 2024. Focus on cost reduction and future products."
+    },
+    "sources": ["SEC EDGAR 10-Q Filing", "Tesla Investor Relations", "Q1 2024 Earnings Call"]
+  },
+  "AMD": {
+    "ticker": "AMD",
+    "companyName": "Advanced Micro Devices, Inc.",
+    "fiscalYearEnd": "December",
+    "latestFiling": {
+      "type": "10-Q",
+      "date": "2024-04-30",
+      "period": "Q1 2024 (ended March 31, 2024)"
+    },
+    "financials": {
+      "revenue": {
+        "value": 5480,
+        "unit": "USD millions",
+        "formatted": "$5.5B",
+        "growth": 0.21,
+        "growthFormatted": "+21.0% YoY"
+      },
+      "grossProfit": {
+        "value": 2670,
+        "margin": 0.487
+      },
+      "operatingIncome": {
+        "value": 220,
+        "margin": 0.04
+      },
+      "netIncome": {
+        "value": 112,
+        "margin": 0.02
+      },
+      "eps": {
+        "value": 0.07,
+        "growth": 0.40
+      }
+    },
+    "segments": [
+      {
+        "name": "Data Center",
+        "revenue": 2300,
+        "percentage": 0.42,
+        "formatted": "$2.3B",
+        "growth": 0.62,
+        "description": "EPYC CPUs and Instinct GPUs for servers"
+      },
+      {
+        "name": "Client (PC)",
+        "revenue": 1480,
+        "percentage": 0.27,
+        "formatted": "$1.5B",
+        "growth": 0.08,
+        "description": "Ryzen CPUs for desktops and laptops"
+      },
+      {
+        "name": "Gaming",
+        "revenue": 990,
+        "percentage": 0.18,
+        "formatted": "$990M",
+        "growth": -0.06,
+        "description": "Radeon GPUs for gaming"
+      },
+      {
+        "name": "Embedded",
+        "revenue": 710,
+        "percentage": 0.13,
+        "formatted": "$710M",
+        "growth": -0.02,
+        "description": "Embedded processing for industrial and edge"
+      }
+    ],
+    "aiSummary": "AMD reported strong Q1 results with revenue of $5.5B, up 21% year-over-year, driven by Data Center growth. Data Center revenue surged 62% to $2.3B, driven by MI300X GPU ramp and EPYC CPU adoption. The MI300X is gaining traction in AI training and inference workloads as an alternative to NVIDIA. The Server CPU business is growing with Genoa and Bergamo processors. Gaming revenue declined 6% due to softer gaming GPU market. Client (PC) revenue grew 8% as PC market stabilizes. Management raised full-year AI GPU revenue guidance to $3.5B. AMD is ramping MI325X and developing MI350 for 2024-2025.",
+    "businessInsights": [
+      {
+        "title": "MI300X AI GPU Gaining Traction",
+        "description": "Data Center grew 62% as MI300X GPU wins deals against NVIDIA. Microsoft Azure, Oracle, and others deploying.",
+        "implications": "AMD is gaining AI GPU market share, though from a small base."
+      },
+      {
+        "title": "Server CPU Momentum Continues",
+        "description": "EPYC processors are gaining enterprise and cloud customer adoption.",
+        "implications": "Server CPU position is strengthening vs. Intel."
+      },
+      {
+        "title": "AI GPU Roadmap Expands",
+        "description": "MI325X shipping Q4, MI350 in development. AMD building AI ecosystem.",
+        "implications": "Sustained competitive offering expected in AI GPU market."
+      }
+    ],
+    "riskFactors": [
+      {
+        "category": "NVIDIA Ecosystem Lock-in",
+        "description": "CUDA ecosystem makes NVIDIA GPUs sticky. AMD ROCm needs continued development.",
+        "severity": "medium"
+      },
+      {
+        "category": "Competitive Response",
+        "description": "NVIDIA continues advancing GPU technology. Next-gen Blackwell competitive.",
+        "severity": "medium"
+      },
+      {
+        "category": "Gross Margin Pressure",
+        "description": "AI GPU margins are lower initially. Improving as scale increases.",
+        "severity": "low"
+      },
+      {
+        "category": "Customer Concentration",
+        "description": "Large AI deals can cause quarterly variability.",
+        "severity": "low"
+      }
+    ],
+    "questionsToWatch": [
+      "What is the MI300X order backlog?",
+      "How is ROCm ecosystem adoption progressing?",
+      "What is the competitive win rate vs. NVIDIA?",
+      "What is the MI325X ramp timeline?",
+      "What are the gross margin targets for AI GPUs?"
+    ],
+    "guidance": {
+      "revenue": "$5.7B ± $0.1B",
+      "comments": "Data Center expected to grow significantly. AI GPU demand strong."
+    },
+    "sources": ["SEC EDGAR 10-Q Filing", "AMD Investor Relations", "Q1 2024 Earnings Call"]
+  },
+  "TSM": {
+    "ticker": "TSM",
+    "companyName": "Taiwan Semiconductor Manufacturing",
+    "exchange": "NYSE (ADR)",
+    "fiscalYearEnd": "December",
+    "hq": "Hsinchu, Taiwan",
+    "latestFiling": {
+      "type": "Annual Report",
+      "date": "2024-01-18",
+      "period": "FY2023"
+    },
+    "financials": {
+      "revenue": {
+        "value": 231660,
+        "unit": "USD millions",
+        "formatted": "$69.3B*",
+        "growth": 0.175,
+        "growthFormatted": "+17.5% YoY*",
+        "note": "*USD estimates based on NT$ conversion"
+      },
+      "grossProfit": {
+        "value": 130320,
+        "margin": 0.562
+      },
+      "operatingIncome": {
+        "value": 105480,
+        "margin": 0.455
+      },
+      "netIncome": {
+        "value": 888080,
+        "margin": 0.384
+      },
+      "eps": {
+        "value": 34.15,
+        "growth": 0.20
+      }
+    },
+    "segments": [
+      {
+        "name": "Advanced Nodes (7nm and below)",
+        "revenue": 154380,
+        "percentage": 0.60,
+        "formatted": "60%",
+        "growth": 0.25,
+        "description": "Leading-edge process technology for AI and mobile"
+      },
+      {
+        "name": "Mature Nodes (16nm+)",
+        "revenue": 92640,
+        "percentage": 0.36,
+        "formatted": "36%",
+        "growth": 0.10,
+        "description": "Specialty technologies for auto, IoT, and consumer"
+      },
+      {
+        "name": "Advanced Packaging",
+        "revenue": 15480,
+        "percentage": 0.06,
+        "formatted": "6%",
+        "growth": 0.60,
+        "description": "CoWoS, InFO, and SoIC packaging"
+      }
+    ],
+    "aiSummary": "TSMC reported strong FY2023 results with revenue up 17.5% driven by AI chip demand. Advanced nodes (7nm and below) represent 60% of revenue. The AI trend is driving unprecedented demand for leading-edge capacity. CoWoS advanced packaging is a bottleneck, with AI customers seeking more capacity. N3 (3nm) is ramping well with Apple, NVIDIA, AMD, and Intel. N2 (2nm) development is on track for 2025 production. US Arizona fab is progressing, with Japan Kumamoto fab already shipping products. Geopolitical risk remains but TSMC is diversifying geographically. The company is investing $28B in 2024 capex to expand capacity.",
+    "businessInsights": [
+      {
+        "title": "AI Driving Leading-Edge Demand",
+        "description": "AI chips require leading-edge nodes. TSMC is sole supplier for most advanced AI processors.",
+        "implications": "AI secular trend directly benefits TSMC's highest-margin products."
+      },
+      {
+        "title": "Advanced Packaging Bottleneck",
+        "description": "CoWoS capacity is constrained, limiting AI chip output. Expansion underway.",
+        "implications": "Packaging capacity expansion is critical for AI chip supply chain."
+      },
+      {
+        "title": "N2 Node Development",
+        "description": "2nm technology on track for 2025 volume production.密度和性能提升显著。",
+        "implications": "TSMC maintains technology lead over Samsung and Intel Foundry."
+      }
+    ],
+    "riskFactors": [
+      {
+        "category": "Geopolitical Risk",
+        "description": "Taiwan Strait tensions create significant geopolitical risk. Diversification ongoing.",
+        "severity": "high"
+      },
+      {
+        "category": "Customer Concentration",
+        "description": "Apple, NVIDIA, AMD, and Qualcomm represent large revenue portions.",
+        "severity": "medium"
+      },
+      {
+        "category": "Capital Intensity",
+        "description": "Leading-edge fabs require massive investment. Technology risk exists.",
+        "severity": "low"
+      },
+      {
+        "category": "Cyclicality",
+        "description": "Semiconductor cycles can cause revenue volatility.",
+        "severity": "low"
+      }
+    ],
+    "questionsToWatch": [
+      "What is the AI chip demand trajectory?",
+      "How fast is CoWoS capacity expanding?",
+      "What is N2 yield progress?",
+      "How are Arizona and Japan fabs ramping?",
+      "What is the advanced node pricing trend?"
+    ],
+    "guidance": {
+      "revenue": "Mid-to-high 20% growth",
+      "comments": "AI demand remains robust. 2024 expected to be strong growth year."
+    },
+    "sources": ["TSMC Annual Report 2023", "TSMC Investor Relations", "FY2023 Earnings"]
+  }
+}
