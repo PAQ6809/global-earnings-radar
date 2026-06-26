@@ -158,6 +158,27 @@ The financials.json and companies.json contain illustrative financial informatio
 - Risk factors are prominently displayed
 - Legal disclaimers on every page
 
+## 🔐 Security Notes
+
+**Architecture**
+- Static frontend only (React + Vite)
+- No authentication system
+- No backend or server-side processing
+- No database or persistent storage
+
+**Data Handling**
+- No payment processing
+- No personal financial data collection
+- No user account system
+- Demo/sample data only (financials.json, companies.json)
+
+**Security Measures**
+- Security headers configured via vercel.json (CSP, HSTS, X-Frame-Options, etc.)
+- Static assets served via Vercel Edge Network
+- HTTPS enforced via Strict-Transport-Security header
+
+*Note: As with any web application, maintain good security practices and keep dependencies updated.*
+
 ## 📝 License
 
 MIT
