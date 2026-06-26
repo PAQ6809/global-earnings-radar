@@ -2,9 +2,16 @@
 
 A financial research assistant for US and European tech stocks. Understand earnings reports, business trends, and risk factors—in minutes.
 
-## ⚠️ Disclaimer
+## ⚠️ Important Disclaimer
 
-**This is for educational and informational purposes only.** It does not constitute investment advice, a recommendation to buy or sell any security, or an offer or solicitation of an offer to buy or sell any security. All investments involve risk, including the possible loss of principal. Past performance is not indicative of future results. Always conduct your own independent research.
+**This is an educational research tool only.**
+
+- Does NOT constitute investment advice
+- Does NOT recommend buying, selling, or holding any security
+- Does NOT provide price targets or predictions
+- All investments involve risk, including possible loss of principal
+- Past performance is not indicative of future results
+- Always conduct your own independent research
 
 ## 🚀 Quick Start
 
@@ -12,7 +19,7 @@ A financial research assistant for US and European tech stocks. Understand earni
 # Install dependencies
 npm install
 
-# Start development server
+# Start development server (runs at http://localhost:5173)
 npm run dev
 
 # Build for production
@@ -21,6 +28,18 @@ npm run build
 # Preview production build
 npm run preview
 ```
+
+## 📋 Current Status
+
+**Status: MVP / Demo**
+
+This is a minimum viable product demonstration featuring:
+- Sample financial data for demonstration purposes only
+- No backend or API integration
+- No real-time market data
+- Static mock data (financials.json, companies.json)
+
+All financial information presented should be verified from official sources before making any investment decisions.
 
 ## 📁 Project Structure
 
@@ -45,7 +64,7 @@ global-earnings-radar/
 │   │   ├── Privacy.jsx
 │   │   ├── Terms.jsx
 │   │   └── SiteDisclaimer.jsx
-│   ├── data/            # Mock data
+│   ├── data/            # Sample demo data
 │   │   ├── companies.json (11 companies)
 │   │   ├── financials.json
 │   │   └── glossary.json
@@ -54,8 +73,6 @@ global-earnings-radar/
 │   ├── App.jsx
 │   └── main.jsx
 ├── public/
-│   ├── radar.svg
-│   └── og-image.svg
 ├── index.html
 ├── package.json
 └── vite.config.js
@@ -63,20 +80,21 @@ global-earnings-radar/
 
 ## 🎯 Features
 
-### Current Features (MVP)
+### Current Features (Demo/MVP)
 - Landing page with company showcase
 - 11 company dashboards (NVDA, MSFT, AAPL, ASML, SAP, GOOGL, AMZN, META, TSLA, AMD, TSM)
-- Earnings summary cards with AI-generated insights
+- Earnings summary cards with analysis framework
 - Business segment analysis
 - Risk factor analysis
 - Sector-based browsing (AI, Semiconductors, SaaS, Cloud, Consumer Tech)
 - Financial glossary with 20+ terms
 - Internal search (companies and glossary terms)
 - Dark mode toggle (with system preference detection)
-- Pricing page (mock)
-- Waitlist signup form (mock)
-- Legal pages (Privacy, Terms, Disclaimer - draft only)
+- Pricing page (preview/coming soon)
+- Waitlist signup form
+- Legal pages (Privacy, Terms, Disclaimer)
 - 404 NotFound page
+- Liquid Glass continuous scroll landing page
 - Mobile responsive design
 - Basic SEO meta tags
 
@@ -109,35 +127,34 @@ global-earnings-radar/
 - **Framework**: React 18
 - **Routing**: React Router v6
 - **Build Tool**: Vite
-- **Styling**: Plain CSS (CSS Variables)
+- **Styling**: Plain CSS with CSS Variables
 - **State**: React Context (Dark Mode)
 
-## 🎨 Customization
+## 🎨 Design
 
-### Dark Mode
-Dark mode is enabled by default based on system preference. Users can toggle between light and dark mode via the button in the navigation bar. Preference is saved to localStorage.
+Apple-inspired Liquid Glass UI with:
+- Continuous gradient background
+- Glass morphism cards
+- Dark mode support
+- Responsive design
 
-### Search
-Use the search bar in the navigation to quickly find:
-- Companies by ticker or name
-- Glossary terms by term or definition
+## 📖 Data Disclaimer
 
-## 📖 Data Sources
+**All data in this demo is sample data for product demonstration.**
 
-All data in this MVP is mock data for demonstration purposes. Future versions will use:
+The financials.json and companies.json contain illustrative financial information. For actual investment decisions:
+1. Verify all data from official company filings (SEC EDGAR, annual reports)
+2. Consult qualified financial advisors
+3. Conduct your own due diligence
 
-- SEC EDGAR (US companies)
-- EU company registers (European companies)
-- Public investor relations materials
-
-## 🔒 Compliance Notes
+## 🔒 Compliance
 
 - All financial content is clearly labeled as educational
 - No buy/sell/hold recommendations
 - No price targets or predictions
-- Sources are always cited
+- No guaranteed returns
 - Risk factors are prominently displayed
-- Legal pages are clearly marked as drafts
+- Legal disclaimers on every page
 
 ## 📝 License
 
@@ -145,4 +162,4 @@ MIT
 
 ---
 
-*Built with Claude Code. For educational purposes only.*
+*Built with Claude Code. Educational purposes only.*

@@ -74,6 +74,7 @@ function Navbar() {
         <button
           className="nav-mobile-toggle"
           aria-label="Toggle menu"
+          aria-expanded={mobileMenuOpen}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? '✕' : '☰'}

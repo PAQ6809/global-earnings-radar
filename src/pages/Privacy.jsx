@@ -13,12 +13,12 @@ export default function Privacy() {
 
       <div className="container">
         <div className="legal-content">
-          <div className="legal-notice">
-            <strong>⚠️ DRAFT DOCUMENT</strong> — This is a placeholder privacy policy for development purposes only.
-            It does not constitute a legally binding document. Consult a qualified attorney before use.
-          </div>
+          <p className="legal-date">Last Updated: June 2026</p>
 
-          <p className="legal-date">Last Updated: June 2024</p>
+          <div className="disclaimer-box">
+            <strong>Demo Notice:</strong> Global Earnings Radar is an educational research tool demonstration.
+            This privacy policy describes our intended practices and may be updated as the service evolves.
+          </div>
 
           <h2>1. Information We Collect</h2>
           <p>
@@ -113,8 +113,7 @@ export default function Privacy() {
 
           <div className="legal-footer">
             <p>
-              <strong>Disclaimer:</strong> This document is for educational and development purposes only.
-              It is not a substitute for professional legal advice.
+              <strong>Note:</strong> This is an educational research tool, not a licensed financial advisor.
             </p>
           </div>
         </div>

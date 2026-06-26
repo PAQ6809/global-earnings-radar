@@ -66,9 +66,11 @@ export default function Search() {
 
   return (
     <div className="search-container" ref={containerRef}>
+      <label htmlFor="search-input" className="sr-only">Search companies or terms</label>
       <div className="search-input-wrapper">
-        <span className="search-icon">🔍</span>
+        <span className="search-icon" aria-hidden="true">🔍</span>
         <input
+          id="search-input"
           ref={inputRef}
           type="text"
           className="search-input"
@@ -81,6 +83,7 @@ export default function Search() {
         {query && (
           <button
             className="search-clear"
+            aria-label="Clear search"
             onClick={() => { setQuery(''); inputRef.current?.focus() }}
           >
             ×

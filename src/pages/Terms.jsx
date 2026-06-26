@@ -13,12 +13,12 @@ export default function Terms() {
 
       <div className="container">
         <div className="legal-content">
-          <div className="legal-notice">
-            <strong>⚠️ DRAFT DOCUMENT</strong> — This is a placeholder terms of service for development purposes only.
-            It does not constitute a legally binding document. Consult a qualified attorney before use.
-          </div>
+          <p className="legal-date">Last Updated: June 2026</p>
 
-          <p className="legal-date">Last Updated: June 2024</p>
+          <div className="disclaimer-box">
+            <strong>Demo Notice:</strong> Global Earnings Radar is an educational research tool demonstration.
+            All content is for educational purposes only. Please read the full terms below.
+          </div>
 
           <h2>1. Acceptance of Terms</h2>
           <p>
@@ -83,7 +83,7 @@ export default function Terms() {
 
           <h2>7. Accuracy of Information</h2>
           <p>
-            While we strive to provide accurate and up-to-date information, we make no guarantees about:
+            While we strive to provide accurate information, we make no guarantees about:
           </p>
           <ul>
             <li>The accuracy, completeness, or reliability of any content</li>
@@ -139,8 +139,7 @@ export default function Terms() {
 
           <div className="legal-footer">
             <p>
-              <strong>Disclaimer:</strong> This document is for educational and development purposes only.
-              It is not a substitute for professional legal advice.
+              <strong>Note:</strong> This is an educational research tool, not a licensed financial advisor.
             </p>
           </div>
         </div>
