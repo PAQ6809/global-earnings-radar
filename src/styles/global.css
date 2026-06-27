@@ -5134,3 +5134,113 @@ button:focus-visible {
     padding: 1rem;
   }
 }
+
+/* ============================================
+   Pricing Matrix Final Readability Fix
+   ============================================ */
+
+.feature-matrix {
+  background: #ffffff !important;
+  border: 1px solid rgba(17, 24, 39, 0.12) !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+}
+
+.feature-matrix-header {
+  background: linear-gradient(135deg, #0b74de 0%, #5956d6 100%) !important;
+  color: #ffffff !important;
+}
+
+.feature-matrix-header .matrix-feature-col,
+.feature-matrix-header .matrix-tier-col {
+  color: #ffffff !important;
+  background: transparent !important;
+  font-weight: 800 !important;
+}
+
+.feature-matrix-row {
+  background: #ffffff !important;
+  border-bottom: 1px solid rgba(17, 24, 39, 0.12) !important;
+}
+
+.feature-matrix-row:nth-child(even),
+.feature-matrix-row:nth-child(odd) {
+  background: #ffffff !important;
+}
+
+.feature-matrix-row .matrix-feature-col {
+  color: #1f2937 !important;
+  background: transparent !important;
+  font-weight: 600 !important;
+}
+
+.feature-matrix-row .matrix-tier-col {
+  color: #111827 !important;
+  background: transparent !important;
+  font-weight: 600 !important;
+}
+
+.dark-mode .feature-matrix {
+  background: #0f172a !important;
+  border-color: rgba(148, 163, 184, 0.28) !important;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.42) !important;
+}
+
+.dark-mode .feature-matrix-header {
+  background: linear-gradient(135deg, #0b74de 0%, #5956d6 100%) !important;
+}
+
+.dark-mode .feature-matrix-header .matrix-feature-col,
+.dark-mode .feature-matrix-header .matrix-tier-col {
+  color: #ffffff !important;
+  background: transparent !important;
+}
+
+.dark-mode .feature-matrix-row {
+  background: #111827 !important;
+  border-bottom-color: rgba(148, 163, 184, 0.22) !important;
+}
+
+.dark-mode .feature-matrix-row:nth-child(even) {
+  background: #0f172a !important;
+}
+
+.dark-mode .feature-matrix-row:nth-child(odd) {
+  background: #111827 !important;
+}
+
+.dark-mode .feature-matrix-row .matrix-feature-col {
+  color: #f8fafc !important;
+  background: transparent !important;
+}
+
+.dark-mode .feature-matrix-row .matrix-tier-col {
+  color: #e5e7eb !important;
+  background: transparent !important;
+}
+
+.dark-mode .check-icon {
+  color: #22c55e !important;
+}
+
+.dark-mode .preview-label-sm {
+  background: rgba(59, 130, 246, 0.24) !important;
+  color: #93c5fd !important;
+}
+
+.dark-mode .feature-matrix + p,
+.dark-mode .feature-matrix-legend,
+.dark-mode .pricing-legend {
+  color: #cbd5e1 !important;
+}
+
+@media (max-width: 760px) {
+  .feature-matrix {
+    overflow-x: auto !important;
+  }
+
+  .feature-matrix-header,
+  .feature-matrix-row {
+    min-width: 720px !important;
+  }
+}
