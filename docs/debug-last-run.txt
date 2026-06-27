@@ -1,0 +1,51 @@
+﻿Global Earnings Radar Site Debug
+GeneratedAt: 2026-06-28 03:37:22 +08:00
+Machine: LAPTOP-JPH6V3PN
+
+
+Testing [GET] https://global-earnings-radar.vercel.app/
+StatusCode: 200
+ContentType: text/html; charset=utf-8
+Length: 2586
+
+Testing [GET] https://global-earnings-radar.vercel.app/pricing
+StatusCode: 200
+ContentType: text/html; charset=utf-8
+Length: 2586
+
+Testing [GET] https://global-earnings-radar.vercel.app/market
+StatusCode: 200
+ContentType: text/html; charset=utf-8
+Length: 2586
+
+Testing [GET] https://global-earnings-radar.vercel.app/api/market-quote?symbol=NVDA
+StatusCode: 200
+ContentType: application/json
+Length: 546
+
+Testing [GET] https://global-earnings-radar.vercel.app/api/market-search?q=tesla
+StatusCode: 200
+ContentType: application/json
+Length: 130
+
+Testing [POST] https://global-earnings-radar.vercel.app/api/create-ecpay-payment
+ERROR: 遠端伺服器傳回一個錯誤: (500) 內部伺服器錯誤。
+
+DNS Lookup
+未經授權的回答:
+System.Management.Automation.RemoteException
+伺服器:  UnKnown
+Address:  192.168.0.1
+
+名稱:    global-earnings-radar.vercel.app
+Addresses:  216.198.79.131
+	  64.29.17.131
+
+
+HTTPS Connectivity
+ComputerName: global-earnings-radar.vercel.app
+RemoteAddress: 64.29.17.131
+RemotePort: 443
+InterfaceAlias: Wi-Fi
+SourceAddress: MSFT_NetIPAddress (Name = ";C?8;@B8:8;;55;?55;55;", CreationClassName = "", SystemCreationClassName = "", SystemName = "")
+TcpTestSucceeded: True

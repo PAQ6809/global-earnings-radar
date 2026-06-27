@@ -505,3 +505,23 @@ MIT
 *Built with Claude Code. Educational purposes only.*
 
 
+
+## Debug Workflow
+
+When the production site cannot be opened, a route looks stale, or an API behaves unexpectedly, run the website debug script before starting new feature work.
+
+~~~powershell
+powershell -ExecutionPolicy Bypass -File scripts/debug-site.ps1
+~~~
+
+The latest output is saved to:
+
+~~~text
+docs/debug-last-run.txt
+~~~
+
+See:
+
+~~~text
+docs/WEBSITE_DEBUG_RUNBOOK.md
+~~~
