@@ -18,9 +18,9 @@ const getCompany = (ticker) => {
 
 // Research workspace locked features
 const lockedFeatures = [
-  { icon: '??', title: 'Research Notes', description: 'Personal annotations and investment thesis' },
+  { icon: 'RN', title: 'Research Notes', description: 'Personal annotations and investment thesis' },
   { icon: '??', title: 'Saved Comparisons', description: 'Return to your comparison sets' },
-  { icon: '??', title: 'Earnings Reminders', description: 'Calendar alerts before earnings' },
+  { icon: 'ER', title: 'Earnings Reminders', description: 'Calendar alerts before earnings' },
   { icon: '?', title: 'Export Queue', description: 'PDF or Markdown export list' },
   { icon: '?', title: 'Team Workspace', description: 'Shared research for teams' }
 ]
@@ -69,7 +69,7 @@ export default function Watchlist() {
               Your Watchlist
             </h2>
             <p style={{ color: 'var(--gray-500)', fontSize: '0.9rem' }}>
-              Sample watchlist ??data from cached sample dataset
+              Sample watchlist data from cached sample dataset
             </p>
           </div>
 
@@ -178,7 +178,7 @@ export default function Watchlist() {
         {/* Navigation */}
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link to="/research" className="btn btn-outline">
-            ??Research Preview
+            Research Preview
           </Link>
           <Link to="/compare" className="btn btn-secondary">
             Compare Preview
@@ -191,5 +191,6 @@ export default function Watchlist() {
     </div>
   )
 }
+
 
 

@@ -754,7 +754,7 @@ button:focus-visible {
 }
 
 .pricing-features li::before {
-  content: "??;
+  content: "";
   color: var(--success);
   margin-right: 10px;
   font-weight: 500;
@@ -926,7 +926,7 @@ button:focus-visible {
 }
 
 .summary-section li::before {
-  content: "??;
+  content: "";
   position: absolute;
   left: 0;
   color: var(--gray-400);
@@ -1086,7 +1086,7 @@ button:focus-visible {
 }
 
 .pricing-features li::before {
-  content: "??;
+  content: "";
   color: var(--success);
   margin-right: 0.5rem;
 }
@@ -4204,7 +4204,7 @@ button:focus-visible {
 }
 
 .freshness-tier-list li::before {
-  content: '??;
+  content: '';
   position: absolute;
   left: 0;
   color: var(--gray-400);
@@ -4492,4 +4492,5 @@ button:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
 
