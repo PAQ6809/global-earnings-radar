@@ -45,7 +45,7 @@ export default function Pricing() {
               <li>AI-generated earnings briefs</li>
               <li>Management tone summary</li>
               <li>Risk factor extraction</li>
-              <li>Company comparison</li>
+              <li><Link to="/compare" style={{ color: 'inherit' }}>Company comparison</Link></li>
               <li>Exportable reports</li>
               <li>Saved watchlists</li>
               <li>Research notes</li>

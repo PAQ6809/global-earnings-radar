@@ -1,6 +1,6 @@
 ﻿# Global Earnings Radar
 
-**[?? Live Demo](https://global-earnings-radar.vercel.app)**
+**[Live Demo](https://global-earnings-radar.vercel.app)**
 
 A financial research assistant for US and European tech stocks. Understand earnings reports, business trends, and risk factors?n minutes.
 
@@ -15,7 +15,7 @@ A financial research assistant for US and European tech stocks. Understand earni
 - Past performance is not indicative of future results
 - Always conduct your own independent research
 
-## ?? Quick Start
+## Quick Start
 
 ```bash
 # Install dependencies
@@ -31,7 +31,7 @@ npm run build
 npm run preview
 ```
 
-## ?? Current Status
+## Current Status
 
 **Status: MVP / Demo**
 
@@ -84,42 +84,65 @@ The demo snapshot reflects historical data for illustration purposes only. It is
 
 **Note:** Pro features shown as "Preview" indicate planned functionality, not active services.
 
-## ?? Project Structure
+## Company Comparison Preview
 
-```
-global-earnings-radar/
-??? src/
-??  ??? components/       # React components
-??  ??  ??? DarkModeToggle.jsx
-??  ??  ??? Disclaimer.jsx
-??  ??  ??? Footer.jsx
-??  ??  ??? Search.jsx
-??  ??? context/         # React contexts
-??  ??  ??? DarkModeContext.jsx
-??  ??? pages/           # Page components
-??  ??  ??? Landing.jsx
-??  ??  ??? Company.jsx
-??  ??  ??? Sector.jsx
-??  ??  ??? Glossary.jsx
-??  ??  ??? Pricing.jsx
-??  ??  ??? Waitlist.jsx
-??  ??  ??? NotFound.jsx
-??  ??  ??? Privacy.jsx
-??  ??  ??? Terms.jsx
-??  ??  ??? SiteDisclaimer.jsx
-??  ??? data/            # Sample demo data
-??  ??  ??? companies.json (11 companies)
-??  ??  ??? financials.json
-??  ??  ??? glossary.json
-??  ??? styles/
-??  ??  ??? global.css
-??  ??? App.jsx
-??  ??? main.jsx
-??? public/
-??? index.html
-??? package.json
-??? vite.config.js
-```
+The **Company Comparison Preview** (`/compare`) is a Pro Preview feature that allows users to compare company fundamentals side-by-side.
+
+### Features
+- Side-by-side comparison of 3 semiconductor/AI companies (NVDA, AMD, TSM)
+- Compares: Revenue, EPS, Gross Margin, Operating Margin, Net Margin
+- Visual margin bars for easy comparison
+- Data mode indicator (Demo / sample dataset)
+
+### Pro Features (Locked)
+- AI-assisted comparison insights
+- Risk factor extraction
+- Management tone comparison
+- Exportable comparison report
+- Saved comparison workspace
+
+### Access
+Navigate to `/compare` or click "Try Compare Preview" on the Landing page.
+
+---
+
+## Project Structure
+
+~~~text
+src/
+  components/
+    DarkModeToggle.jsx
+    Disclaimer.jsx
+    Footer.jsx
+    Search.jsx
+  context/
+    DarkModeContext.jsx
+  pages/
+    Landing.jsx
+    Company.jsx
+    Research.jsx
+    Compare.jsx
+    Sector.jsx
+    Glossary.jsx
+    Pricing.jsx
+    Waitlist.jsx
+    NotFound.jsx
+    Privacy.jsx
+    Terms.jsx
+    SiteDisclaimer.jsx
+  data/
+    companies.json
+    financials.json
+    glossary.json
+  styles/
+    global.css
+  App.jsx
+  main.jsx
+public/
+index.html
+package.json
+vite.config.js
+~~~
 
 ## ? Features
 
@@ -140,6 +163,8 @@ global-earnings-radar/
 - Liquid Glass continuous scroll landing page
 - Mobile responsive design
 - Basic SEO meta tags
+- Research preview (sample report structure)
+- Company comparison preview (3-company side-by-side)
 
 ### Future Features
 - [ ] Additional company coverage
@@ -149,7 +174,7 @@ global-earnings-radar/
 - [ ] Email newsletter subscription
 - [ ] API access for researchers
 
-## ?? Companies Covered
+## Companies Covered
 
 | Ticker | Company | Sector |
 |--------|---------|--------|
@@ -165,7 +190,7 @@ global-earnings-radar/
 | AMD | Advanced Micro Devices | AI, Semiconductors |
 | TSM | Taiwan Semiconductor | Semiconductors |
 
-## ??儭?Tech Stack
+## Tech Stack
 
 - **Framework**: React 18
 - **Routing**: React Router v6
@@ -181,7 +206,7 @@ Apple-inspired Liquid Glass UI with:
 - Dark mode support
 - Responsive design
 
-## ?? Data Disclaimer
+## Data Disclaimer
 
 **All data in this demo is sample data for product demonstration.**
 
@@ -190,7 +215,7 @@ The financials.json and companies.json contain illustrative financial informatio
 2. Consult qualified financial advisors
 3. Conduct your own due diligence
 
-## ?? Compliance
+## Compliance
 
 - All financial content is clearly labeled as educational
 - No buy/sell/hold recommendations
@@ -199,7 +224,7 @@ The financials.json and companies.json contain illustrative financial informatio
 - Risk factors are prominently displayed
 - Legal disclaimers on every page
 
-## ?? Security Notes
+## Security Notes
 
 **Architecture**
 - Static frontend only (React + Vite)
@@ -231,7 +256,7 @@ This project uses ECPay Green World hosted checkout for Taiwan payment support. 
 
 ### Environment Variables
 
-Configure these in **Vercel Project Settings ??Environment Variables**:
+Configure these in **Vercel Project Settings > Environment Variables**:
 
 | Variable | Description | Example |
 |----------|-------------|---------|
@@ -248,7 +273,7 @@ Configure these in **Vercel Project Settings ??Environment Variables**:
    - Obtain MerchantID, HashKey, and HashIV
 
 2. **Configure Vercel Environment Variables**:
-   - Go to Vercel Dashboard ??Project ??Settings ??Environment Variables
+   - Go to Vercel Dashboard > Project > Settings > Environment Variables
    - Add each variable from the table above
    - Set `ECPAY_STAGE=true` for test mode
 
@@ -266,7 +291,7 @@ Configure these in **Vercel Project Settings ??Environment Variables**:
 ### MVP Limitation
 This MVP does not automatically unlock paid features. The checkout flow is implemented for demonstration purposes only.
 
-## ?? Waitlist Collection Setup
+## Waitlist Collection Setup
 
 The waitlist form submits to `/api/submit-waitlist`, which forwards submissions to an external webhook.
 
@@ -285,7 +310,7 @@ The waitlist form submits to `/api/submit-waitlist`, which forwards submissions 
 
 ### Environment Variable
 
-Configure in **Vercel Project Settings ??Environment Variables**:
+Configure in **Vercel Project Settings > Environment Variables**:
 
 | Variable | Description | Example |
 |----------|-------------|---------|
@@ -317,7 +342,7 @@ When a user submits the form, the following JSON is sent to your webhook:
    - Google Sheets: Create an Apps Script webhook
 
 2. **Configure Vercel Environment Variables**:
-   - Go to Vercel Dashboard ??Project ??Settings ??Environment Variables
+   - Go to Vercel Dashboard > Project > Settings > Environment Variables
    - Add `WAITLIST_WEBHOOK_URL` with your webhook URL
 
 3. **Test the form**:
@@ -375,7 +400,7 @@ If `WAITLIST_WEBHOOK_URL` is not set, the form still works from the user's persp
 - Current implementation is preview-only and does not perform live AI analysis or live web search yet.
 - Future live data should be powered by cloud jobs, provider adapters, and databases rather than local machine updates.
 
-## ?? Product Roadmap - Paid Features
+## Product Roadmap - Paid Features
 
 ### Current Status
 - **ECPay Integration**: Prepared (test environment) but not activated for production payments
@@ -402,7 +427,7 @@ To enable real payments and Pro feature access:
 4. Configure webhook handlers for payment status updates
 5. Add user account dashboard for managing subscription
 
-## ?? Competitor-Inspired Product Direction
+## Competitor-Inspired Product Direction
 
 The product is inspired by earnings research workflows such as:
 - Earnings call summaries and insights
@@ -427,11 +452,12 @@ Current implementation is preview-only. The Pro features shown on the website (w
 - ECPay merchant verification and legal setup
 - Database-backed entitlement management
 
-## ?? License
+## License
 
 MIT
 
 ---
 
 *Built with Claude Code. Educational purposes only.*
+
 

@@ -6,6 +6,7 @@ import Company from './pages/Company'
 import Sector from './pages/Sector'
 import Glossary from './pages/Glossary'
 import Research from './pages/Research'
+import Compare from './pages/Compare'
 import Pricing from './pages/Pricing'
 import PaymentSuccess from './pages/PaymentSuccess'
 import PaymentCancel from './pages/PaymentCancel'
@@ -61,6 +62,7 @@ function Navbar() {
           <div className="nav-links">
             <Link to="/" onClick={handleNavClick}>Home</Link>
             <Link to="/research" onClick={handleNavClick}>Research</Link>
+            <Link to="/compare" onClick={handleNavClick}>Compare</Link>
             <Link to="/pricing" onClick={handleNavClick}>Pricing</Link>
             <Link to="/waitlist" onClick={handleNavClick}>Waitlist</Link>
           </div>
@@ -81,6 +83,7 @@ function Navbar() {
           <div className="nav-links">
             <Link to="/" onClick={handleNavClick}>Home</Link>
             <Link to="/research" onClick={handleNavClick}>Research</Link>
+            <Link to="/compare" onClick={handleNavClick}>Compare</Link>
             <Link to="/pricing" onClick={handleNavClick}>Pricing</Link>
             <Link to="/waitlist" onClick={handleNavClick}>Waitlist</Link>
           </div>
@@ -103,6 +106,7 @@ function AppContent() {
           <Route path="/sector/:sector" element={<Sector />} />
           <Route path="/glossary" element={<Glossary />} />
           <Route path="/research" element={<Research />} />
+          <Route path="/compare" element={<Compare />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/payment-cancel" element={<PaymentCancel />} />

@@ -171,6 +171,9 @@ export default function Landing() {
             <Link to="/research" className="btn btn-secondary">
               Try Research Preview
             </Link>
+            <Link to="/compare" className="btn btn-outline" style={{ marginLeft: '0.75rem' }}>
+              Try Compare Preview
+            </Link>
           </div>
 
           <p style={{ textAlign: 'center', color: 'var(--gray-500)', marginTop: '1.5rem', fontSize: '0.85rem' }}>
@@ -206,6 +209,11 @@ export default function Landing() {
               <div className="pro-badge-overlay">Pro Preview</div>
               <h3>Exportable Reports</h3>
               <p>Export company analyses and research briefs to PDF or Markdown for offline reading.</p>
+            </div>
+            <div className="card feature-card pro-preview-card">
+              <div className="pro-badge-overlay">Pro Preview</div>
+              <h3>Company Comparison</h3>
+              <p>Compare fundamentals, margins, and growth profiles across multiple companies side by side.</p>
             </div>
           </div>
           <p style={{ textAlign: 'center', color: 'var(--gray-500)', marginTop: '2rem', fontSize: '0.9rem' }}>

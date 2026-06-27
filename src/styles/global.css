@@ -4010,3 +4010,229 @@ button:focus-visible {
     padding: 0.95rem;
   }
 }
+
+/* ============================================
+   Company Comparison Page
+   ============================================ */
+
+/* Comparison Grid */
+.comparison-grid {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--gray-200);
+}
+
+.dark-mode .comparison-grid {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.comparison-header,
+.comparison-row {
+  display: grid;
+  grid-template-columns: 140px repeat(3, 1fr);
+  min-width: 600px;
+}
+
+.comparison-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+}
+
+.comparison-row:nth-child(even) {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.dark-mode .comparison-row:nth-child(even) {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.comparison-row:hover {
+  background: rgba(59, 130, 246, 0.04);
+}
+
+.dark-mode .comparison-row:hover {
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.comparison-cell {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.comparison-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-600);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.dark-mode .comparison-label {
+  color: var(--gray-500);
+}
+
+.comparison-value {
+  font-size: 0.9rem;
+  color: var(--gray-700);
+}
+
+.dark-mode .comparison-value {
+  color: var(--gray-600);
+}
+
+.comparison-header-cell {
+  color: white;
+}
+
+.comparison-header-cell .comparison-label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Margin Bar */
+.margin-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--gray-200);
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.dark-mode .margin-bar {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.margin-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Pro Locked Section */
+.pro-locked-section {
+  background: rgba(59, 130, 246, 0.03);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.dark-mode .pro-locked-section {
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.locked-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.locked-feature-item {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.dark-mode .locked-feature-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.locked-feature-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.pro-preview-label {
+  margin-top: 0.75rem;
+}
+
+/* Preview Notice */
+.preview-notice {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.preview-notice .tier-badge {
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.preview-notice .tier-badge.free {
+  background: var(--gray-200);
+  color: var(--gray-600);
+}
+
+.preview-notice .tier-badge.sample {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--primary);
+}
+
+.preview-notice .tier-badge.disclaimer {
+  background: rgba(245, 158, 11, 0.15);
+  color: #b45309;
+}
+
+.dark-mode .preview-notice .tier-badge.disclaimer {
+  color: #fcd34d;
+}
+
+/* Freshness Dot */
+.freshness-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.freshness-dot-demo {
+  background: var(--warning);
+}
+
+.freshness-dot-cached {
+  background: var(--gray-400);
+}
+
+.freshness-dot-planned {
+  background: var(--gray-300);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .comparison-grid {
+    font-size: 0.85rem;
+  }
+
+  .comparison-header,
+  .comparison-row {
+    grid-template-columns: 100px repeat(3, 1fr);
+    min-width: 450px;
+  }
+
+  .comparison-cell {
+    padding: 0.75rem;
+  }
+
+  .locked-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .locked-features-grid {
+    grid-template-columns: 1fr;
+  }
+}
