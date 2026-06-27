@@ -104,6 +104,28 @@ The **Company Comparison Preview** (`/compare`) is a Pro Preview feature that al
 ### Access
 Navigate to `/compare` or click "Try Compare Preview" on the Landing page.
 
+## Watchlist Preview
+
+The **Watchlist Preview** (`/watchlist`) is a Pro Preview feature that demonstrates a personal research workspace for tracking companies.
+
+### Features
+- Watchlist grid displaying 5 sample companies (NVDA, MSFT, AAPL, ASML, GOOGL)
+- Each company shows: Ticker, Company name, Sector, Data mode, Research status, Earnings date
+- Status badges: Brief planned, Compare saved, Earnings watch, Research notes
+- Research workspace preview section with locked Pro features
+- Data mode indicator (Demo / sample dataset)
+- Last updated: Demo snapshot - not live
+
+### Pro Features (Preview/Locked)
+- Research Notes — Personal annotations and investment thesis
+- Saved Comparisons — Return to your comparison sets
+- Earnings Reminders — Calendar alerts before earnings
+- Export Queue — PDF or Markdown export list
+- Team Workspace — Shared research for teams
+
+### Access
+Navigate to `/watchlist` or click "Try Watchlist Preview" on the Landing page.
+
 ---
 
 ## Project Structure

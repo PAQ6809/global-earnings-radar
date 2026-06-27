@@ -174,6 +174,9 @@ export default function Landing() {
             <Link to="/compare" className="btn btn-outline" style={{ marginLeft: '0.75rem' }}>
               Try Compare Preview
             </Link>
+            <Link to="/watchlist" className="btn btn-outline" style={{ marginLeft: '0.75rem' }}>
+              Try Watchlist Preview
+            </Link>
           </div>
 
           <p style={{ textAlign: 'center', color: 'var(--gray-500)', marginTop: '1.5rem', fontSize: '0.85rem' }}>
@@ -214,6 +217,11 @@ export default function Landing() {
               <div className="pro-badge-overlay">Pro Preview</div>
               <h3>Company Comparison</h3>
               <p>Compare fundamentals, margins, and growth profiles across multiple companies side by side.</p>
+            </div>
+            <div className="card feature-card pro-preview-card">
+              <div className="pro-badge-overlay">Pro Preview</div>
+              <h3>Watchlist & Research</h3>
+              <p>Track companies, save notes, set earnings alerts, and export research for offline reading.</p>
             </div>
           </div>
           <p style={{ textAlign: 'center', color: 'var(--gray-500)', marginTop: '2rem', fontSize: '0.9rem' }}>
