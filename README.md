@@ -237,6 +237,28 @@ The financials.json and companies.json contain illustrative financial informatio
 2. Consult qualified financial advisors
 3. Conduct your own due diligence
 
+## Market Data Architecture
+
+### Current Flow
+```
+Browser → Vercel API (/api/market-quote, /api/market-search) → Market Data Provider → Cached Response
+```
+
+### Future Enhancement
+- Vercel Cron job for scheduled data refresh
+- Upstash Redis or Supabase for response caching
+- Tiered cache: 1-minute for quotes, 15-minute for company data
+
+### Environment Configuration
+| Variable | Description |
+|----------|-------------|
+| `FINNHUB_API_KEY` | Market data provider API key |
+
+### Disclaimer
+- Market data is provided for **educational and informational purposes only**
+- Data may be delayed and should not be used for investment decisions
+- **This is not investment advice**
+
 ## Compliance
 
 - All financial content is clearly labeled as educational

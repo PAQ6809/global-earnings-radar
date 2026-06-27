@@ -171,16 +171,14 @@ export default function Landing() {
             <Link to="/research" className="btn btn-secondary">
               Try Research Preview
             </Link>
-            <Link to="/compare" className="btn btn-outline" style={{ marginLeft: '0.75rem' }}>
-              Try Compare Preview
-            </Link>
-            <Link to="/watchlist" className="btn btn-outline" style={{ marginLeft: '0.75rem' }}>
-              Try Watchlist Preview
+            <Link to="/market" className="btn btn-outline" style={{ marginLeft: '0.75rem' }}>
+              Try Market Data Preview
             </Link>
           </div>
 
           <p style={{ textAlign: 'center', color: 'var(--gray-500)', marginTop: '1.5rem', fontSize: '0.85rem' }}>
-            Free preview shows sample report structures. Pro features planned for paid subscribers.
+            Research Preview shows sample report structures. Market Data Preview shows live quote integration.
+            Pro features planned for paid subscribers.
           </p>
         </div>
       </section>

@@ -8,6 +8,7 @@ import Glossary from './pages/Glossary'
 import Research from './pages/Research'
 import Compare from './pages/Compare'
 import Watchlist from './pages/Watchlist'
+import Market from './pages/Market'
 import Pricing from './pages/Pricing'
 import PaymentSuccess from './pages/PaymentSuccess'
 import PaymentCancel from './pages/PaymentCancel'
@@ -65,6 +66,7 @@ function Navbar() {
             <Link to="/research" onClick={handleNavClick}>Research</Link>
             <Link to="/compare" onClick={handleNavClick}>Compare</Link>
             <Link to="/watchlist" onClick={handleNavClick}>Watchlist</Link>
+            <Link to="/market" onClick={handleNavClick}>Market</Link>
             <Link to="/pricing" onClick={handleNavClick}>Pricing</Link>
             <Link to="/waitlist" onClick={handleNavClick}>Waitlist</Link>
           </div>
@@ -87,6 +89,7 @@ function Navbar() {
             <Link to="/research" onClick={handleNavClick}>Research</Link>
             <Link to="/compare" onClick={handleNavClick}>Compare</Link>
             <Link to="/watchlist" onClick={handleNavClick}>Watchlist</Link>
+            <Link to="/market" onClick={handleNavClick}>Market</Link>
             <Link to="/pricing" onClick={handleNavClick}>Pricing</Link>
             <Link to="/waitlist" onClick={handleNavClick}>Waitlist</Link>
           </div>
@@ -111,6 +114,7 @@ function AppContent() {
           <Route path="/research" element={<Research />} />
           <Route path="/compare" element={<Compare />} />
           <Route path="/watchlist" element={<Watchlist />} />
+          <Route path="/market" element={<Market />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/payment-cancel" element={<PaymentCancel />} />
