@@ -1,4 +1,5 @@
- /** Market Search API - Serverless Function */
+﻿ /** Market Search API - Serverless Function */
+export const config = { runtime: 'edge' }
  const LOCAL_COMPANIES = [
    { symbol: 'NVDA', name: 'NVIDIA Corporation', type: 'stock', exchange: 'NASDAQ' },
    { symbol: 'MSFT', name: 'Microsoft Corporation', type: 'stock', exchange: 'NASDAQ' },

@@ -1,4 +1,4 @@
-import { generateCheckMacValue } from './_ecpay.js'
+﻿import { generateCheckMacValue } from './_ecpay.js'
 
 /**
  * POST /api/create-ecpay-payment
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
 
   // Validate required environment variables
   if (!ECPAY_MERCHANT_ID || !ECPAY_HASH_KEY || !ECPAY_HASH_IV) {
-    return res.status(500).json({ error: 'ECPay checkout is not configured.' })
+    return res.status(200).json({ error: 'ECPay checkout is not configured.' })
   }
 
   try {
@@ -90,3 +90,4 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'ECPay checkout is unavailable. Please try again later.' })
   }
 }
+
