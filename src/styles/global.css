@@ -5396,3 +5396,62 @@ button:focus-visible {
     min-width: 720px !important;
   }
 }
+
+/* ============================================
+   Market Search UX Cleanup
+   ============================================ */
+
+.market-searching {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: rgba(0, 113, 227, 0.08);
+  color: #1e40af;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.market-search-loading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #1e40af;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.market-search-status {
+  margin: 0.75rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: rgba(0, 113, 227, 0.08);
+  color: #1e40af;
+  font-size: 0.875rem;
+}
+
+.market-search-fallback {
+  margin: 0.75rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 159, 10, 0.12);
+  border: 1px solid rgba(255, 159, 10, 0.28);
+  color: #92400e;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.dark-mode .market-searching,
+.dark-mode .market-search-loading,
+.dark-mode .market-search-status {
+  background: rgba(10, 132, 255, 0.16);
+  color: #93c5fd;
+}
+
+.dark-mode .market-search-fallback {
+  background: rgba(255, 159, 10, 0.18);
+  border-color: rgba(255, 159, 10, 0.4);
+  color: #fcd34d;
+}

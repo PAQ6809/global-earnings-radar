@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+
 export default function Market() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -8,20 +9,44 @@ export default function Market() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const [searchLoading, setSearchLoading] = useState(false);
+  const [searchStatus, setSearchStatus] = useState(null);
+  const [searchFallbackReason, setSearchFallbackReason] = useState(null);
+  const [searchFinished, setSearchFinished] = useState(false);
+
   const searchMarket = useCallback(async (query) => {
     if (!query || query.length < 1) {
       setSearchResults([]);
+      setSearchFinished(false);
+      setSearchFallbackReason(null);
+      setSearchStatus(null);
       return;
     }
+
+    setSearchLoading(true);
+    setSearchStatus(null);
+    setSearchFallbackReason(null);
+    setSearchFinished(false);
 
     try {
       const response = await fetch(`/api/market-search?q=${encodeURIComponent(query)}`);
       if (response.ok) {
         const data = await response.json();
         setSearchResults(data.results || []);
+        setSearchStatus(data.status || null);
+        setSearchFallbackReason(data.fallbackReason || null);
+      } else {
+        setSearchResults([]);
+        setSearchStatus(null);
+        setSearchFallbackReason(null);
       }
     } catch (err) {
       setSearchResults([]);
+      setSearchStatus(null);
+      setSearchFallbackReason(null);
+    } finally {
+      setSearchLoading(false);
+      setSearchFinished(true);
     }
   }, []);
 
@@ -52,6 +77,9 @@ export default function Market() {
         searchMarket(searchQuery);
       } else {
         setSearchResults([]);
+        setSearchFinished(false);
+        setSearchFallbackReason(null);
+        setSearchStatus(null);
       }
     }, 300);
 
@@ -61,6 +89,8 @@ export default function Market() {
   const handleSelectResult = (result) => {
     setSearchQuery(result.name);
     setSearchResults([]);
+    setSearchFinished(false);
+    setSearchFallbackReason(null);
     setSelectedSymbol(result.symbol);
     fetchQuote(result.symbol);
   };
@@ -84,6 +114,8 @@ export default function Market() {
             onClick={() => {
               setSearchQuery('');
               setSearchResults([]);
+              setSearchFinished(false);
+              setSearchFallbackReason(null);
               setSelectedSymbol(symbol);
               fetchQuote(symbol);
             }}
@@ -170,6 +202,9 @@ export default function Market() {
                   onClick={() => {
                     setSearchQuery('');
                     setSearchResults([]);
+                    setSearchFinished(false);
+                    setSearchFallbackReason(null);
+                    setSearchStatus(null);
                     setSelectedSymbol(null);
                     setQuote(null);
                   }}
@@ -181,8 +216,16 @@ export default function Market() {
             </div>
           </div>
 
+          {/* Search Loading State */}
+          {searchLoading && (
+            <div className="market-searching">
+              <div className="market-loading-spinner" />
+              <span>Searching...</span>
+            </div>
+          )}
+
           {/* Search Results Dropdown */}
-          {searchResults.length > 0 && (
+          {!searchLoading && searchResults.length > 0 && (
             <div className="market-search-results">
               <div className="market-search-results-header">
                 Search Results ({searchResults.length})
@@ -193,8 +236,8 @@ export default function Market() {
                   className="market-search-result-item"
                   onClick={() => handleSelectResult(result)}
                 >
-                  <div className="market-result-symbol">{result.symbol}</div>
                   <div className="market-result-info">
+                    <div className="market-result-symbol">{result.symbol}</div>
                     <div className="market-result-name">{result.name}</div>
                     <div className="market-result-exchange">{result.exchange}</div>
                   </div>
@@ -206,10 +249,24 @@ export default function Market() {
             </div>
           )}
 
-          {/* Empty State */}
-          {searchQuery && searchResults.length === 0 && renderEmptyState()}
+          {/* Search Fallback Reason */}
+          {!searchLoading && searchFallbackReason && (
+            <div className="market-search-fallback">
+              {searchFallbackReason}
+            </div>
+          )}
 
-          {/* Loading State */}
+          {/* Empty State - only after search finishes */}
+          {!searchLoading && searchFinished && searchQuery && searchResults.length === 0 && renderEmptyState()}
+
+          {/* Search Status */}
+          {!searchLoading && searchStatus && searchStatus !== 'ok' && !searchFallbackReason && (
+            <div className="market-search-status">
+              {searchStatus}
+            </div>
+          )}
+
+          {/* Quote Loading State */}
           {loading && (
             <div className="market-loading">
               <div className="market-loading-spinner" />
