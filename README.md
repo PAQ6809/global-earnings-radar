@@ -525,3 +525,23 @@ See:
 ~~~text
 docs/WEBSITE_DEBUG_RUNBOOK.md
 ~~~
+
+## Market Data Cache / Cron Preview
+
+Global Earnings Radar includes a preview endpoint and architecture documentation for future cloud-based market data caching and scheduled refresh workflows.
+
+Status endpoint:
+
+/api/market-cache-status
+
+Architecture document:
+
+docs/MARKET_DATA_CACHE_CRON_ARCHITECTURE.md
+
+Current status:
+
+- Cache is not active yet.
+- Cron refresh jobs are not active yet.
+- Real cache providers such as Redis, Upstash, or Supabase are not connected yet.
+- No provider secrets should be committed to the repository.
+- Market data remains educational and informational only, not investment advice.
