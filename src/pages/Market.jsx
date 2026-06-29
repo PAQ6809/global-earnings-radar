@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+﻿import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Market() {
@@ -13,6 +13,10 @@ export default function Market() {
   const [searchStatus, setSearchStatus] = useState(null);
   const [searchFallbackReason, setSearchFallbackReason] = useState(null);
   const [searchFinished, setSearchFinished] = useState(false);
+
+  const [cacheStatus, setCacheStatus] = useState(null);
+  const [cacheStatusLoading, setCacheStatusLoading] = useState(false);
+  const [cacheStatusError, setCacheStatusError] = useState(null);
 
   const searchMarket = useCallback(async (query) => {
     if (!query || query.length < 1) {
@@ -85,6 +89,40 @@ export default function Market() {
 
     return () => clearTimeout(timer);
   }, [searchQuery, searchMarket]);
+
+  useEffect(() => {
+    let cancelled = false;
+    const fetchCacheStatus = async () => {
+      setCacheStatusLoading(true);
+      setCacheStatusError(null);
+
+      try {
+        const response = await fetch('/api/market-cache-status');
+        if (!cancelled) {
+          if (response.ok) {
+            const data = await response.json();
+            setCacheStatus(data);
+          } else {
+            setCacheStatusError('Cache architecture status is temporarily unavailable.');
+          }
+        }
+      } catch (err) {
+        if (!cancelled) {
+          setCacheStatusError('Cache architecture status is temporarily unavailable.');
+        }
+      } finally {
+        if (!cancelled) {
+          setCacheStatusLoading(false);
+        }
+      }
+    };
+
+    fetchCacheStatus();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const handleSelectResult = (result) => {
     setSearchQuery(result.name);
@@ -179,6 +217,78 @@ export default function Market() {
 
       {/* Popular Symbols Section */}
       {renderPopularSymbols()}
+
+      {/* Cache / Cron Preview Card */}
+      <div className="container" style={{ paddingTop: '0', paddingBottom: '0' }}>
+        {cacheStatusLoading && (
+          <div className="market-searching">
+            <div className="market-loading-spinner" />
+            <span>Loading cache architecture status...</span>
+          </div>
+        )}
+
+        {cacheStatusError && (
+          <div className="market-search-fallback">
+            Cache architecture status is temporarily unavailable.
+          </div>
+        )}
+
+        {cacheStatus && (
+          <div className="market-cache-preview-card">
+            <div className="market-cache-preview-title">
+              Market Data Cache / Cron Preview
+            </div>
+            <div className="market-cache-preview-subtitle">
+              Architecture preview only - cache and cron are not active yet
+            </div>
+            <div className="market-cache-preview-items">
+              <div className="market-cache-preview-item">
+                <span className="market-cache-preview-label">Current Mode</span>
+                <span className="market-cache-preview-value">{cacheStatus.currentMode}</span>
+              </div>
+              <div className="market-cache-preview-item">
+                <span className="market-cache-preview-label">Cache Status</span>
+                <span className="market-cache-preview-value">
+                  {cacheStatus.cacheEnabled ? 'Active' : 'Preview only / Not active'}
+                </span>
+              </div>
+              <div className="market-cache-preview-item">
+                <span className="market-cache-preview-label">Cron Status</span>
+                <span className="market-cache-preview-value">
+                  {cacheStatus.cronEnabled ? 'Active' : 'Preview only / Not active'}
+                </span>
+              </div>
+              <div className="market-cache-preview-item">
+                <span className="market-cache-preview-label">Provider Configured</span>
+                <span className="market-cache-preview-value">
+                  {cacheStatus.providerConfigured ? 'Yes' : 'No / Preview mode'}
+                </span>
+              </div>
+              <div className="market-cache-preview-item">
+                <span className="market-cache-preview-label">Popular Symbols</span>
+                <span className="market-cache-preview-value">
+                  {cacheStatus.popularSymbolsPreview.join(', ')}
+                </span>
+              </div>
+              <div className="market-cache-preview-item">
+                <span className="market-cache-preview-label">Planned Refresh (Popular)</span>
+                <span className="market-cache-preview-value">
+                  {cacheStatus.plannedRefreshPolicy.popularSymbols}
+                </span>
+              </div>
+              <div className="market-cache-preview-item">
+                <span className="market-cache-preview-label">Planned Refresh (Profiles)</span>
+                <span className="market-cache-preview-value">
+                  {cacheStatus.plannedRefreshPolicy.companyProfile}
+                </span>
+              </div>
+            </div>
+            <div className="market-cache-preview-disclaimer">
+              {cacheStatus.disclaimer}
+            </div>
+          </div>
+        )}
+      </div>
 
       <div className="container" style={{ paddingTop: '2rem', paddingBottom: '3rem' }}>
         {/* Search Section */}

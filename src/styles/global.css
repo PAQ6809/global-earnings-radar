@@ -5455,3 +5455,102 @@ button:focus-visible {
   border-color: rgba(255, 159, 10, 0.4);
   color: #fcd34d;
 }
+
+/* ============================================
+   Market Cache / Cron Preview Card
+   ============================================ */
+
+.market-cache-preview-card {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 113, 227, 0.18);
+  background: rgba(0, 113, 227, 0.06);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.market-cache-preview-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.35rem;
+}
+
+.market-cache-preview-subtitle {
+  font-size: 0.875rem;
+  color: #4b5563;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.market-cache-preview-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.market-cache-preview-item {
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(148, 163, 184, 0.24);
+}
+
+.market-cache-preview-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 0.3rem;
+}
+
+.market-cache-preview-value {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.4;
+}
+
+.market-cache-preview-disclaimer {
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.28);
+  font-size: 0.8rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.dark-mode .market-cache-preview-card {
+  border-color: rgba(96, 165, 250, 0.28);
+  background: rgba(30, 64, 175, 0.16);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.dark-mode .market-cache-preview-title {
+  color: #f9fafb;
+}
+
+.dark-mode .market-cache-preview-subtitle {
+  color: #cbd5e1;
+}
+
+.dark-mode .market-cache-preview-item {
+  background: rgba(15, 23, 42, 0.72);
+  border-color: rgba(148, 163, 184, 0.22);
+}
+
+.dark-mode .market-cache-preview-label {
+  color: #93c5fd;
+}
+
+.dark-mode .market-cache-preview-value {
+  color: #f8fafc;
+}
+
+.dark-mode .market-cache-preview-disclaimer {
+  border-top-color: rgba(148, 163, 184, 0.24);
+  color: #cbd5e1;
+}
