@@ -191,6 +191,83 @@ export function canPaymentUnlockPro() {
   return false
 }
 
+// ============================================================
+// Feature Gate System
+// ============================================================
+
+/**
+ * Free features available without authentication or subscription
+ */
+const FREE_FEATURES = [
+  'companySearch',
+  'staticSummaries',
+  'delayedMarketSnapshots',
+  'publicFilingsSourceDiscovery',
+]
+
+/**
+ * Pro features - always locked in preview mode
+ */
+const PRO_FEATURES = [
+  'aiEarningsAnalysis',
+  'exportReports',
+  'advancedCompare',
+]
+
+/**
+ * Team features - always locked in preview mode
+ */
+const TEAM_FEATURES = [
+  'savedWatchlists',
+  'sharedWatchlists',
+]
+
+/**
+ * Research Lab features - always locked in preview mode
+ */
+const RESEARCH_LAB_FEATURES = [
+  'batchTracking',
+  'researchApiAccess',
+]
+
+/**
+ * Check if a feature is accessible for the current entitlement
+ *
+ * SECURITY: Feature access is determined server-side only.
+ * This function does NOT use:
+ * - Authentication state
+ * - Payment status
+ * - Query parameters
+ * - localStorage/sessionStorage
+ * - Frontend flags
+ *
+ * @param {string} featureKey - The feature identifier to check
+ * @param {Object} options - Optional parameters (ignored in preview mode)
+ * @returns {boolean} True if feature is accessible
+ */
+export function canAccessFeature(featureKey, options = {}) {
+  // Preview mode: Only free features are accessible
+  if (FREE_FEATURES.includes(featureKey)) {
+    return true
+  }
+
+  // All paid features are locked in preview mode
+  if (PRO_FEATURES.includes(featureKey)) {
+    return false
+  }
+
+  if (TEAM_FEATURES.includes(featureKey)) {
+    return false
+  }
+
+  if (RESEARCH_LAB_FEATURES.includes(featureKey)) {
+    return false
+  }
+
+  // Unknown features default to false (secure by default)
+  return false
+}
+
 export default {
   getEntitlementStatus,
   isProAccess,
@@ -201,5 +278,6 @@ export default {
   getSubscriptionEntitlement,
   isPaymentEntitlementEnabled,
   canPaymentUnlockPro,
+  canAccessFeature,
   DEFAULT_ENTITLEMENT,
 }

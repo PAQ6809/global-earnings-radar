@@ -301,6 +301,21 @@ if ($entitlementLib) {
   else { Add-Line "[FAIL] entitlement.js canPaymentUnlockPro may not return false"; $libPassed = $false }
   if ($entitlementLib -match 'isPaymentEntitlementEnabled' -and $entitlementLib -match 'return false') { Add-Line "[OK] entitlement.js isPaymentEntitlementEnabled returns false" }
   else { Add-Line "[FAIL] entitlement.js isPaymentEntitlementEnabled may not return false"; $libPassed = $false }
+  # Check feature gate system
+  if ($entitlementLib -match 'canAccessFeature') { Add-Line "[OK] entitlement.js has canAccessFeature" }
+  else { Add-Line "[FAIL] entitlement.js missing canAccessFeature"; $libPassed = $false }
+  # Check free features are defined
+  if ($entitlementLib -match "'companySearch'" -and $entitlementLib -match "'staticSummaries'" -and $entitlementLib -match "'delayedMarketSnapshots'") {
+    Add-Line "[OK] entitlement.js defines free features"
+  } else {
+    Add-Line "[FAIL] entitlement.js missing free feature definitions"; $libPassed = $false
+  }
+  # Check pro features are defined and locked
+  if ($entitlementLib -match "'aiEarningsAnalysis'" -and $entitlementLib -match "'exportReports'" -and $entitlementLib -match "'advancedCompare'") {
+    Add-Line "[OK] entitlement.js defines Pro feature locks"
+  } else {
+    Add-Line "[FAIL] entitlement.js missing Pro feature definitions"; $libPassed = $false
+  }
   if ($entitlementLib -match 'return false' -and $entitlementLib -match 'isDeveloperAccount') { Add-Line "[OK] entitlement.js isDeveloperAccount returns false" }
   else { Add-Line "[FAIL] entitlement.js isDeveloperAccount may not return false"; $libPassed = $false }
   # Check no client-side bypass patterns (localStorage/sessionStorage usage, not comments)
