@@ -304,6 +304,8 @@ if ($entitlementLib) {
   # Check feature gate system
   if ($entitlementLib -match 'canAccessFeature') { Add-Line "[OK] entitlement.js has canAccessFeature" }
   else { Add-Line "[FAIL] entitlement.js missing canAccessFeature"; $libPassed = $false }
+  if ($entitlementLib -match 'getFeatureAccessMap') { Add-Line "[OK] entitlement.js has getFeatureAccessMap" }
+  else { Add-Line "[FAIL] entitlement.js missing getFeatureAccessMap"; $libPassed = $false }
   # Check free features are defined
   if ($entitlementLib -match "'companySearch'" -and $entitlementLib -match "'staticSummaries'" -and $entitlementLib -match "'delayedMarketSnapshots'") {
     Add-Line "[OK] entitlement.js defines free features"
@@ -346,6 +348,13 @@ if ($entitlementApi) {
     Add-Line "[OK] entitlement-status.js spreads entitlement from helper"
   } else {
     Add-Line "[FAIL] entitlement-status.js does not spread entitlement from helper"
+    $entitlementChecksPassed = $false
+  }
+  # Check that featureAccess uses getFeatureAccessMap
+  if ($entitlementApi -match "featureAccess.*getFeatureAccessMap") {
+    Add-Line "[OK] entitlement-status.js uses getFeatureAccessMap for featureAccess"
+  } else {
+    Add-Line "[FAIL] entitlement-status.js does not use getFeatureAccessMap"
     $entitlementChecksPassed = $false
   }
 } else {

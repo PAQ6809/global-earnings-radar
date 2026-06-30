@@ -268,6 +268,30 @@ export function canAccessFeature(featureKey, options = {}) {
   return false
 }
 
+/**
+ * Get feature access map for API responses
+ *
+ * Uses canAccessFeature() to determine access levels for each feature.
+ * Returns consistent naming that matches the existing API schema.
+ *
+ * @returns {Object} Feature access map with status strings
+ */
+export function getFeatureAccessMap() {
+  return {
+    companySearch: canAccessFeature('companySearch') ? 'free-preview' : 'locked',
+    staticSummaries: canAccessFeature('staticSummaries') ? 'free-preview' : 'locked',
+    delayedMarketSnapshots: canAccessFeature('delayedMarketSnapshots') ? 'free-preview' : 'locked',
+    publicFilingsSourceDiscovery: canAccessFeature('publicFilingsSourceDiscovery') ? 'free-preview' : 'locked',
+    aiEarningsAnalysis: canAccessFeature('aiEarningsAnalysis') ? 'pro' : 'pro-locked',
+    companyComparison: canAccessFeature('advancedCompare') ? 'pro' : 'pro-locked-preview',
+    exportReports: canAccessFeature('exportReports') ? 'pro' : 'pro-locked',
+    savedWatchlists: canAccessFeature('savedWatchlists') ? 'team' : 'team-locked',
+    sharedWatchlists: canAccessFeature('sharedWatchlists') ? 'team' : 'team-locked',
+    batchTracking: canAccessFeature('batchTracking') ? 'research-lab' : 'team-locked',
+    researchApiAccess: canAccessFeature('researchApiAccess') ? 'research-lab' : 'research-lab-locked',
+  }
+}
+
 export default {
   getEntitlementStatus,
   isProAccess,
@@ -279,5 +303,6 @@ export default {
   isPaymentEntitlementEnabled,
   canPaymentUnlockPro,
   canAccessFeature,
+  getFeatureAccessMap,
   DEFAULT_ENTITLEMENT,
 }

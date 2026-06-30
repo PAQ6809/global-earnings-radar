@@ -7,7 +7,7 @@
  * All entitlement decisions are made server-side.
  */
 
-import { getEntitlementStatus } from './_lib/entitlement.js'
+import { getEntitlementStatus, getFeatureAccessMap } from './_lib/entitlement.js'
 
 export const config = {
   runtime: 'edge',
@@ -61,18 +61,7 @@ export default async function handler() {
         ],
       },
     },
-    featureAccess: {
-      delayedMarketSnapshots: 'free-preview',
-      companySearch: 'free-preview',
-      staticSummaries: 'free-preview',
-      publicFilingsSourceDiscovery: 'free-preview',
-      aiEarningsAnalysis: 'pro-locked',
-      companyComparison: 'pro-locked-preview',
-      exportReports: 'pro-locked',
-      sharedWatchlists: 'team-locked',
-      batchTracking: 'team-locked',
-      researchApiAccess: 'research-lab-locked',
-    },
+    featureAccess: getFeatureAccessMap(),
     plannedArchitecture: {
       auth: 'Future Supabase Auth',
       subscription: 'Future subscription entitlement table',
