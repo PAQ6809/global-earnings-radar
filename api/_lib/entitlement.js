@@ -35,6 +35,12 @@ export const DEFAULT_ENTITLEMENT = {
   // Subscription/database entitlement is DISABLED
   subscriptionEntitlementEnabled: false,
   databaseEntitlementEnabled: false,
+  // Payment/ECPay entitlement boundary - DISABLED
+  // SECURITY: Payment success alone must NOT unlock Pro features.
+  // SECURITY: ECPay callback must verify server-side payment + database subscription before entitlement changes.
+  paymentEntitlementEnabled: false,
+  ecpayEntitlementEnabled: false,
+  productionCheckoutEnabled: false,
 }
 
 /**
@@ -157,6 +163,34 @@ export function getSubscriptionEntitlement(user) {
   }
 }
 
+/**
+ * Check if payment entitlement is enabled (placeholder)
+ *
+ * SECURITY: Payment success alone must NOT unlock Pro features.
+ * Payment verification must be combined with subscription database check.
+ *
+ * @returns {boolean} False until payment entitlement is configured
+ */
+export function isPaymentEntitlementEnabled() {
+  // DISABLED - Always returns false
+  // This is a security measure - no payment entitlement without subscription database
+  return false
+}
+
+/**
+ * Check if payment alone can unlock Pro features (placeholder)
+ *
+ * SECURITY: ECPay callback must verify server-side payment + database subscription
+ * before any entitlement changes are made.
+ *
+ * @returns {boolean} False - payment alone cannot unlock Pro
+ */
+export function canPaymentUnlockPro() {
+  // DISABLED - Always returns false
+  // This is a security measure - payment requires database subscription verification
+  return false
+}
+
 export default {
   getEntitlementStatus,
   isProAccess,
@@ -165,5 +199,7 @@ export default {
   isDeveloperAccount,
   hasActiveSubscription,
   getSubscriptionEntitlement,
+  isPaymentEntitlementEnabled,
+  canPaymentUnlockPro,
   DEFAULT_ENTITLEMENT,
 }

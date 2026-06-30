@@ -289,6 +289,18 @@ if ($entitlementLib) {
   else { Add-Line "[FAIL] entitlement.js hasActiveSubscription may not return false"; $libPassed = $false }
   if ($entitlementLib -match 'getSubscriptionEntitlement') { Add-Line "[OK] entitlement.js has getSubscriptionEntitlement" }
   else { Add-Line "[FAIL] entitlement.js missing getSubscriptionEntitlement"; $libPassed = $false }
+  # Check payment/ECPay boundary is DISABLED
+  if ($entitlementLib -match 'paymentEntitlementEnabled.*false') { Add-Line "[OK] entitlement.js has paymentEntitlementEnabled: false" }
+  else { Add-Line "[FAIL] entitlement.js missing paymentEntitlementEnabled: false"; $libPassed = $false }
+  if ($entitlementLib -match 'ecpayEntitlementEnabled.*false') { Add-Line "[OK] entitlement.js has ecpayEntitlementEnabled: false" }
+  else { Add-Line "[FAIL] entitlement.js missing ecpayEntitlementEnabled: false"; $libPassed = $false }
+  if ($entitlementLib -match 'productionCheckoutEnabled.*false') { Add-Line "[OK] entitlement.js has productionCheckoutEnabled: false" }
+  else { Add-Line "[FAIL] entitlement.js missing productionCheckoutEnabled: false"; $libPassed = $false }
+  # Check payment boundary functions
+  if ($entitlementLib -match 'canPaymentUnlockPro' -and $entitlementLib -match 'return false') { Add-Line "[OK] entitlement.js canPaymentUnlockPro returns false" }
+  else { Add-Line "[FAIL] entitlement.js canPaymentUnlockPro may not return false"; $libPassed = $false }
+  if ($entitlementLib -match 'isPaymentEntitlementEnabled' -and $entitlementLib -match 'return false') { Add-Line "[OK] entitlement.js isPaymentEntitlementEnabled returns false" }
+  else { Add-Line "[FAIL] entitlement.js isPaymentEntitlementEnabled may not return false"; $libPassed = $false }
   if ($entitlementLib -match 'return false' -and $entitlementLib -match 'isDeveloperAccount') { Add-Line "[OK] entitlement.js isDeveloperAccount returns false" }
   else { Add-Line "[FAIL] entitlement.js isDeveloperAccount may not return false"; $libPassed = $false }
   # Check no client-side bypass patterns (localStorage/sessionStorage usage, not comments)
