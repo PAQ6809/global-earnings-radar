@@ -52,17 +52,17 @@ When a user makes a request to a protected endpoint or fetches entitlement statu
 
 ```
 1. Check authentication
-   ├── Unauthenticated -> return free tier
-   └── Authenticated -> continue to step 2
+   - Unauthenticated -> return free tier
+   - Authenticated -> continue to step 2
 
 2. Check developer allowlist (HIGHEST PRIORITY)
-   ├── Email in DEVELOPER_ACCOUNT_EMAILS -> developer tier
-   ├── User ID in DEVELOPER_ACCOUNT_IDS -> developer tier
-   └── Not in allowlist -> continue to step 3
+   - Email in DEVELOPER_ACCOUNT_EMAILS -> developer tier
+   - User ID in DEVELOPER_ACCOUNT_IDS -> developer tier
+   - Not in allowlist -> continue to step 3
 
 3. Check subscription status
-   ├── Subscription active -> tier = subscription.tier (pro/team/researchLab)
-   └── No active subscription -> free tier
+   - Subscription active -> tier = subscription.tier (pro/team/researchLab)
+   - No active subscription -> free tier
 ```
 
 ### Tier determination order
@@ -125,6 +125,165 @@ export default async function handler(req) {
 - **Developer allowlist is secret** (env vars, not in code)
 - **Subscription status must come from database**, not from client claims
 - **ECPay webhooks must verify signatures** before updating subscription
+
+## Auth Provider Selection
+
+### Evaluation criteria
+
+Before implementing login, we evaluated three auth providers:
+
+| Criteria | Supabase Auth | Clerk | Auth0 |
+|----------|--------------|-------|-------|
+| Development speed | Fast (all-in-one) | Fast (great DX) | Medium |
+| Cost (MVP stage) | Free tier generous | Free tier limited | Free tier limited |
+| Database integration | Native Postgres | External required | External required |
+| Subscription management | Easy (in Postgres) | External needed | External needed |
+| Developer allowlist | Easy (env vars) | Middleware | Rules |
+| Vercel serverless | Works | Works | Works |
+| Entitlement flexibility | High | Medium | Medium |
+
+### Option 1: Supabase Auth (Recommended)
+
+**Pros:**
+- Auth + Postgres in one service (users, subscriptions, entitlements in same DB)
+- RLS (Row Level Security) for fine-grained access control
+- Easy developer allowlist via env vars + server-side check
+- Generous free tier (50k monthly active users)
+- TypeScript SDK with good Vercel support
+- Real-time subscriptions for future features
+
+**Cons:**
+- Slightly steeper learning curve than Clerk
+- Self-hosting option may be overkill
+
+**Recommended for:**
+- MVP with limited resources
+- Need database for subscriptions/entitlements
+- Want unified auth + data solution
+
+**Implementation pattern:**
+```javascript
+// api/get-entitlement.js
+import { createClient } from '@supabase/supabase-js'
+
+export default async function handler(req) {
+  const token = req.headers.get('Authorization')?.replace('Bearer ', '')
+  const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY)
+
+  // Verify token server-side
+  const { data: { user }, error } = await supabase.auth.getUser(token)
+
+  // Developer allowlist check
+  const devEmails = process.env.DEVELOPER_ACCOUNT_EMAILS?.split(',') || []
+  if (user && devEmails.includes(user.email)) {
+    return { currentTier: 'developer', aiAccessEnabled: true }
+  }
+
+  // Subscription check from Postgres
+  const { data: subscription } = await supabase
+    .from('subscriptions')
+    .select('tier, active')
+    .eq('user_id', user?.id)
+    .single()
+
+  if (subscription?.active) {
+    return { currentTier: subscription.tier }
+  }
+
+  return { currentTier: 'free', aiAccessEnabled: false }
+}
+```
+
+### Option 2: Clerk
+
+**Pros:**
+- Excellent developer experience
+- Pre-built components (Login, UserButton)
+- Easy multi-tenant support
+
+**Cons:**
+- No built-in database (need separate Postgres)
+- Limited free tier (10k monthly active users)
+- Developer allowlist requires middleware
+
+**Recommended for:**
+- Quick prototyping
+- No database needed
+
+**Implementation pattern:**
+```javascript
+// middleware.ts
+import { clerkClient } from '@clerk/nextjs'
+
+export async function middleware(req) {
+  const { userId } = req.auth()
+  const user = await clerkClient.users.getUser(userId)
+
+  // Developer allowlist in middleware
+  const devEmails = process.env.DEVELOPER_ACCOUNT_EMAILS?.split(',') || []
+  if (devEmails.includes(user.emailAddress)) {
+    // Set developer header for downstream
+  }
+}
+```
+
+### Option 3: Auth0
+
+**Pros:**
+- Enterprise-grade
+- Extensive integrations
+- Mature ecosystem
+
+**Cons:**
+- Complex setup
+- Higher cost at scale
+- Overkill for MVP
+
+**Recommended for:**
+- Large enterprise projects
+- Existing Auth0 integration
+
+### Recommendation
+
+**Use Supabase Auth** for Global Earnings Radar.
+
+**Reasons:**
+1. **Unified solution**: Auth + Postgres handles users + subscriptions + entitlements in one place
+2. **Developer allowlist**: Easy to implement server-side check against env vars
+3. **Cost-effective**: Generous free tier for MVP (50k MAU)
+4. **Entitlement flexibility**: Can query subscription from same Postgres DB
+5. **Vercel compatible**: Edge Functions + Supabase client works well
+6. **Future-proof**: Can add RLS policies for access control later
+
+**Future database tables:**
+```sql
+-- users table (auto-created by Supabase Auth)
+-- subscriptions table
+CREATE TABLE subscriptions (
+  id UUID PRIMARY KEY,
+  user_id UUID REFERENCES auth.users(id),
+  tier TEXT CHECK (tier IN ('pro', 'team', 'researchLab')),
+  active BOOLEAN DEFAULT false,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- entitlements view (for easy queries)
+CREATE VIEW user_entitlements AS
+SELECT
+  u.id,
+  u.email,
+  s.tier,
+  s.active,
+  CASE
+    WHEN u.email = ANY(string_to_array(current_setting('app.dev_emails'), ','))
+      OR u.id::text = ANY(string_to_array(current_setting('app.dev_ids'), ','))
+    THEN 'developer'
+    WHEN s.active THEN s.tier
+    ELSE 'free'
+  END as effective_tier
+FROM auth.users u
+LEFT JOIN subscriptions s ON u.id = s.user_id;
+```
 
 ## Tier boundaries
 
