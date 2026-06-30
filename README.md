@@ -545,3 +545,25 @@ Current status:
 - Real cache providers such as Redis, Upstash, or Supabase are not connected yet.
 - No provider secrets should be committed to the repository.
 - Market data remains educational and informational only, not investment advice.
+
+## Entitlement / Subscription Preview
+
+Global Earnings Radar includes a preview endpoint and architecture documentation for future Free / Pro / Team / Research Lab entitlement logic.
+
+Status endpoint:
+
+/api/entitlement-status
+
+Architecture document:
+
+docs/ENTITLEMENT_ARCHITECTURE.md
+
+Current status:
+
+- Entitlement is preview-only.
+- Authentication is not active yet.
+- Subscription checks are not active yet.
+- Database-backed entitlement is not active yet.
+- ECPay checkout remains disabled until explicitly configured.
+- AI earnings analysis remains planned as a paid / Pro feature.
+- No secrets should be committed to the repository.
