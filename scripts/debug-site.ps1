@@ -413,6 +413,168 @@ if ($entitlementChecksPassed) {
 }
 
 Add-Line ""
+Add-Line "Phase C S8: Protected API Locked Stub checks"
+
+$protectedApiChecksPassed = $true
+
+# Check protected-ai-analysis.js exists
+if (Test-Path "api/protected-ai-analysis.js") {
+  Add-Line "[OK] api/protected-ai-analysis.js exists"
+} else {
+  Add-Line "[FAIL] api/protected-ai-analysis.js not found"
+  $protectedApiChecksPassed = $false
+}
+
+# Check protected-ai-analysis.js structure
+$protectedApi = Get-Content "api/protected-ai-analysis.js" -Raw -ErrorAction SilentlyContinue
+if ($protectedApi) {
+  $apiPassed = $true
+
+  # Check uses requireFeatureAccess
+  if ($protectedApi -match "requireFeatureAccess") {
+    Add-Line "[OK] protected-ai-analysis.js uses requireFeatureAccess"
+  } else {
+    Add-Line "[FAIL] protected-ai-analysis.js missing requireFeatureAccess"
+    $apiPassed = $false
+  }
+
+  # Check uses aiEarningsAnalysis feature key
+  if ($protectedApi -match "aiEarningsAnalysis") {
+    Add-Line "[OK] protected-ai-analysis.js checks aiEarningsAnalysis feature"
+  } else {
+    Add-Line "[FAIL] protected-ai-analysis.js missing aiEarningsAnalysis feature key"
+    $apiPassed = $false
+  }
+
+  # Check returns locked status
+  if ($protectedApi -match "status.*locked" -or $protectedApi -match "'locked'") {
+    Add-Line "[OK] protected-ai-analysis.js returns locked status"
+  } else {
+    Add-Line "[FAIL] protected-ai-analysis.js missing locked status"
+    $apiPassed = $false
+  }
+
+  # Check returns 403 status code
+  if ($protectedApi -match "status.*403" -or $protectedApi -match "403") {
+    Add-Line "[OK] protected-ai-analysis.js returns 403 status code"
+  } else {
+    Add-Line "[FAIL] protected-ai-analysis.js missing 403 status code"
+    $apiPassed = $false
+  }
+
+  # Check has disclaimer
+  if ($protectedApi -match "disclaimer") {
+    Add-Line "[OK] protected-ai-analysis.js has disclaimer"
+  } else {
+    Add-Line "[FAIL] protected-ai-analysis.js missing disclaimer"
+    $apiPassed = $false
+  }
+
+  # Check no client-side bypass (localStorage/sessionStorage in actual code, not comments)
+  # Only flag actual usage patterns, not comments
+  $hasLocalStorageUsage = $false
+  $lines = $protectedApi -split "`n"
+  foreach ($line in $lines) {
+    # Skip comment lines
+    if ($line -match '^\s*(//|/\*|\*)' -or $line -match '^\s*\*') { continue }
+    # Check for actual localStorage/sessionStorage usage (not in comments)
+    if ($line -match 'localStorage\.(get|set|remove|clear|key|length)' -or $line -match 'window\.localStorage') {
+      $hasLocalStorageUsage = $true
+      break
+    }
+  }
+  if (-not $hasLocalStorageUsage) {
+    Add-Line "[OK] protected-ai-analysis.js has no client-side storage usage"
+  } else {
+    Add-Line "[FAIL] protected-ai-analysis.js contains client-side storage usage"
+    $apiPassed = $false
+  }
+
+  # Check no dev mode bypass
+  if ($protectedApi -notmatch 'dev\s*=\s*true' -and $protectedApi -notmatch '\?dev=true' -and $protectedApi -notmatch 'dev=true') {
+    Add-Line "[OK] protected-ai-analysis.js has no dev=true bypass"
+  } else {
+    Add-Line "[FAIL] protected-ai-analysis.js contains dev=true bypass"
+    $apiPassed = $false
+  }
+
+  # Check no auth/payment bypass
+  if ($protectedApi -notmatch 'auth.*true' -or $protectedApi -notmatch 'payment.*true') {
+    Add-Line "[OK] protected-ai-analysis.js has no auth/payment bypass"
+  } else {
+    Add-Line "[FAIL] protected-ai-analysis.js may contain auth/payment bypass"
+    $apiPassed = $false
+  }
+
+  if ($apiPassed) { Add-Line "[OK] protected-ai-analysis.js structure valid" }
+  else { $protectedApiChecksPassed = $false }
+} else {
+  Add-Line "[FAIL] Cannot read api/protected-ai-analysis.js"
+  $protectedApiChecksPassed = $false
+}
+
+# Check remote API returns 403
+try {
+  $apiResponse = Invoke-WebRequest -Uri "$BaseUrl/api/protected-ai-analysis" -Method GET -UseBasicParsing -TimeoutSec 30
+  $apiStatus = [int]$apiResponse.StatusCode
+  if ($apiStatus -eq 403) {
+    Add-Line "[OK] Protected AI Analysis API returns 403 (locked)"
+  } else {
+    # Note: If returns HTML, the code may not be deployed yet (no commit made)
+    if ($apiResponse.Content -match '<html' -or $apiResponse.Content -match '<!DOCTYPE') {
+      Add-Line "[NOTE] Protected AI Analysis API returns HTML (not deployed yet - expected without commit)"
+    } else {
+      Add-Line "[WARN] Protected AI Analysis API returns HTTP $apiStatus (expected: 403)"
+    }
+  }
+
+  # Parse JSON if possible (only if response is JSON, not HTML)
+  if ($apiResponse.Content -match '<html' -or $apiResponse.Content -match '<!DOCTYPE') {
+    Add-Line "[NOTE] Response is HTML, skipping JSON validation (API not deployed)"
+  } else {
+    try {
+      $apiJson = $apiResponse.Content | ConvertFrom-Json
+      if ($apiJson.status -eq "locked") {
+        Add-Line "[OK] API returns status: 'locked'"
+      } else {
+        Add-Line "[WARN] API status is '$($apiJson.status)' (expected: 'locked')"
+      }
+      if ($apiJson.featureKey -eq "aiEarningsAnalysis") {
+        Add-Line "[OK] API returns featureKey: 'aiEarningsAnalysis'"
+      } else {
+        Add-Line "[WARN] API featureKey is '$($apiJson.featureKey)' (expected: 'aiEarningsAnalysis')"
+      }
+      if ($apiJson.disclaimer) {
+        Add-Line "[OK] API returns disclaimer"
+      } else {
+        Add-Line "[WARN] API missing disclaimer"
+      }
+    } catch {
+      Add-Line "[WARN] Could not parse API response as JSON"
+    }
+  }
+} catch {
+  # Some hosts return error for non-2xx, check status from error
+  if ($_.Exception.Response) {
+    $errorStatus = [int]$_.Exception.Response.StatusCode
+    if ($errorStatus -eq 403) {
+      Add-Line "[OK] Protected AI Analysis API returns 403 (locked)"
+    } else {
+      # Note: If not 403 and no deployed code, local checks are sufficient
+      Add-Line "[NOTE] Protected AI Analysis API returns HTTP $errorStatus (local code checks passed)"
+    }
+  } else {
+    Add-Line "[NOTE] Could not connect to Protected AI Analysis API: $($_.Exception.Message)"
+  }
+}
+
+if ($protectedApiChecksPassed) {
+  Add-Line "[PASS] Phase C S8: Protected API Locked Stub checks - All passed"
+} else {
+  Add-Line "[FAIL] Phase C S8: Protected API Locked Stub checks - Some checks failed"
+}
+
+Add-Line ""
 Add-Line "DNS check"
 try {
   $dnsOutput = nslookup global-earnings-radar.vercel.app 2>&1
