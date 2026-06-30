@@ -62,6 +62,90 @@ Test-Endpoint -Name "Entitlement Status Preview" -Url "$BaseUrl/api/entitlement-
 Test-Endpoint -Name "Disabled ECPay Checkout" -Url "$BaseUrl/api/create-ecpay-payment" -Method "POST" -ExpectedBody "ECPay checkout is not configured."
 
 Add-Line ""
+Add-Line "Pricing Entitlement Preview checks"
+# Check /pricing route
+try {
+  $pricingResponse = Invoke-WebRequest -Uri "$BaseUrl/pricing" -UseBasicParsing -TimeoutSec 30
+  if ($pricingResponse.StatusCode -eq 200) {
+    Add-Line "[OK] Pricing route - HTTP $($pricingResponse.StatusCode)"
+  } else {
+    Add-Line "[WARN] Pricing route - HTTP $($pricingResponse.StatusCode)"
+  }
+} catch {
+  Add-Line "[FAIL] Pricing route - $($_.Exception.Message)"
+}
+
+# Check entitlement status API
+$entitlementChecksPassed = $true
+try {
+  $entitlementResponse = Invoke-WebRequest -Uri "$BaseUrl/api/entitlement-status" -UseBasicParsing -TimeoutSec 30
+  if ($entitlementResponse.StatusCode -eq 200) {
+    Add-Line "[OK] Entitlement Status API - HTTP $($entitlementResponse.StatusCode)"
+
+    # Parse JSON response
+    $entitlementJson = $entitlementResponse.Content | ConvertFrom-Json
+
+    # Check currentTier is free
+    if ($entitlementJson.currentTier -eq "free") {
+      Add-Line "[OK] currentTier = 'free'"
+    } else {
+      Add-Line "[WARN] currentTier = '$($entitlementJson.currentTier)' (expected: 'free')"
+      $entitlementChecksPassed = $false
+    }
+
+    # Check entitlementMode is preview-only
+    if ($entitlementJson.entitlementMode -eq "preview-only") {
+      Add-Line "[OK] entitlementMode = 'preview-only'"
+    } else {
+      Add-Line "[WARN] entitlementMode = '$($entitlementJson.entitlementMode)' (expected: 'preview-only')"
+      $entitlementChecksPassed = $false
+    }
+
+    # Check aiAccessEnabled is false
+    if ($entitlementJson.aiAccessEnabled -eq $false) {
+      Add-Line "[OK] aiAccessEnabled = false (AI Pro locked)"
+    } else {
+      Add-Line "[WARN] aiAccessEnabled = $($entitlementJson.aiAccessEnabled) (expected: false)"
+      $entitlementChecksPassed = $false
+    }
+
+    # Check paymentEnabled is false
+    if ($entitlementJson.paymentEnabled -eq $false) {
+      Add-Line "[OK] paymentEnabled = false (Payment disabled)"
+    } else {
+      Add-Line "[WARN] paymentEnabled = $($entitlementJson.paymentEnabled) (expected: false)"
+      $entitlementChecksPassed = $false
+    }
+
+    # Check subscriptionEnabled is false
+    if ($entitlementJson.subscriptionEnabled -eq $false) {
+      Add-Line "[OK] subscriptionEnabled = false (Subscription disabled)"
+    } else {
+      Add-Line "[WARN] subscriptionEnabled = $($entitlementJson.subscriptionEnabled) (expected: false)"
+      $entitlementChecksPassed = $false
+    }
+
+    # Check ECPay is disabled (no checkout enabled)
+    if ($entitlementJson.paymentEnabled -eq $false) {
+      Add-Line "[OK] ECPay Checkout = disabled (Cannot enable payment)"
+    } else {
+      Add-Line "[WARN] ECPay Checkout should be disabled"
+      $entitlementChecksPassed = $false
+    }
+
+    if ($entitlementChecksPassed) {
+      Add-Line "[OK] Pricing Entitlement Preview - All checks passed"
+    } else {
+      Add-Line "[WARN] Pricing Entitlement Preview - Some checks did not pass"
+    }
+  } else {
+    Add-Line "[FAIL] Entitlement Status API - HTTP $($entitlementResponse.StatusCode)"
+  }
+} catch {
+  Add-Line "[FAIL] Entitlement Status API - $($_.Exception.Message)"
+}
+
+Add-Line ""
 Add-Line "DNS check"
 try {
   $dnsOutput = nslookup global-earnings-radar.vercel.app 2>&1
