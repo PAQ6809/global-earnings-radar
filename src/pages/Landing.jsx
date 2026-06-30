@@ -158,7 +158,7 @@ export default function Landing() {
                 <h4 style={{ fontSize: '0.95rem', marginBottom: '0.75rem' }}>Pro (Coming Soon)</h4>
                 <ul style={{ fontSize: '0.9rem', color: 'var(--gray-600)', listStyle: 'none', padding: 0, margin: 0 }}>
                   <li style={{ marginBottom: '0.5rem' }}>
-                    <span style={{ color: 'var(--gray-400)' }}>🔒</span> AI-assisted earnings analysis <span className="pro-badge" style={{ fontSize: '0.55rem', marginLeft: '0.25rem' }}>Pro locked</span>
+                    AI-assisted earnings analysis <span className="pro-badge" style={{ fontSize: '0.55rem', marginLeft: '0.25rem' }}>Pro locked</span>
                   </li>
                   <li style={{ marginBottom: '0.5rem' }}>Company comparison</li>
                   <li style={{ marginBottom: '0.5rem' }}>Exportable research reports</li>

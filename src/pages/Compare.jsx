@@ -26,11 +26,11 @@ const formatPercent = (value) => {
 
 // Pro features that are locked (not implemented)
 const lockedProFeatures = [
-  { icon: '🤖', title: 'AI-assisted comparison', description: 'Auto-generated insights from filings', locked: true },
-  { icon: '⚠️', title: 'Risk factor extraction', description: 'Side-by-side risk analysis', locked: true },
-  { icon: '💬', title: 'Management tone comparison', description: 'Earnings call sentiment analysis', locked: true },
-  { icon: '📊', title: 'Exportable comparison report', description: 'Download as PDF or Markdown', locked: true },
-  { icon: '💾', title: 'Saved comparison workspace', description: 'Return to your saved comparisons', locked: true }
+  { icon: 'AI', title: 'AI-assisted comparison', description: 'Auto-generated insights from filings', locked: true },
+  { icon: 'Risk', title: 'Risk factor extraction', description: 'Side-by-side risk analysis', locked: true },
+  { icon: 'Tone', title: 'Management tone comparison', description: 'Earnings call sentiment analysis', locked: true },
+  { icon: 'Export', title: 'Exportable comparison report', description: 'Download as PDF or Markdown', locked: true },
+  { icon: 'Save', title: 'Saved comparison workspace', description: 'Return to your saved comparisons', locked: true }
 ]
 
 export default function Compare() {
