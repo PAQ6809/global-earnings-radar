@@ -1,4 +1,4 @@
-﻿/* ============================================
+/* ============================================
    Global Earnings Radar - Liquid Glass Design
    ============================================ */
 
@@ -1470,6 +1470,10 @@ button:focus-visible {
   color: var(--gray-700);
 }
 
+/* Search Controls - desktop safe wrapper */
+.search-controls {
+  display: contents;
+}
 /* Responsive */
 @media (max-width: 1024px) {
   .nav-links {
@@ -1582,6 +1586,41 @@ button:focus-visible {
 
   .nav-mobile-toggle {
     display: block;
+  }
+
+  /* Mobile search controls layout */
+  .search-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .search-container {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .search-input-wrapper {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .search-dropdown {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    max-width: calc(100vw - 2rem);
   }
 
   .hero {
@@ -1730,6 +1769,28 @@ button:focus-visible {
   .search-dropdown {
     width: 280px;
     right: -20px;
+  }
+}
+
+/* Mobile: Very small screens (max-width: 420px) */
+@media (max-width: 420px) {
+  .search-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .search-controls .dark-mode-toggle {
+    justify-self: end;
+  }
+}
+
+/* Mobile: Small screens (max-width: 480px) - override search dropdown fixed */
+@media (max-width: 480px) {
+  .search-dropdown {
+    position: fixed;
+    left: 0.5rem;
+    right: 0.5rem;
+    width: auto;
+    max-width: calc(100vw - 1rem);
   }
 }
 
@@ -4506,6 +4567,10 @@ button:focus-visible {
   background: var(--gray-300);
 }
 
+/* Search Controls - desktop safe wrapper */
+.search-controls {
+  display: contents;
+}
 /* Responsive */
 @media (max-width: 768px) {
   .comparison-grid {

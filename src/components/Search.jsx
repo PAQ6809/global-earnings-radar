@@ -73,7 +73,7 @@ export default function Search() {
           ref={inputRef}
           type="text"
           className="search-input"
-          placeholder="Search companies, terms..."
+          placeholder="Search companies or terms"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsOpen(true)}

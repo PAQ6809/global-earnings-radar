@@ -72,8 +72,10 @@ function Navbar() {
           </div>
         </div>
         <div className="nav-actions">
-          <Search />
-          <DarkModeToggle />
+          <div className="search-controls">
+            <Search />
+            <DarkModeToggle />
+          </div>
         </div>
         <button
           className="nav-mobile-toggle"
