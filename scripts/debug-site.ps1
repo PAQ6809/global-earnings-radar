@@ -58,6 +58,7 @@ Add-Line "API checks"
 Test-Endpoint -Name "Market Quote" -Url "$BaseUrl/api/market-quote?symbol=NVDA"
 Test-Endpoint -Name "Market Search" -Url "$BaseUrl/api/market-search?q=tesla"
 Test-Endpoint -Name "Market Cache Status Preview" -Url "$BaseUrl/api/market-cache-status"
+Test-Endpoint -Name "Entitlement Status Preview" -Url "$BaseUrl/api/entitlement-status"
 Test-Endpoint -Name "Disabled ECPay Checkout" -Url "$BaseUrl/api/create-ecpay-payment" -Method "POST" -ExpectedBody "ECPay checkout is not configured."
 
 Add-Line ""
