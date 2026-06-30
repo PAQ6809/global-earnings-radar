@@ -33,13 +33,13 @@ npm run preview
 
 ## Current Status
 
-**Status: MVP / Demo**
+**Status: MVP / Preview**
 
 This is a minimum viable product demonstration featuring:
 - Sample financial data for demonstration purposes only
-- No backend or API integration
-- No real-time market data
-- Static mock data (financials.json, companies.json)
+- Backend API preview endpoints are available for market data, entitlement status, waitlist submission, and disabled ECPay checkout
+- Market data API can use a provider when configured, otherwise it falls back to demo/local data
+- Static sample data remains available for company research pages
 
 All financial information presented should be verified from official sources before making any investment decisions.
 
@@ -567,3 +567,4 @@ Current status:
 - ECPay checkout remains disabled until explicitly configured.
 - AI earnings analysis remains planned as a paid / Pro feature.
 - No secrets should be committed to the repository.
+

@@ -2,7 +2,7 @@ import { verifyCheckMacValue } from './_ecpay.js'
 
 /**
  * POST /api/ecpay-period-return
- * Callback for recurring billing (хоЪц?хоЪщ?) payment notifications
+ * Callback for recurring billing payment notifications
  * ECPay calls this each time a recurring charge is processed
  *
  * NOTE: Production should:
@@ -47,3 +47,5 @@ export default async function handler(req, res) {
     return res.status(500).end()
   }
 }
+
+
