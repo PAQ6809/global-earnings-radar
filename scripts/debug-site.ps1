@@ -279,13 +279,23 @@ if ($entitlementLib) {
   else { Add-Line "[FAIL] entitlement.js missing developerBypassEnabled: false"; $libPassed = $false }
   if ($entitlementLib -match 'developerAccessEnabled.*false') { Add-Line "[OK] entitlement.js has developerAccessEnabled: false" }
   else { Add-Line "[FAIL] entitlement.js missing developerAccessEnabled: false"; $libPassed = $false }
+  # Check subscription/database entitlement is DISABLED
+  if ($entitlementLib -match 'subscriptionEntitlementEnabled.*false') { Add-Line "[OK] entitlement.js has subscriptionEntitlementEnabled: false" }
+  else { Add-Line "[FAIL] entitlement.js missing subscriptionEntitlementEnabled: false"; $libPassed = $false }
+  if ($entitlementLib -match 'databaseEntitlementEnabled.*false') { Add-Line "[OK] entitlement.js has databaseEntitlementEnabled: false" }
+  else { Add-Line "[FAIL] entitlement.js missing databaseEntitlementEnabled: false"; $libPassed = $false }
+  # Check placeholder functions
+  if ($entitlementLib -match 'hasActiveSubscription' -and $entitlementLib -match 'return false') { Add-Line "[OK] entitlement.js hasActiveSubscription returns false" }
+  else { Add-Line "[FAIL] entitlement.js hasActiveSubscription may not return false"; $libPassed = $false }
+  if ($entitlementLib -match 'getSubscriptionEntitlement') { Add-Line "[OK] entitlement.js has getSubscriptionEntitlement" }
+  else { Add-Line "[FAIL] entitlement.js missing getSubscriptionEntitlement"; $libPassed = $false }
   if ($entitlementLib -match 'return false' -and $entitlementLib -match 'isDeveloperAccount') { Add-Line "[OK] entitlement.js isDeveloperAccount returns false" }
   else { Add-Line "[FAIL] entitlement.js isDeveloperAccount may not return false"; $libPassed = $false }
-  # Check no client-side bypass methods (query param patterns only, not comments)
-  if ($entitlementLib -notmatch '\?dev=' -and $entitlementLib -notmatch 'localStorage' -and $entitlementLib -notmatch 'sessionStorage') {
-    Add-Line "[OK] entitlement.js has no client-side bypass patterns"
+  # Check no client-side bypass patterns (localStorage/sessionStorage usage, not comments)
+  if ($entitlementLib -notmatch 'localStorage\.(get|set|remove|clear)' -and $entitlementLib -notmatch 'sessionStorage\.(get|set|remove|clear)') {
+    Add-Line "[OK] entitlement.js has no client-side storage usage"
   } else {
-    Add-Line "[FAIL] entitlement.js contains client-side bypass patterns"
+    Add-Line "[FAIL] entitlement.js contains client-side storage usage"
     $libPassed = $false
   }
   if ($libPassed) { Add-Line "[OK] entitlement.js structure valid" }

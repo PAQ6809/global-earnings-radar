@@ -32,6 +32,9 @@ export const DEFAULT_ENTITLEMENT = {
   // Developer bypass is DISABLED - no dev accounts can access Pro features
   developerBypassEnabled: false,
   developerAccessEnabled: false,
+  // Subscription/database entitlement is DISABLED
+  subscriptionEntitlementEnabled: false,
+  databaseEntitlementEnabled: false,
 }
 
 /**
@@ -116,11 +119,51 @@ export function isDeveloperAccount(user) {
   return false
 }
 
+/**
+ * Check if user has an active subscription (placeholder)
+ *
+ * SECURITY: This function always returns false until proper database integration
+ * is implemented with server-side subscription verification.
+ *
+ * DO NOT use client tokens, frontend flags, or localStorage to determine subscription status.
+ *
+ * @param {string} userId - User ID to check
+ * @returns {Promise<boolean>} False until database entitlement is configured
+ */
+export async function hasActiveSubscription(userId) {
+  // DISABLED - Always returns false until subscription database is configured
+  // This is a security measure - no subscription access without database verification
+  // const subscription = await db.subscriptions.find({ userId, status: 'active' })
+  // return subscription !== null
+  return false
+}
+
+/**
+ * Get subscription-based entitlement (placeholder)
+ *
+ * Returns disabled/free preview state until subscription database is configured.
+ * Subscription decisions must be made server-side with database verification.
+ *
+ * @param {Object} user - User object
+ * @returns {Object} Free preview entitlement
+ */
+export function getSubscriptionEntitlement(user) {
+  // DISABLED - Returns free preview until subscription database is configured
+  // This is a security measure - no subscription tier without database verification
+  return {
+    ...DEFAULT_ENTITLEMENT,
+    currentTier: 'free',
+    entitlementMode: 'preview-only',
+  }
+}
+
 export default {
   getEntitlementStatus,
   isProAccess,
   isAiAccessEnabled,
   isPaymentEnabled,
   isDeveloperAccount,
+  hasActiveSubscription,
+  getSubscriptionEntitlement,
   DEFAULT_ENTITLEMENT,
 }
