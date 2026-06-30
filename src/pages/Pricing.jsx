@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import AuthStatus from '../components/AuthStatus'
 
 export default function Pricing() {
   const [entitlementStatus, setEntitlementStatus] = useState(null)
@@ -247,6 +248,17 @@ export default function Pricing() {
                 </div>
               </div>
             )}
+          </div>
+        </div>
+
+        {/* Authentication Status Preview */}
+        <div className="auth-preview-section">
+          <h2 className="auth-preview-title">Authentication Preview</h2>
+          <div className="auth-preview-card">
+            <AuthStatus />
+            <p className="auth-preview-disclaimer">
+              Auth status is separate from Pro access. Signing in does not grant Pro features.
+            </p>
           </div>
         </div>
 

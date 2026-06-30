@@ -5864,3 +5864,175 @@ button:focus-visible {
     font-size: 0.85rem;
   }
 }
+
+/* ============================================
+   Auth Status Component
+   ============================================ */
+
+.auth-status-preview {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.auth-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.auth-status-row:last-of-type {
+  margin-bottom: 0;
+}
+
+.auth-status-label {
+  font-weight: 500;
+  color: var(--gray-600);
+  font-size: 0.85rem;
+}
+
+.auth-status-value {
+  font-weight: 600;
+  color: var(--gray-800);
+  font-size: 0.85rem;
+}
+
+.auth-status-preview-mode {
+  color: var(--warning);
+}
+
+.auth-status-ready {
+  color: var(--gray-500);
+}
+
+.auth-status-signed-in {
+  color: var(--success);
+}
+
+.auth-status-note {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  margin: 0.5rem 0 0;
+  font-style: italic;
+}
+
+/* Dark mode for auth status */
+.dark-mode .auth-status-preview {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .auth-status-label {
+  color: var(--gray-500);
+}
+
+.dark-mode .auth-status-value {
+  color: var(--gray-800);
+}
+
+.dark-mode .auth-status-preview-mode {
+  color: #fcd34d;
+}
+
+.dark-mode .auth-status-ready {
+  color: var(--gray-400);
+}
+
+.dark-mode .auth-status-signed-in {
+  color: #86efac;
+}
+
+.dark-mode .auth-status-note {
+  color: var(--gray-500);
+}
+
+.auth-status-action {
+  margin-top: 0.5rem;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+}
+
+.auth-status-user-email {
+  font-size: 0.85rem;
+}
+
+/* Auth Preview Section on Pricing Page */
+.auth-preview-section {
+  max-width: 700px;
+  margin: 3rem auto 0;
+}
+
+.auth-preview-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--gray-800);
+}
+
+.auth-preview-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.auth-preview-disclaimer {
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  margin: 1rem 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .auth-status-preview {
+    padding: 0.875rem;
+  }
+
+  .auth-status-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .auth-status-label,
+  .auth-status-value {
+    font-size: 0.8rem;
+  }
+}
+
+/* Dark mode for auth preview section */
+.dark-mode .auth-preview-card {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .auth-preview-title {
+  color: var(--gray-800);
+}
+
+.dark-mode .auth-preview-disclaimer {
+  color: var(--gray-500);
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Mobile responsive for auth preview */
+@media (max-width: 640px) {
+  .auth-preview-section {
+    max-width: 100%;
+    margin: 2rem 1rem 0;
+    box-sizing: border-box;
+  }
+
+  .auth-preview-title {
+    font-size: 1.25rem;
+  }
+
+  .auth-preview-card {
+    padding: 1rem;
+  }
+}

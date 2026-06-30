@@ -7,64 +7,79 @@ import { useAuth } from '../context/AuthContext'
  * This component is intentionally minimal and preview-safe:
  * - Does not require auth to be configured
  * - Does not grant any pro entitlements
- * - Only shows status when Supabase is configured
+ * - Only shows meaningful status when Supabase is configured
  *
- * Placeholder: Can be added to nav, pricing page, or debug section
+ * Placement: Added to Pricing page entitlement preview section
  */
 export default function AuthStatus() {
   const { user, loading, isAuthConfigured, signInWithGoogle, signOut } = useAuth()
 
-  // Only show when Supabase is actually configured
+  // Not configured - show preview mode notice
   if (!isAuthConfigured) {
-    return null
+    return (
+      <div className="auth-status-preview">
+        <div className="auth-status-row">
+          <span className="auth-status-label">Authentication:</span>
+          <span className="auth-status-value auth-status-preview-mode">Preview mode</span>
+        </div>
+        <p className="auth-status-note">
+          Auth scaffold installed. Configure Supabase in .env to enable sign-in.
+        </p>
+      </div>
+    )
   }
 
   // Loading state
   if (loading) {
     return (
-      <div style={{
-        padding: '8px 12px',
-        fontSize: '0.75rem',
-        color: 'var(--gray-500)'
-      }}>
-        Loading auth...
+      <div className="auth-status-preview">
+        <div className="auth-status-row">
+          <span className="auth-status-label">Authentication:</span>
+          <span className="auth-status-value">Checking status...</span>
+        </div>
       </div>
     )
   }
 
-  // Not logged in
+  // Not logged in - show sign in option
   if (!user) {
     return (
-      <button
-        onClick={signInWithGoogle}
-        className="btn btn-primary"
-        style={{ padding: '6px 16px', fontSize: '0.85rem' }}
-      >
-        Sign In
-      </button>
+      <div className="auth-status-preview">
+        <div className="auth-status-row">
+          <span className="auth-status-label">Authentication:</span>
+          <span className="auth-status-value auth-status-ready">Ready (signed out)</span>
+        </div>
+        <button
+          onClick={signInWithGoogle}
+          className="btn btn-outline auth-status-action"
+        >
+          Sign in with Google
+        </button>
+      </div>
     )
   }
 
-  // Logged in
+  // Logged in - show user email (no pro/paid status)
   return (
-    <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      gap: '8px',
-      padding: '4px 8px'
-    }}>
-      <span style={{
-        fontSize: '0.8rem',
-        color: 'var(--gray-600)'
-      }}>
-        {user.email}
-      </span>
+    <div className="auth-status-preview">
+      <div className="auth-status-row">
+        <span className="auth-status-label">Authentication:</span>
+        <span className="auth-status-value auth-status-signed-in">Signed in</span>
+      </div>
+      <div className="auth-status-row">
+        <span className="auth-status-label">User:</span>
+        <span className="auth-status-value auth-status-user-email">
+          {user.email}
+        </span>
+      </div>
+      <p className="auth-status-note">
+        Auth status is separate from Pro access.
+      </p>
       <button
         onClick={signOut}
-        className="btn btn-outline"
-        style={{ padding: '4px 12px', fontSize: '0.75rem' }}
+        className="btn btn-outline auth-status-action"
       >
-        Sign Out
+        Sign out
       </button>
     </div>
   )
