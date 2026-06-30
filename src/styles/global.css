@@ -1500,6 +1500,22 @@ button:focus-visible {
 }
 
 @media (max-width: 768px) {
+  /* Mobile variables */
+  :root {
+    --mobile-header-height: 64px;
+  }
+
+  /* Prevent horizontal overflow on mobile */
+  html,
+  body,
+  #root,
+  .app,
+  main,
+  .main-content {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   /* Mobile navigation - vertical drawer */
   .nav-links-wrapper {
     display: none;
@@ -1624,7 +1640,10 @@ button:focus-visible {
   }
 
   .hero {
-    padding: 120px 20px 80px;
+    padding-top: calc(var(--mobile-header-height) + 56px);
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 80px;
     min-height: auto;
   }
 
@@ -1648,6 +1667,15 @@ button:focus-visible {
     max-width: 280px;
   }
 
+  /* Mobile section and container max-width */
+  .section,
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
   .section-title {
     font-size: 2rem;
   }
@@ -1659,6 +1687,18 @@ button:focus-visible {
 
   .section {
     padding: 72px 0;
+    max-width: 100%;
+  }
+
+  /* Card max-width on mobile */
+  .card,
+  .feature-card,
+  .company-card,
+  .sector-card,
+  .pricing-card,
+  .research-card {
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .card {
@@ -1700,11 +1740,21 @@ button:focus-visible {
   }
 
   .sector-hero {
-    padding: 3rem 1rem;
+    padding: calc(var(--mobile-header-height) + 2rem) 16px 2rem;
   }
 
   .sector-hero h1 {
     font-size: 2rem;
+  }
+
+  /* Earnings summary and company detail max-width on mobile */
+  .earnings-summary,
+  .company-detail,
+  .company-summary {
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .container {
