@@ -269,6 +269,53 @@ export function canAccessFeature(featureKey, options = {}) {
 }
 
 /**
+ * Require feature access for API protection
+ *
+ * SECURITY: Feature access is determined server-side only.
+ * This function does NOT use:
+ * - Authentication state
+ * - Payment status
+ * - Query parameters
+ * - localStorage/sessionStorage
+ * - Frontend flags
+ *
+ * @param {string} featureKey - The feature identifier to check
+ * @param {Object} options - Optional parameters (ignored in preview mode)
+ * @returns {Object} Access result with allowed flag, status code, and reason
+ */
+export function requireFeatureAccess(featureKey, options = {}) {
+  const allowed = canAccessFeature(featureKey, options)
+
+  if (allowed) {
+    return {
+      allowed: true,
+      featureKey,
+      currentTier: 'free',
+      reason: 'Feature is available in free preview',
+      statusCode: 200,
+    }
+  }
+
+  // Determine the tier for the feature
+  let currentTier = 'locked'
+  if (PRO_FEATURES.includes(featureKey)) {
+    currentTier = 'pro'
+  } else if (TEAM_FEATURES.includes(featureKey)) {
+    currentTier = 'team'
+  } else if (RESEARCH_LAB_FEATURES.includes(featureKey)) {
+    currentTier = 'research-lab'
+  }
+
+  return {
+    allowed: false,
+    featureKey,
+    currentTier,
+    reason: `Feature is locked. ${currentTier.charAt(0).toUpperCase() + currentTier.slice(1)} subscription required.`,
+    statusCode: 403,
+  }
+}
+
+/**
  * Get feature access map for API responses
  *
  * Uses canAccessFeature() to determine access levels for each feature.

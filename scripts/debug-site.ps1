@@ -306,6 +306,50 @@ if ($entitlementLib) {
   else { Add-Line "[FAIL] entitlement.js missing canAccessFeature"; $libPassed = $false }
   if ($entitlementLib -match 'getFeatureAccessMap') { Add-Line "[OK] entitlement.js has getFeatureAccessMap" }
   else { Add-Line "[FAIL] entitlement.js missing getFeatureAccessMap"; $libPassed = $false }
+
+  # Phase C S7: Protected API Feature Gate Scaffold checks
+  if ($entitlementLib -match 'requireFeatureAccess') { Add-Line "[OK] entitlement.js has requireFeatureAccess" }
+  else { Add-Line "[FAIL] entitlement.js missing requireFeatureAccess"; $libPassed = $false }
+
+  # Check requireFeatureAccess returns object structure
+  if ($entitlementLib -match 'allowed\s*:\s*true' -and $entitlementLib -match 'allowed\s*:\s*false') {
+    Add-Line "[OK] entitlement.js requireFeatureAccess returns allowed boolean"
+  } else {
+    Add-Line "[FAIL] entitlement.js requireFeatureAccess missing allowed boolean"; $libPassed = $false
+  }
+
+  # Check statusCode 403 for locked features
+  if ($entitlementLib -match 'statusCode\s*:\s*403') { Add-Line "[OK] entitlement.js has statusCode 403" }
+  else { Add-Line "[FAIL] entitlement.js missing statusCode 403"; $libPassed = $false }
+
+  # Check free features can be allowed (companySearch is in FREE_FEATURES)
+  if ($entitlementLib -match 'FREE_FEATURES.*include' -and $entitlementLib -match "return true") {
+    Add-Line "[OK] entitlement.js allows free features via FREE_FEATURES.includes"
+  } else {
+    Add-Line "[FAIL] entitlement.js may not allow free features correctly"; $libPassed = $false
+  }
+
+  # Check paid features are locked (aiEarningsAnalysis is in PRO_FEATURES)
+  if ($entitlementLib -match 'PRO_FEATURES' -and $entitlementLib -match 'return false') {
+    Add-Line "[OK] entitlement.js locks paid features via PRO_FEATURES.includes"
+  } else {
+    Add-Line "[FAIL] entitlement.js may not lock paid features correctly"; $libPassed = $false
+  }
+
+  # Check unknown features default to locked
+  if ($entitlementLib -match 'Unknown features default to false' -or $entitlementLib -match 'return false.*\/\/ Unknown') {
+    Add-Line "[OK] entitlement.js locks unknown features by default"
+  } else {
+    Add-Line "[FAIL] entitlement.js may not lock unknown features by default"; $libPassed = $false
+  }
+
+  # Check no client-side bypass (localStorage/query params in actual code, not comments)
+  if ($entitlementLib -notmatch '(?<!//.*)localStorage\.(get|set|remove|clear)' -and $entitlementLib -notmatch '(?<!//.*)sessionStorage\.(get|set|remove|clear)') {
+    Add-Line "[OK] entitlement.js has no client-side storage usage"
+  } else {
+    Add-Line "[FAIL] entitlement.js contains client-side storage usage"
+    $libPassed = $false
+  }
   # Check free features are defined
   if ($entitlementLib -match "'companySearch'" -and $entitlementLib -match "'staticSummaries'" -and $entitlementLib -match "'delayedMarketSnapshots'") {
     Add-Line "[OK] entitlement.js defines free features"
