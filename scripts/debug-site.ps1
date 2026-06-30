@@ -252,6 +252,63 @@ if ($authChecksPassed) {
 }
 
 Add-Line ""
+Add-Line "Entitlement Helper checks"
+
+$entitlementChecksPassed = $true
+
+# Check entitlement helper file exists
+if (Test-Path "api/_lib/entitlement.js") {
+  Add-Line "[OK] api/_lib/entitlement.js exists"
+} else {
+  Add-Line "[FAIL] api/_lib/entitlement.js not found"
+  $entitlementChecksPassed = $false
+}
+
+# Check entitlement helper has required exports
+$entitlementLib = Get-Content "api/_lib/entitlement.js" -Raw -ErrorAction SilentlyContinue
+if ($entitlementLib) {
+  $libPassed = $true
+  if ($entitlementLib -match 'getEntitlementStatus') { Add-Line "[OK] entitlement.js exports getEntitlementStatus" }
+  else { Add-Line "[FAIL] entitlement.js missing getEntitlementStatus"; $libPassed = $false }
+  if ($entitlementLib -match 'DEFAULT_ENTITLEMENT') { Add-Line "[OK] entitlement.js exports DEFAULT_ENTITLEMENT" }
+  else { Add-Line "[FAIL] entitlement.js missing DEFAULT_ENTITLEMENT"; $libPassed = $false }
+  if ($entitlementLib -match 'aiAccessEnabled.*false') { Add-Line "[OK] entitlement.js has aiAccessEnabled: false" }
+  else { Add-Line "[FAIL] entitlement.js missing aiAccessEnabled: false"; $libPassed = $false }
+  if ($libPassed) { Add-Line "[OK] entitlement.js structure valid" }
+  else { $entitlementChecksPassed = $false }
+} else {
+  Add-Line "[FAIL] Cannot read api/_lib/entitlement.js"
+  $entitlementChecksPassed = $false
+}
+
+# Check entitlement-status.js uses helper
+$entitlementApi = Get-Content "api/entitlement-status.js" -Raw -ErrorAction SilentlyContinue
+if ($entitlementApi) {
+  if ($entitlementApi -match "_lib/entitlement") {
+    Add-Line "[OK] entitlement-status.js imports entitlement helper"
+  } else {
+    Add-Line "[FAIL] entitlement-status.js does not import entitlement helper"
+    $entitlementChecksPassed = $false
+  }
+  # Check that entitlement is spread from getEntitlementStatus
+  if ($entitlementApi -match "\.\.\.entitlement") {
+    Add-Line "[OK] entitlement-status.js spreads entitlement from helper"
+  } else {
+    Add-Line "[FAIL] entitlement-status.js does not spread entitlement from helper"
+    $entitlementChecksPassed = $false
+  }
+} else {
+  Add-Line "[FAIL] Cannot read api/entitlement-status.js"
+  $entitlementChecksPassed = $false
+}
+
+if ($entitlementChecksPassed) {
+  Add-Line "[PASS] Entitlement Helper checks - All passed"
+} else {
+  Add-Line "[FAIL] Entitlement Helper checks - Some checks failed"
+}
+
+Add-Line ""
 Add-Line "DNS check"
 try {
   $dnsOutput = nslookup global-earnings-radar.vercel.app 2>&1
