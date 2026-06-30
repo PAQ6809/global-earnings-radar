@@ -1817,8 +1817,11 @@ button:focus-visible {
   }
 
   .search-dropdown {
-    width: 280px;
-    right: -20px;
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    max-width: calc(100vw - 2rem);
   }
 }
 
@@ -2575,12 +2578,18 @@ button:focus-visible {
 
 @media (max-width: 768px) {
   .search-input {
-    width: 140px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
 
   .search-dropdown {
-    width: 280px;
-    right: -20px;
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    max-width: calc(100vw - 2rem);
   }
 
   .legal-content {
@@ -2594,7 +2603,10 @@ button:focus-visible {
 
 @media (max-width: 480px) {
   .search-input {
-    width: 120px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
 
   
