@@ -161,3 +161,18 @@ Rules for cmini:
 - Do not add dependencies.
 - Fix the smallest confirmed issue only.
 - Run `npm run build` after changes.
+
+## Market Cache Status Preview Check
+
+The debug workflow also checks:
+
+/api/market-cache-status
+
+Expected result:
+
+- HTTP 200
+- status is preview
+- cacheEnabled false is normal
+- cronEnabled false is normal
+
+This endpoint is an architecture preview only. It does not mean Redis, Supabase, or Vercel Cron are active. Cache and cron should remain inactive until real providers and scheduled refresh jobs are intentionally configured.
