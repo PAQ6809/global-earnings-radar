@@ -1,7 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Pricing() {
+  const [entitlementStatus, setEntitlementStatus] = useState(null)
+  const [entitlementLoading, setEntitlementLoading] = useState(true)
+  const [entitlementError, setEntitlementError] = useState(false)
+
+  useEffect(() => {
+    const fetchEntitlement = async () => {
+      try {
+        const res = await fetch('/api/entitlement-status')
+        if (!res.ok) throw new Error('Failed')
+        const data = await res.json()
+        setEntitlementStatus(data)
+        setEntitlementError(false)
+      } catch (err) {
+        setEntitlementError(true)
+      } finally {
+        setEntitlementLoading(false)
+      }
+    }
+    fetchEntitlement()
+  }, [])
+
   return (
     <div>
       {/* Header */}
@@ -180,6 +201,53 @@ export default function Pricing() {
             <span className="preview-label-sm">Preview</span> Coming soon &nbsp;&nbsp;
             — Not available
           </p>
+        </div>
+
+        {/* Entitlement Status Preview */}
+        <div style={{ maxWidth: '700px', margin: '3rem auto 0' }}>
+          <h2 style={{ textAlign: 'center', marginBottom: '1.5rem' }}>Entitlement / Subscription Preview</h2>
+          <div className="card entitlement-status-card">
+            {entitlementLoading ? (
+              <p className="entitlement-status-loading">Loading entitlement status...</p>
+            ) : entitlementError ? (
+              <p className="entitlement-status-error">Entitlement status is temporarily unavailable.</p>
+            ) : entitlementStatus && (
+              <div className="entitlement-status-grid">
+                <div className="entitlement-status-row">
+                  <span className="entitlement-status-label">Current Tier:</span>
+                  <span className="entitlement-status-value">Free Preview</span>
+                </div>
+                <div className="entitlement-status-row">
+                  <span className="entitlement-status-label">Entitlement Mode:</span>
+                  <span className="entitlement-status-value">Preview only</span>
+                </div>
+                <div className="entitlement-status-row">
+                  <span className="entitlement-status-label">Authentication:</span>
+                  <span className="entitlement-status-value entitlement-status-inactive">Not active</span>
+                </div>
+                <div className="entitlement-status-row">
+                  <span className="entitlement-status-label">Subscription:</span>
+                  <span className="entitlement-status-value entitlement-status-inactive">Not active</span>
+                </div>
+                <div className="entitlement-status-row">
+                  <span className="entitlement-status-label">Payment:</span>
+                  <span className="entitlement-status-value entitlement-status-inactive">Not active</span>
+                </div>
+                <div className="entitlement-status-row">
+                  <span className="entitlement-status-label">Database Entitlement:</span>
+                  <span className="entitlement-status-value entitlement-status-inactive">Not active</span>
+                </div>
+                <div className="entitlement-status-row">
+                  <span className="entitlement-status-label">AI Access:</span>
+                  <span className="entitlement-status-value entitlement-status-inactive">Pro locked / Not active</span>
+                </div>
+                <div className="entitlement-status-row">
+                  <span className="entitlement-status-label">ECPay Checkout:</span>
+                  <span className="entitlement-status-value entitlement-status-inactive">Disabled until configured</span>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Market Data Info */}

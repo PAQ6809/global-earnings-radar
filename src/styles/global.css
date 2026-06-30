@@ -5554,3 +5554,105 @@ button:focus-visible {
   border-top-color: rgba(148, 163, 184, 0.24);
   color: #cbd5e1;
 }
+
+/* ============================================
+   Entitlement Status Preview
+   ============================================ */
+
+.entitlement-status-card {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(0, 113, 227, 0.2);
+}
+
+.dark-mode .entitlement-status-card {
+  background: rgba(20, 24, 36, 0.6);
+  border-color: rgba(10, 132, 255, 0.3);
+}
+
+.entitlement-status-loading {
+  text-align: center;
+  color: var(--gray-500);
+  font-size: 0.9rem;
+  padding: 1.5rem;
+}
+
+.dark-mode .entitlement-status-loading {
+  color: var(--gray-600);
+}
+
+.entitlement-status-error {
+  text-align: center;
+  color: var(--danger);
+  font-size: 0.9rem;
+  padding: 1.5rem;
+}
+
+.dark-mode .entitlement-status-error {
+  color: #ff6b6b;
+}
+
+.entitlement-status-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.entitlement-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+}
+
+.dark-mode .entitlement-status-row {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.entitlement-status-label {
+  font-weight: 500;
+  color: var(--gray-700);
+  font-size: 0.9rem;
+}
+
+.dark-mode .entitlement-status-label {
+  color: var(--gray-600);
+}
+
+.entitlement-status-value {
+  font-weight: 600;
+  color: var(--gray-800);
+  font-size: 0.9rem;
+}
+
+.dark-mode .entitlement-status-value {
+  color: var(--gray-800);
+}
+
+.entitlement-status-inactive {
+  color: var(--gray-500);
+}
+
+.dark-mode .entitlement-status-inactive {
+  color: var(--gray-500);
+}
+
+@media (max-width: 500px) {
+  .entitlement-status-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .entitlement-status-label {
+    font-size: 0.85rem;
+  }
+
+  .entitlement-status-value {
+    font-size: 0.85rem;
+  }
+}
