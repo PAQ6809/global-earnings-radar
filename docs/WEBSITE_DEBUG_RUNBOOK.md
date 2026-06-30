@@ -176,3 +176,22 @@ Expected result:
 - cronEnabled false is normal
 
 This endpoint is an architecture preview only. It does not mean Redis, Supabase, or Vercel Cron are active. Cache and cron should remain inactive until real providers and scheduled refresh jobs are intentionally configured.
+
+## Entitlement Status Preview Check
+
+The debug workflow also checks:
+
+/api/entitlement-status
+
+Expected result:
+
+- HTTP 200
+- status is preview
+- currentTier is free
+- authEnabled false is normal
+- subscriptionEnabled false is normal
+- paymentEnabled false is normal
+- databaseEnabled false is normal
+- aiAccessEnabled false is normal
+
+This endpoint is an architecture preview only. It does not mean authentication, subscription checks, ECPay checkout, database-backed entitlement, or AI access are active.

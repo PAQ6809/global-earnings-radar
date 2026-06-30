@@ -81,3 +81,4 @@ try {
 $results | Set-Content $OutputPath -Encoding UTF8
 Add-Line ""
 Add-Line "Saved debug output to $OutputPath"
+
