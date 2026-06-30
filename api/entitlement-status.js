@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Entitlement Status API - Preview Endpoint
  *
  * GET /api/entitlement-status
@@ -117,6 +117,35 @@ const ENTITLEMENT_STATUS = {
       'Do NOT use query params (?dev=true) to unlock features',
       'Do NOT hardcode bypass logic in UI components',
       'Server-side allowlist verification is required',
+    ],
+  },
+  // Future: auth entitlement flow (NOT enabled in current preview)
+  plannedAuthEntitlement: {
+    enabled: false,
+    description: 'Server-side entitlement determination based on auth state and subscription',
+    decisionFlow: [
+      '1. Check authentication (unauthenticated -> free)',
+      '2. Check developer allowlist (email/id -> developer tier)',
+      '3. Check subscription (active -> pro/team/researchLab)',
+      '4. Default to free tier',
+    ],
+    priorityOrder: [
+      { priority: 1, condition: 'Email/ID in developer allowlist', result: 'developer' },
+      { priority: 2, condition: 'Active subscription', result: 'pro/team/researchLab' },
+      { priority: 3, condition: 'Authenticated, no subscription', result: 'free' },
+      { priority: 4, condition: 'Unauthenticated', result: 'free (preview)' },
+    ],
+    requiredEnvVars: [
+      'AUTH_PROVIDER (e.g., supabase)',
+      'DEVELOPER_ACCOUNT_EMAILS (comma-separated)',
+      'DEVELOPER_ACCOUNT_IDS (comma-separated)',
+      'ENTITLEMENT_MODE (preview or production)',
+    ],
+    serverSideRequirements: [
+      'Verify JWT token server-side (never trust client claims)',
+      'Check developer allowlist against env vars (not in code)',
+      'Query subscription from database (not from client token)',
+      'Verify ECPay webhook signatures before updating subscription',
     ],
   },
   disclaimer: 'Educational and informational only. Not investment advice.',

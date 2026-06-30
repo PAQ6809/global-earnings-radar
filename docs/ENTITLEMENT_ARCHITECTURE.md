@@ -1,4 +1,4 @@
-﻿# Entitlement / Subscription Architecture
+# Entitlement / Subscription Architecture
 
 This document describes the planned entitlement architecture for Global Earnings Radar.
 
@@ -43,6 +43,88 @@ Planned components:
 - Payment: ECPay checkout and webhook verification
 - Backend gate: server-side checks before paid APIs or AI analysis
 - Frontend gate: locked-state UI and upgrade messaging
+
+## Auth Entitlement Architecture
+
+### Entitlement decision flow (server-side)
+
+When a user makes a request to a protected endpoint or fetches entitlement status:
+
+```
+1. Check authentication
+   ├── Unauthenticated -> return free tier
+   └── Authenticated -> continue to step 2
+
+2. Check developer allowlist (HIGHEST PRIORITY)
+   ├── Email in DEVELOPER_ACCOUNT_EMAILS -> developer tier
+   ├── User ID in DEVELOPER_ACCOUNT_IDS -> developer tier
+   └── Not in allowlist -> continue to step 3
+
+3. Check subscription status
+   ├── Subscription active -> tier = subscription.tier (pro/team/researchLab)
+   └── No active subscription -> free tier
+```
+
+### Tier determination order
+
+| Priority | Condition | Result |
+|----------|-----------|--------|
+| 1 (highest) | Email/ID in developer allowlist | `developer` |
+| 2 | Active subscription with tier | `pro` / `team` / `researchLab` |
+| 3 | Authenticated, no subscription | `free` |
+| 4 | Unauthenticated | `free` (preview) |
+
+### Environment variables (future)
+
+```bash
+# Auth provider configuration
+AUTH_PROVIDER=supabase
+
+# Developer allowlist (comma-separated)
+DEVELOPER_ACCOUNT_EMAILS=dev@example.com,qa@example.com
+DEVELOPER_ACCOUNT_IDS=uuid_1,uuid_2
+
+# Entitlement mode (preview = safe mode, production = full)
+ENTITLEMENT_MODE=preview
+```
+
+### Auth check requirements
+
+**Server-side entitlement endpoint pattern:**
+
+```javascript
+// GET /api/entitlement-status
+// Headers: Authorization: Bearer <token>
+
+export default async function handler(req) {
+  const token = req.headers.get('Authorization')?.replace('Bearer ', '')
+  const user = await verifyToken(token) // Server-side only
+
+  // Priority 1: Developer allowlist check
+  if (user && isDeveloperAllowlisted(user)) {
+    return { currentTier: 'developer', aiAccessEnabled: true }
+  }
+
+  // Priority 2: Subscription check
+  if (user) {
+    const subscription = await getSubscription(user.id)
+    if (subscription?.active) {
+      return { currentTier: subscription.tier }
+    }
+  }
+
+  // Priority 3: Default to free
+  return { currentTier: 'free', aiAccessEnabled: false }
+}
+```
+
+### Security notes
+
+- **Never trust frontend for entitlement checks**
+- **Always verify on server-side**
+- **Developer allowlist is secret** (env vars, not in code)
+- **Subscription status must come from database**, not from client claims
+- **ECPay webhooks must verify signatures** before updating subscription
 
 ## Tier boundaries
 
