@@ -274,6 +274,20 @@ if ($entitlementLib) {
   else { Add-Line "[FAIL] entitlement.js missing DEFAULT_ENTITLEMENT"; $libPassed = $false }
   if ($entitlementLib -match 'aiAccessEnabled.*false') { Add-Line "[OK] entitlement.js has aiAccessEnabled: false" }
   else { Add-Line "[FAIL] entitlement.js missing aiAccessEnabled: false"; $libPassed = $false }
+  # Check developer bypass is DISABLED
+  if ($entitlementLib -match 'developerBypassEnabled.*false') { Add-Line "[OK] entitlement.js has developerBypassEnabled: false" }
+  else { Add-Line "[FAIL] entitlement.js missing developerBypassEnabled: false"; $libPassed = $false }
+  if ($entitlementLib -match 'developerAccessEnabled.*false') { Add-Line "[OK] entitlement.js has developerAccessEnabled: false" }
+  else { Add-Line "[FAIL] entitlement.js missing developerAccessEnabled: false"; $libPassed = $false }
+  if ($entitlementLib -match 'return false' -and $entitlementLib -match 'isDeveloperAccount') { Add-Line "[OK] entitlement.js isDeveloperAccount returns false" }
+  else { Add-Line "[FAIL] entitlement.js isDeveloperAccount may not return false"; $libPassed = $false }
+  # Check no client-side bypass methods (query param patterns only, not comments)
+  if ($entitlementLib -notmatch '\?dev=' -and $entitlementLib -notmatch 'localStorage' -and $entitlementLib -notmatch 'sessionStorage') {
+    Add-Line "[OK] entitlement.js has no client-side bypass patterns"
+  } else {
+    Add-Line "[FAIL] entitlement.js contains client-side bypass patterns"
+    $libPassed = $false
+  }
   if ($libPassed) { Add-Line "[OK] entitlement.js structure valid" }
   else { $entitlementChecksPassed = $false }
 } else {

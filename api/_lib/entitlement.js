@@ -29,6 +29,9 @@ export const DEFAULT_ENTITLEMENT = {
   databaseEnabled: false,
   aiAccessEnabled: false,
   provider: 'none',
+  // Developer bypass is DISABLED - no dev accounts can access Pro features
+  developerBypassEnabled: false,
+  developerAccessEnabled: false,
 }
 
 /**
@@ -105,7 +108,8 @@ export function isPaymentEnabled() {
  * @returns {boolean} True if user is a developer
  */
 export function isDeveloperAccount(user) {
-  // Placeholder - not implemented
+  // DISABLED - Always returns false until DEVELOPER_ACCOUNT_EMAILS / DEVELOPER_ACCOUNT_IDS env vars are configured
+  // This is a security measure - no dev bypass without explicit allowlist
   // const developerEmails = (process.env.DEVELOPER_ACCOUNT_EMAILS || '').split(',').filter(Boolean)
   // const developerIds = (process.env.DEVELOPER_ACCOUNT_IDS || '').split(',').filter(Boolean)
   // return developerEmails.includes(user?.email) || developerIds.includes(user?.id)
