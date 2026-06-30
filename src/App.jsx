@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import { DarkModeProvider } from './context/DarkModeContext'
+import { AuthProvider } from './context/AuthContext'
 import Landing from './pages/Landing'
 import Company from './pages/Company'
 import Sector from './pages/Sector'
@@ -137,7 +138,9 @@ function AppContent() {
 export default function App() {
   return (
     <DarkModeProvider>
-      <AppContent />
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
     </DarkModeProvider>
   )
 }
