@@ -52,6 +52,60 @@ Planned components:
 | Pro | AI earnings analysis, company comparison, exportable research reports, live or near-real-time quote access when configured |
 | Team | Shared watchlists, batch company tracking, team workspace features |
 | Research Lab | Large-scale company research workflows, advanced batch analysis, API access when configured |
+| Developer | Test access to Pro/AI/paid features for development and QA testing |
+
+## Developer Account Entitlement
+
+### Purpose
+
+A special `developer` tier exists for authorized developers to test all paid features without real subscriptions. This enables:
+
+- Testing Pro features (AI analysis, export, comparison)
+- Testing subscription UI flows
+- Error checking and QA validation
+- Development workflow without payment credentials
+
+### Security requirements
+
+**Developer account is NOT a frontend bypass.**
+
+- Do NOT use `localStorage`, `sessionStorage`, or cookies to store developer flags.
+- Do NOT use query parameters (`?dev=true`, `?developer=1`) to unlock features.
+- Do NOT hardcode bypass logic in UI components.
+- Developer access must be verified server-side against an allowlist.
+
+**Allowlist configuration (future):**
+
+```bash
+# Environment variables (not in code)
+DEVELOPER_ACCOUNT_EMAILS=developer@example.com,qa@example.com
+DEVELOPER_ACCOUNT_IDS=user_uuid_1,user_uuid_2
+```
+
+### Planned developer tier features
+
+When a user is authenticated AND their email/ID is in the allowlist:
+
+| Feature | Developer access |
+|---|---|
+| aiAccessEnabled | true |
+| exportEnabled | true |
+| advancedCompareEnabled | true |
+| developerBypassEnabled | true |
+| billingMode | sandbox |
+
+### ECPay boundary for developers
+
+**ECPay production checkout remains disabled even for developer accounts.**
+
+Developer accounts use `billingMode: sandbox` or `billingMode: bypass`. Production ECPay checkout must:
+- Require explicit merchant credential configuration
+- Verify webhook signatures
+- Not be auto-enabled by developer accounts
+
+### Current safe preview behavior
+
+The current `/api/entitlement-status` always returns `currentTier: free` and `aiAccessEnabled: false`. The `plannedDeveloperAccess` field documents future behavior without enabling it today.
 
 ## Feature access map
 

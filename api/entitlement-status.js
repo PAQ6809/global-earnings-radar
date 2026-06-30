@@ -68,6 +68,15 @@ const ENTITLEMENT_STATUS = {
         'API access when configured',
       ],
     },
+    developer: {
+      label: 'Developer',
+      active: false,
+      plannedFeatures: [
+        'Test access to all Pro/AI/paid features',
+        'Sandbox billing mode (no real charges)',
+        'Developer bypass for QA testing',
+      ],
+    },
   },
   featureAccess: {
     delayedMarketSnapshots: 'free-preview',
@@ -80,6 +89,35 @@ const ENTITLEMENT_STATUS = {
     sharedWatchlists: 'team-locked',
     batchTracking: 'team-locked',
     researchApiAccess: 'research-lab-locked',
+  },
+  // Future: developer account features (NOT enabled in current preview)
+  plannedDeveloperAccess: {
+    enabled: false,
+    description: 'Developer accounts can test all Pro features without real subscription',
+    requirements: [
+      'User must be authenticated',
+      'Email must be in DEVELOPER_ACCOUNT_EMAILS allowlist OR',
+      'User ID must be in DEVELOPER_ACCOUNT_IDS allowlist',
+      'Server-side verification required (not frontend bypass)',
+    ],
+    features: {
+      aiAccessEnabled: true,
+      exportEnabled: true,
+      advancedCompareEnabled: true,
+      developerBypassEnabled: true,
+      billingMode: 'sandbox',
+    },
+    ecpayBoundary: {
+      productionCheckoutEnabled: false,
+      reason: 'ECPay requires explicit merchant credential configuration',
+      note: 'Developer accounts use sandbox mode, not production payments',
+    },
+    securityRules: [
+      'Do NOT use localStorage/sessionStorage for developer flags',
+      'Do NOT use query params (?dev=true) to unlock features',
+      'Do NOT hardcode bypass logic in UI components',
+      'Server-side allowlist verification is required',
+    ],
   },
   disclaimer: 'Educational and informational only. Not investment advice.',
 }
