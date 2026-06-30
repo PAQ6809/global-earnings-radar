@@ -26,11 +26,11 @@ const formatPercent = (value) => {
 
 // Pro features that are locked (not implemented)
 const lockedProFeatures = [
-  { icon: '🤖', title: 'AI-assisted comparison', description: 'Auto-generated insights from filings' },
-  { icon: '⚠️', title: 'Risk factor extraction', description: 'Side-by-side risk analysis' },
-  { icon: '💬', title: 'Management tone comparison', description: 'Earnings call sentiment analysis' },
-  { icon: '📊', title: 'Exportable comparison report', description: 'Download as PDF or Markdown' },
-  { icon: '💾', title: 'Saved comparison workspace', description: 'Return to your saved comparisons' }
+  { icon: '🤖', title: 'AI-assisted comparison', description: 'Auto-generated insights from filings', locked: true },
+  { icon: '⚠️', title: 'Risk factor extraction', description: 'Side-by-side risk analysis', locked: true },
+  { icon: '💬', title: 'Management tone comparison', description: 'Earnings call sentiment analysis', locked: true },
+  { icon: '📊', title: 'Exportable comparison report', description: 'Download as PDF or Markdown', locked: true },
+  { icon: '💾', title: 'Saved comparison workspace', description: 'Return to your saved comparisons', locked: true }
 ]
 
 export default function Compare() {
@@ -277,9 +277,9 @@ export default function Compare() {
                 <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>{feature.icon}</div>
                 <h4 style={{ fontSize: '0.95rem', marginBottom: '0.25rem' }}>{feature.title}</h4>
                 <p style={{ fontSize: '0.8rem', color: 'var(--gray-500)' }}>{feature.description}</p>
-                <div className="pro-preview-label">
-                  <span className="pro-badge" style={{ fontSize: '0.6rem' }}>Pro Preview</span>
-                </div>
+                {feature.locked && (
+                  <span className="pro-badge" style={{ fontSize: '0.6rem', marginTop: '0.5rem', display: 'inline-block' }}>Pro locked</span>
+                )}
               </div>
             ))}
           </div>

@@ -157,7 +157,9 @@ export default function Landing() {
                 <div className="pro-badge-overlay" style={{ fontSize: '0.7rem' }}>Pro</div>
                 <h4 style={{ fontSize: '0.95rem', marginBottom: '0.75rem' }}>Pro (Coming Soon)</h4>
                 <ul style={{ fontSize: '0.9rem', color: 'var(--gray-600)', listStyle: 'none', padding: 0, margin: 0 }}>
-                  <li style={{ marginBottom: '0.5rem' }}>AI-assisted earnings analysis</li>
+                  <li style={{ marginBottom: '0.5rem' }}>
+                    <span style={{ color: 'var(--gray-400)' }}>🔒</span> AI-assisted earnings analysis <span className="pro-badge" style={{ fontSize: '0.55rem', marginLeft: '0.25rem' }}>Pro locked</span>
+                  </li>
                   <li style={{ marginBottom: '0.5rem' }}>Company comparison</li>
                   <li style={{ marginBottom: '0.5rem' }}>Exportable research reports</li>
                   <li style={{ marginBottom: '0.5rem' }}>Saved watchlists</li>
@@ -197,9 +199,12 @@ export default function Landing() {
               <p>Track your favorite companies and receive earnings alerts. Save research notes for each company.</p>
             </div>
             <div className="card feature-card pro-preview-card">
-              <div className="pro-badge-overlay">Pro Preview</div>
+              <div className="pro-badge-overlay">Pro Locked</div>
               <h3>AI Earnings Briefs</h3>
               <p>Get AI-assisted summaries of earnings calls with key highlights, risks, and questions to watch.</p>
+              <p style={{ fontSize: '0.8rem', color: 'var(--gray-500)', marginTop: '0.75rem' }}>
+                Not available in free preview.
+              </p>
             </div>
             <div className="card feature-card pro-preview-card">
               <div className="pro-badge-overlay">Pro Preview</div>
