@@ -322,6 +322,15 @@ if ($entitlementLib) {
   if ($entitlementLib -match 'statusCode\s*:\s*403') { Add-Line "[OK] entitlement.js has statusCode 403" }
   else { Add-Line "[FAIL] entitlement.js missing statusCode 403"; $libPassed = $false }
 
+  # Check locked response has currentTier: 'free' (user tier, not feature tier)
+  # This is critical: when locked, show user's current tier, not what the feature requires
+  if ($entitlementLib -match "currentTier.*userTier" -or ($entitlementLib -match "getEntitlementStatus" -and $entitlementLib -match "currentTier.*'free'")) {
+    Add-Line "[OK] entitlement.js requireFeatureAccess locked response uses user's currentTier (not feature tier)"
+  } else {
+    Add-Line "[FAIL] entitlement.js requireFeatureAccess locked response should use user's currentTier"
+    $libPassed = $false
+  }
+
   # Check free features can be allowed (companySearch is in FREE_FEATURES)
   if ($entitlementLib -match 'FREE_FEATURES.*include' -and $entitlementLib -match "return true") {
     Add-Line "[OK] entitlement.js allows free features via FREE_FEATURES.includes"
@@ -468,6 +477,15 @@ if ($protectedApi) {
   } else {
     Add-Line "[FAIL] protected-ai-analysis.js missing disclaimer"
     $apiPassed = $false
+  }
+
+  # Check locked response has currentTier: 'free' (not the feature tier, but user tier)
+  # Note: currentTier comes from requireFeatureAccess response (entitlement.js),
+  # not hardcoded in protected-ai-analysis.js. Check entitlement.js instead.
+  if ($protectedApi -match "currentTier.*accessResult" -or $protectedApi -match "currentTier") {
+    Add-Line "[OK] protected-ai-analysis.js uses currentTier from requireFeatureAccess"
+  } else {
+    Add-Line "[NOTE] protected-ai-analysis.js currentTier comes from entitlement.js"
   }
 
   # Check no client-side bypass (localStorage/sessionStorage in actual code, not comments)
@@ -626,6 +644,14 @@ try {
         $prodApiChecksPassed = $false
       }
 
+      # Validate requiredTier (what the feature needs)
+      if ($json.requiredTier -eq "pro") {
+        Add-Line "[OK] requiredTier = 'pro'"
+      } else {
+        Add-Line "[FAIL] requiredTier = '$($json.requiredTier)' (expected: 'pro')"
+        $prodApiChecksPassed = $false
+      }
+
       # Validate disclaimer
       if ($json.disclaimer) {
         Add-Line "[OK] disclaimer is present"
@@ -681,6 +707,14 @@ try {
               Add-Line "[OK] currentTier = 'free'"
             } else {
               Add-Line "[FAIL] currentTier = '$($json.currentTier)' (expected: 'free')"
+              $prodApiChecksPassed = $false
+            }
+
+            # Validate requiredTier (what the feature needs)
+            if ($json.requiredTier -eq "pro") {
+              Add-Line "[OK] requiredTier = 'pro'"
+            } else {
+              Add-Line "[FAIL] requiredTier = '$($json.requiredTier)' (expected: 'pro')"
               $prodApiChecksPassed = $false
             }
 

@@ -296,21 +296,28 @@ export function requireFeatureAccess(featureKey, options = {}) {
     }
   }
 
-  // Determine the tier for the feature
-  let currentTier = 'locked'
+  // When feature is denied:
+  // - currentTier is the USER's current tier (free)
+  // - requiredTier is what the feature needs (pro/team/research-lab)
+  // - reason shows the required tier
+  const userTier = getEntitlementStatus(options).currentTier || 'free'
+
+  // Determine required tier for this feature
+  let requiredTier = 'free'
   if (PRO_FEATURES.includes(featureKey)) {
-    currentTier = 'pro'
+    requiredTier = 'pro'
   } else if (TEAM_FEATURES.includes(featureKey)) {
-    currentTier = 'team'
+    requiredTier = 'team'
   } else if (RESEARCH_LAB_FEATURES.includes(featureKey)) {
-    currentTier = 'research-lab'
+    requiredTier = 'research-lab'
   }
 
   return {
     allowed: false,
     featureKey,
-    currentTier,
-    reason: `Feature is locked. ${currentTier.charAt(0).toUpperCase() + currentTier.slice(1)} subscription required.`,
+    currentTier: userTier,
+    requiredTier,
+    reason: `${requiredTier.charAt(0).toUpperCase() + requiredTier.slice(1)} subscription required.`,
     statusCode: 403,
   }
 }
