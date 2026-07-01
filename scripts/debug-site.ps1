@@ -759,6 +759,158 @@ if ($prodApiChecksPassed) {
 }
 
 Add-Line ""
+Add-Line "Phase C S10: Production Protected API Bypass Regression Verification"
+
+$bypassChecksPassed = $true
+$bypassUrls = @(
+  @{ name = "dev=true"; url = "$BaseUrl/api/protected-ai-analysis?dev=true" },
+  @{ name = "tier=pro"; url = "$BaseUrl/api/protected-ai-analysis?tier=pro" },
+  @{ name = "aiAccessEnabled=true"; url = "$BaseUrl/api/protected-ai-analysis?aiAccessEnabled=true" },
+  @{ name = "currentTier=pro"; url = "$BaseUrl/api/protected-ai-analysis?currentTier=pro" },
+  @{ name = "paymentStatus=success"; url = "$BaseUrl/api/protected-ai-analysis?paymentStatus=success" }
+)
+
+foreach ($test in $bypassUrls) {
+  $bypassPassed = $true
+
+  try {
+    $response = Invoke-WebRequest -Uri $test.url -Method GET -UseBasicParsing -TimeoutSec 30
+    $statusCode = [int]$response.StatusCode
+
+    # If we get here, response was NOT 403 - bypass succeeded (FAIL!)
+    if ($statusCode -eq 200) {
+      Add-Line "[FAIL] Bypass test '$($test.name)' - HTTP 200 (expected 403, bypass WORKS!)"
+      $bypassPassed = $false
+      $bypassChecksPassed = $false
+    } else {
+      Add-Line "[WARN] Bypass test '$($test.name)' - HTTP $statusCode"
+      $bypassPassed = $false
+    }
+
+    # Try to parse response
+    if ($response.Content -match '<html' -or $response.Content -match '<!DOCTYPE') {
+      Add-Line "[NOTE] Bypass test '$($test.name)' - Response is HTML"
+    } else {
+      try {
+        $json = $response.Content | ConvertFrom-Json
+
+        # Validate locked status
+        if ($json.status -eq "locked") {
+          Add-Line "[OK] Bypass test '$($test.name)' - status = 'locked'"
+        } else {
+          Add-Line "[FAIL] Bypass test '$($test.name)' - status = '$($json.status)' (expected: 'locked')"
+          $bypassPassed = $false
+          $bypassChecksPassed = $false
+        }
+
+        # Validate currentTier
+        if ($json.currentTier -eq "free") {
+          Add-Line "[OK] Bypass test '$($test.name)' - currentTier = 'free'"
+        } else {
+          Add-Line "[FAIL] Bypass test '$($test.name)' - currentTier = '$($json.currentTier)' (expected: 'free')"
+          $bypassPassed = $false
+          $bypassChecksPassed = $false
+        }
+      } catch {
+        # Ignore JSON parse errors for non-403 responses
+      }
+    }
+  } catch {
+    # 403 will trigger this catch block
+    if ($_.Exception.Response) {
+      $errorStatus = [int]$_.Exception.Response.StatusCode
+
+      if ($errorStatus -ne 403) {
+        Add-Line "[FAIL] Bypass test '$($test.name)' - HTTP $errorStatus (expected 403)"
+        $bypassPassed = $false
+        $bypassChecksPassed = $false
+      } else {
+        Add-Line "[OK] Bypass test '$($test.name)' - HTTP 403"
+
+        # Read the response body
+        try {
+          $responseStream = $_.Exception.Response.GetResponseStream()
+          $buffer = New-Object byte[] 8192
+          $bytesRead = $responseStream.Read($buffer, 0, $buffer.Length)
+          $responseBody = [System.Text.Encoding]::UTF8.GetString($buffer, 0, $bytesRead)
+
+          if ($responseBody -and $responseBody.Trim().StartsWith("{")) {
+            try {
+              $json = $responseBody | ConvertFrom-Json
+
+              # Validate locked status
+              if ($json.status -eq "locked") {
+                Add-Line "[OK] Bypass test '$($test.name)' - status = 'locked'"
+              } else {
+                Add-Line "[FAIL] Bypass test '$($test.name)' - status = '$($json.status)' (expected: 'locked')"
+                $bypassPassed = $false
+                $bypassChecksPassed = $false
+              }
+
+              # Validate featureKey
+              if ($json.featureKey -eq "aiEarningsAnalysis") {
+                Add-Line "[OK] Bypass test '$($test.name)' - featureKey = 'aiEarningsAnalysis'"
+              } else {
+                Add-Line "[FAIL] Bypass test '$($test.name)' - featureKey = '$($json.featureKey)' (expected: 'aiEarningsAnalysis')"
+                $bypassPassed = $false
+                $bypassChecksPassed = $false
+              }
+
+              # Validate currentTier
+              if ($json.currentTier -eq "free") {
+                Add-Line "[OK] Bypass test '$($test.name)' - currentTier = 'free'"
+              } else {
+                Add-Line "[FAIL] Bypass test '$($test.name)' - currentTier = '$($json.currentTier)' (expected: 'free')"
+                $bypassPassed = $false
+                $bypassChecksPassed = $false
+              }
+
+              # Validate requiredTier
+              if ($json.requiredTier -eq "pro") {
+                Add-Line "[OK] Bypass test '$($test.name)' - requiredTier = 'pro'"
+              } else {
+                Add-Line "[FAIL] Bypass test '$($test.name)' - requiredTier = '$($json.requiredTier)' (expected: 'pro')"
+                $bypassPassed = $false
+                $bypassChecksPassed = $false
+              }
+
+              # Validate disclaimer
+              if ($json.disclaimer) {
+                Add-Line "[OK] Bypass test '$($test.name)' - disclaimer present"
+              } else {
+                Add-Line "[FAIL] Bypass test '$($test.name)' - disclaimer missing"
+                $bypassPassed = $false
+                $bypassChecksPassed = $false
+              }
+            } catch {
+              Add-Line "[FAIL] Bypass test '$($test.name)' - Could not parse JSON: $($_.Exception.Message)"
+              $bypassPassed = $false
+              $bypassChecksPassed = $false
+            }
+          } else {
+            Add-Line "[FAIL] Bypass test '$($test.name)' - Response is not valid JSON"
+            $bypassPassed = $false
+            $bypassChecksPassed = $false
+          }
+        } catch {
+          Add-Line "[WARN] Bypass test '$($test.name)' - Could not read response body: $($_.Exception.Message)"
+        }
+      }
+    } else {
+      Add-Line "[FAIL] Bypass test '$($test.name)' - No response object: $($_.Exception.Message)"
+      $bypassPassed = $false
+      $bypassChecksPassed = $false
+    }
+  }
+}
+
+if ($bypassChecksPassed) {
+  Add-Line "[PASS] Phase C S10: Production Protected API Bypass Regression - All bypasses blocked"
+} else {
+  Add-Line "[FAIL] Phase C S10: Production Protected API Bypass Regression - Some bypasses succeeded!"
+}
+
+Add-Line ""
 Add-Line "DNS check"
 try {
   $dnsOutput = nslookup global-earnings-radar.vercel.app 2>&1
