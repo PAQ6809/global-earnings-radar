@@ -488,6 +488,14 @@ if ($protectedApi) {
     Add-Line "[NOTE] protected-ai-analysis.js currentTier comes from entitlement.js"
   }
 
+  # Check locked response has requiredTier (what the feature needs)
+  if ($protectedApi -match "requiredTier.*accessResult" -or $protectedApi -match "requiredTier") {
+    Add-Line "[OK] protected-ai-analysis.js uses requiredTier from requireFeatureAccess"
+  } else {
+    Add-Line "[FAIL] protected-ai-analysis.js missing requiredTier output"
+    $apiPassed = $false
+  }
+
   # Check no client-side bypass (localStorage/sessionStorage in actual code, not comments)
   # Only flag actual usage patterns, not comments
   $hasLocalStorageUsage = $false

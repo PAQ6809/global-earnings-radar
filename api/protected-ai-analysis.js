@@ -31,6 +31,7 @@ export default async function handler() {
         status: 'locked',
         featureKey: 'aiEarningsAnalysis',
         currentTier: accessResult.currentTier,
+        requiredTier: accessResult.requiredTier || 'pro',
         reason: accessResult.reason,
         disclaimer: 'Educational and informational only. Not investment advice.',
       }),
