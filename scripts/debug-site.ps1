@@ -575,6 +575,148 @@ if ($protectedApiChecksPassed) {
 }
 
 Add-Line ""
+Add-Line "Phase C S9: Production Protected API Verification"
+
+$prodApiChecksPassed = $true
+$prodApiUrl = "$BaseUrl/api/protected-ai-analysis"
+
+# Method: Invoke-WebRequest with 403 goes to catch, read from $_.Exception.Response
+try {
+  $response = Invoke-WebRequest -Uri $prodApiUrl -Method GET -UseBasicParsing -TimeoutSec 30
+  $statusCode = [int]$response.StatusCode
+
+  # If we get here, response was NOT 403 - this is unexpected
+  if ($statusCode -eq 200) {
+    Add-Line "[FAIL] Phase C S9 - API returned HTTP 200 (expected 403)"
+    $prodApiChecksPassed = $false
+  } else {
+    Add-Line "[WARN] Phase C S9 - API returned HTTP $statusCode (expected 403)"
+    $prodApiChecksPassed = $false
+  }
+
+  # Try to parse response if JSON
+  if ($response.Content -match '<html' -or $response.Content -match '<!DOCTYPE') {
+    Add-Line "[NOTE] Response is HTML, skipping JSON validation"
+  } else {
+    try {
+      $json = $response.Content | ConvertFrom-Json
+      Add-Line "[INFO] Response JSON: $($response.Content)"
+
+      # Validate locked status
+      if ($json.status -eq "locked") {
+        Add-Line "[OK] JSON status = 'locked'"
+      } else {
+        Add-Line "[FAIL] JSON status = '$($json.status)' (expected: 'locked')"
+        $prodApiChecksPassed = $false
+      }
+
+      # Validate featureKey
+      if ($json.featureKey -eq "aiEarningsAnalysis") {
+        Add-Line "[OK] featureKey = 'aiEarningsAnalysis'"
+      } else {
+        Add-Line "[FAIL] featureKey = '$($json.featureKey)' (expected: 'aiEarningsAnalysis')"
+        $prodApiChecksPassed = $false
+      }
+
+      # Validate currentTier
+      if ($json.currentTier -eq "free") {
+        Add-Line "[OK] currentTier = 'free'"
+      } else {
+        Add-Line "[FAIL] currentTier = '$($json.currentTier)' (expected: 'free')"
+        $prodApiChecksPassed = $false
+      }
+
+      # Validate disclaimer
+      if ($json.disclaimer) {
+        Add-Line "[OK] disclaimer is present"
+      } else {
+        Add-Line "[FAIL] disclaimer is missing"
+        $prodApiChecksPassed = $false
+      }
+    } catch {
+      Add-Line "[WARN] Could not parse response as JSON: $($_.Exception.Message)"
+    }
+  }
+} catch {
+  # 403 will trigger this catch block - this is expected behavior
+  if ($_.Exception.Response) {
+    $errorStatus = [int]$_.Exception.Response.StatusCode
+
+    if ($errorStatus -ne 403) {
+      Add-Line "[FAIL] Phase C S9 - API returned HTTP $errorStatus (expected 403)"
+      $prodApiChecksPassed = $false
+    } else {
+      Add-Line "[OK] Phase C S9 - API returned HTTP 403"
+
+      # Read the response body from the error response
+      try {
+        $responseStream = $_.Exception.Response.GetResponseStream()
+        $buffer = New-Object byte[] 8192
+        $bytesRead = $responseStream.Read($buffer, 0, $buffer.Length)
+        $responseBody = [System.Text.Encoding]::UTF8.GetString($buffer, 0, $bytesRead)
+
+        # Try to parse as JSON
+        if ($responseBody -and $responseBody.Trim().StartsWith("{")) {
+          try {
+            $json = $responseBody | ConvertFrom-Json
+
+            # Validate locked status
+            if ($json.status -eq "locked") {
+              Add-Line "[OK] JSON status = 'locked'"
+            } else {
+              Add-Line "[FAIL] JSON status = '$($json.status)' (expected: 'locked')"
+              $prodApiChecksPassed = $false
+            }
+
+            # Validate featureKey
+            if ($json.featureKey -eq "aiEarningsAnalysis") {
+              Add-Line "[OK] featureKey = 'aiEarningsAnalysis'"
+            } else {
+              Add-Line "[FAIL] featureKey = '$($json.featureKey)' (expected: 'aiEarningsAnalysis')"
+              $prodApiChecksPassed = $false
+            }
+
+            # Validate currentTier
+            if ($json.currentTier -eq "free") {
+              Add-Line "[OK] currentTier = 'free'"
+            } else {
+              Add-Line "[FAIL] currentTier = '$($json.currentTier)' (expected: 'free')"
+              $prodApiChecksPassed = $false
+            }
+
+            # Validate disclaimer
+            if ($json.disclaimer) {
+              Add-Line "[OK] disclaimer is present"
+            } else {
+              Add-Line "[FAIL] disclaimer is missing"
+              $prodApiChecksPassed = $false
+            }
+
+          } catch {
+            Add-Line "[FAIL] Could not parse error response as JSON: $($_.Exception.Message)"
+            $prodApiChecksPassed = $false
+          }
+        } else {
+          Add-Line "[FAIL] Error response is not valid JSON: $responseBody"
+          $prodApiChecksPassed = $false
+        }
+      } catch {
+        Add-Line "[WARN] Could not read response body from error: $($_.Exception.Message)"
+      }
+    }
+  } else {
+    Add-Line "[FAIL] Phase C S9 - No response object in exception: $($_.Exception.Message)"
+    $prodApiChecksPassed = $false
+  }
+}
+
+if ($prodApiChecksPassed) {
+  Add-Line "[PASS] Phase C S9: Production Protected API Verification - All passed"
+} else {
+  Add-Line "[FAIL] Phase C S9: Production Protected API Verification - Some checks failed"
+}
+
+Add-Line ""
 Add-Line "DNS check"
 try {
   $dnsOutput = nslookup global-earnings-radar.vercel.app 2>&1
